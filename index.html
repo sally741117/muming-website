@@ -80,6 +80,7 @@
     color: var(--brown-deep);
     letter-spacing: 0.08em;
     line-height: 1.2;
+    white-space: nowrap;
   }
 
   .logo-en {
@@ -89,6 +90,7 @@
     color: var(--brown-warm);
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .nav-links {
@@ -913,40 +915,90 @@
   /* ── FOOTER ── */
   footer {
     background: var(--brown-deep);
-    color: rgba(250,247,242,0.6);
-    padding: 48px 40px;
+    color: rgba(250,247,242,0.65);
+    padding: 52px 48px;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 0 48px;
+  }
+
+  .footer-brand {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 32px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 6px;
   }
 
-  .footer-logo .logo-zh { color: var(--cream); }
-  .footer-logo .logo-en { color: rgba(250,247,242,0.5); }
-
-  footer p {
-    font-size: 12.5px;
-    letter-spacing: 0.04em;
-    line-height: 1.8;
+  .footer-name-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
   }
 
-  footer a {
-    color: rgba(250,247,242,0.6);
+  .footer-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(250,247,242,0.4);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(250,247,242,0.65);
     text-decoration: none;
     font-size: 12.5px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    transition: color 0.2s;
+    white-space: nowrap;
   }
 
-  footer a:hover { color: var(--orange); }
+  .footer-contact-item:hover { color: var(--orange); }
+  .footer-contact-item svg   { flex-shrink: 0; opacity: 0.65; }
+  .footer-addr { cursor: default; }
 
   .footer-copy {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 0.14em;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    color: rgba(250,247,242,0.3);
+    white-space: nowrap;
+    align-self: end;
+    text-align: right;
   }
 
-  /* ── RESPONSIVE ── */
+  /* ── Mobile footer ── */
+  @media (max-width: 768px) {
+    footer { padding: 36px 24px; }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .footer-name-zh  { font-size: 15px; white-space: nowrap; }
+    .footer-name-en  { display: none; }
+    .footer-contact-item { font-size: 14.5px; white-space: nowrap; }
+    .footer-copy     { font-size: 11px; text-align: left; }
+  }
+
+    /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
@@ -998,12 +1050,81 @@
     .quiz-section { padding: 60px 24px; }
     .result-section { padding: 60px 24px; }
 
-    footer { padding: 40px 24px; flex-direction: column; gap: 20px; }
+    /* footer: mobile version handled below */
+
+    /* switch to mobile footer layout */
+    .footer-desktop { display: none !important; }
+    .footer-mobile  { display: block !important; }
+
+    footer { padding: 32px 24px; }
+
+    .footer-mobile-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      white-space: nowrap;
+    }
+
+    .footer-mobile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-mobile-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(250,247,242,0.75) !important;
+      text-decoration: none !important;
+      font-size: 13.5px;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      -webkit-tap-highlight-color: rgba(212,88,26,0.15);
+    }
+
+    .footer-mobile-link:active {
+      color: var(--orange) !important;
+    }
+
+    .footer-mobile-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+    }
+
+    .footer-mobile-addr {
+      font-size: 12.5px;
+      color: rgba(250,247,242,0.5);
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .footer-mobile .footer-copy {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10.5px;
+      color: rgba(250,247,242,0.35);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
 
     .hero-btns { flex-direction: column; }
     .result-btns { flex-direction: column; }
 
     .btn-primary, .btn-secondary { justify-content: center; }
+  }
+
+  /* ── Narrow phone (iPhone SE, small Android) ── */
+  @media (max-width: 480px) {
+    .footer-desktop { display: none !important; }
+    .footer-mobile  { display: block !important; }
+    .footer-mobile-name { font-size: 13.5px; white-space: nowrap; }
   }
 </style>
 </head>
@@ -1173,17 +1294,31 @@
   </section>
 
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <div>
-      <p><a href="mailto:sally741117@gmail.com">sally741117@gmail.com</a></p>
-      <p style="margin-top:4px"><a href="tel:0970393155">0970-393-155</a></p>
-      <p style="margin-top:4px"><a href="https://line.me/ti/p/@cxm8838f" target="_blank">LINE：@cxm8838f</a></p>
-      <p style="margin-top:4px">桃園市平鎮區環南路 18 號 6 樓之 2</p>
-    </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1211,23 +1346,26 @@
         <span style="font-size:11.5px;color:var(--brown-warm);background:var(--cream-dark);padding:3px 10px;border-radius:2px;letter-spacing:0.04em;">Claude</span>
         <span style="font-size:11.5px;color:var(--brown-warm);background:var(--cream-dark);padding:3px 10px;border-radius:2px;letter-spacing:0.04em;">Gemini</span>
         <span style="font-size:11.5px;color:var(--brown-warm);background:var(--cream-dark);padding:3px 10px;border-radius:2px;letter-spacing:0.04em;">NotebookLM</span>
-        <span style="font-size:11.5px;color:var(--brown-warm);background:var(--cream-dark);padding:3px 10px;border-radius:2px;letter-spacing:0.04em;">Make</span>
-        <span style="font-size:11.5px;color:var(--brown-warm);background:var(--cream-dark);padding:3px 10px;border-radius:2px;letter-spacing:0.04em;">n8n</span>
+        <span style="font-size:11.5px;color:var(--brown-warm);background:var(--cream-dark);padding:3px 10px;border-radius:2px;letter-spacing:0.04em;">Codex</span>
       </div>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
       <h3>AI 工作流程設計</h3>
       <p>將 AI 整合進企業現有工作模式，協助規劃導入後的新流程與操作方式。</p>
-      <div style="margin-top:14px;display:flex;flex-direction:column;gap:4px;">
-        <span style="font-size:12.5px;color:var(--text-muted);">行政作業 · 客服 · 招募</span>
-        <span style="font-size:12.5px;color:var(--text-muted);">文件管理 · 內部知識 · 業務開發</span>
-      </div>
+      <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px;padding:0;list-style:none;">
+        <li style="font-size:12.5px;color:var(--text-muted);">・行政流程自動化</li>
+        <li style="font-size:12.5px;color:var(--text-muted);">・客服智慧回應</li>
+        <li style="font-size:12.5px;color:var(--text-muted);">・文件與知識管理</li>
+        <li style="font-size:12.5px;color:var(--text-muted);">・招募與人才管理</li>
+        <li style="font-size:12.5px;color:var(--text-muted);">・業務開發流程</li>
+        <li style="font-size:12.5px;color:var(--text-muted);">・跨部門協作機制</li>
+      </ul>
     </div>
     <div class="service-card">
       <div class="service-num">04</div>
       <h3>AI 教育訓練</h3>
-      <p>協助團隊建立正確 AI 使用觀念。不只是教工具，而是教會員工如何在日常工作中真正運用 AI。</p>
+      <p>協助團隊建立正確 AI 使用觀念。不只是教工具，更教會員工如何將 AI 融入工作流程與日常決策。</p>
     </div>
     <div class="service-card">
       <div class="service-num">05</div>
@@ -1242,17 +1380,31 @@
   </div>
 
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <div>
-      <p><a href="mailto:sally741117@gmail.com">sally741117@gmail.com</a></p>
-      <p style="margin-top:4px"><a href="tel:0970393155">0970-393-155</a></p>
-      <p style="margin-top:4px"><a href="https://line.me/ti/p/@cxm8838f" target="_blank">LINE：@cxm8838f</a></p>
-      <p style="margin-top:4px">桃園市平鎮區環南路 18 號 6 樓之 2</p>
-    </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1310,7 +1462,7 @@
         </div>
         <div>
           <h4>跨領域視角：管理 × 人資 × AI</h4>
-          <p>結合企業管理、人力資源實務與 AI 應用的複合背景，讓我們對「組織如何落地」有更全面的理解。重點不是學會 AI，而是透過 AI 提升企業效能。</p>
+          <p>結合企業管理、人力資源實務與 AI 應用的複合背景，協助企業從組織、流程與人才三個面向思考 AI 的應用價值。重點不是學會 AI，而是透過 AI 提升企業效能。</p>
         </div>
       </div>
       <div class="strength-item">
@@ -1328,17 +1480,31 @@
   </section>
 
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <div>
-      <p><a href="mailto:sally741117@gmail.com">sally741117@gmail.com</a></p>
-      <p style="margin-top:4px"><a href="tel:0970393155">0970-393-155</a></p>
-      <p style="margin-top:4px"><a href="https://line.me/ti/p/@cxm8838f" target="_blank">LINE：@cxm8838f</a></p>
-      <p style="margin-top:4px">桃園市平鎮區環南路 18 號 6 樓之 2</p>
-    </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1360,7 +1526,7 @@
       牧茗透過 <strong style="font-weight:500;color:var(--brown-deep)">AI 策展</strong>，協助企業理解 AI、規劃 AI、運用 AI，找到最適合自身產業與團隊的 AI 工作方式，讓技術真正轉化為效率與成長。
     </p>
     <p>
-      牧茗的角色不是工程開發團隊，而是協助企業在導入 AI 之前，先釐清方向、選對工具、設計流程，並陪伴團隊逐步落地。
+      牧茗的角色不是工程開發團隊，而是協助企業在導入 AI 之前，先釐清方向、選對工具、設計流程，並陪伴團隊建立人與 AI 協作的新工作方式。
       多數企業面臨的問題並非不知道 AI 是什麼，而是不知道該從哪裡開始、該選擇哪些工具，以及如何讓員工真正願意使用。
     </p>
 
@@ -1393,17 +1559,31 @@
   </section>
 
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <div>
-      <p><a href="mailto:sally741117@gmail.com">sally741117@gmail.com</a></p>
-      <p style="margin-top:4px"><a href="tel:0970393155">0970-393-155</a></p>
-      <p style="margin-top:4px"><a href="https://line.me/ti/p/@cxm8838f" target="_blank">LINE：@cxm8838f</a></p>
-      <p style="margin-top:4px">桃園市平鎮區環南路 18 號 6 樓之 2</p>
-    </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1431,11 +1611,23 @@
       </div>
       <div class="contact-item">
         <span class="contact-label">電話</span>
-        <div class="contact-value"><a href="tel:0970393155">0970-393-155</a></div>
+        <div class="contact-value">
+          <a href="tel:+886970393155" style="color:var(--orange);font-weight:500;font-size:16px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            0970-393-155
+          </a>
+          <span style="font-size:11.5px;color:var(--text-muted);margin-left:2px;display:block;margin-top:3px;">點擊直接撥號</span>
+        </div>
       </div>
       <div class="contact-item">
         <span class="contact-label">Email</span>
-        <div class="contact-value"><a href="mailto:sally741117@gmail.com">sally741117@gmail.com</a></div>
+        <div class="contact-value">
+          <a href="mailto:sally741117@gmail.com" style="color:var(--orange);font-weight:400;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            sally741117@gmail.com
+          </a>
+          <span style="font-size:11.5px;color:var(--text-muted);display:block;margin-top:3px;">點擊開啟寄信</span>
+        </div>
       </div>
       <div class="contact-item">
         <span class="contact-label">地址</span>
@@ -1459,17 +1651,31 @@
   </section>
 
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <div>
-      <p><a href="mailto:sally741117@gmail.com">sally741117@gmail.com</a></p>
-      <p style="margin-top:4px"><a href="tel:0970393155">0970-393-155</a></p>
-      <p style="margin-top:4px"><a href="https://line.me/ti/p/@cxm8838f" target="_blank">LINE：@cxm8838f</a></p>
-      <p style="margin-top:4px">桃園市平鎮區環南路 18 號 6 樓之 2</p>
-    </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1500,11 +1706,31 @@
   </section>
 
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1531,7 +1757,7 @@
     </p>
 
     <div class="result-btns">
-      <a href="mailto:sally741117@gmail.com" class="btn-secondary">聯絡我們</a>
+      <a href="tel:+886970393155" class="btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>立即電話諮詢</a>
       <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="btn-primary">加入官方 LINE</a>
     </div>
 
@@ -1540,11 +1766,31 @@
     </div>
   </section>
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1571,7 +1817,7 @@
     </p>
 
     <div class="result-btns">
-      <a href="mailto:sally741117@gmail.com" class="btn-secondary">聯絡我們</a>
+      <a href="tel:+886970393155" class="btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>立即電話諮詢</a>
       <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="btn-primary">加入官方 LINE</a>
     </div>
 
@@ -1580,11 +1826,31 @@
     </div>
   </section>
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1611,7 +1877,7 @@
     </p>
 
     <div class="result-btns">
-      <a href="mailto:sally741117@gmail.com" class="btn-secondary">聯絡我們</a>
+      <a href="tel:+886970393155" class="btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>立即電話諮詢</a>
       <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="btn-primary">加入官方 LINE</a>
     </div>
 
@@ -1620,11 +1886,31 @@
     </div>
   </section>
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1648,7 +1934,7 @@
     </div>
 
     <div class="result-btns">
-      <a href="mailto:sally741117@gmail.com" class="btn-secondary">聯絡我們</a>
+      <a href="tel:+886970393155" class="btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>立即電話諮詢</a>
       <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="btn-primary">加入官方 LINE</a>
     </div>
 
@@ -1657,11 +1943,31 @@
     </div>
   </section>
   <footer>
-    <div class="footer-logo logo">
-      <span class="logo-zh">牧茗管理顧問<br>有限公司</span>
-      <span class="logo-en">Mu Ming Management Consulting<br>Co., Ltd.</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name-zh">牧茗管理顧問有限公司</span>
+        <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+886970393155" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0970-393-155
+        </a>
+        <a href="mailto:sally741117@gmail.com" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sally741117@gmail.com
+        </a>
+        <a href="https://line.me/ti/p/@cxm8838f" target="_blank" class="footer-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          LINE：@cxm8838f
+        </a>
+        <span class="footer-contact-item footer-addr">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          桃園市平鎮區環南路 18 號 6 樓之 2
+        </span>
+      </div>
+      <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
-    <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
   </footer>
 </div>
 
@@ -1850,6 +2156,20 @@
     scores = { A: 0, B: 0, C: 0, D: 0 };
     goTo('quiz');
   }
+</script>
+
+<script>
+  // Footer: switch based on viewport OR touch device
+  function updateFooter() {
+    var isMobile = window.innerWidth <= 768 ||
+                   /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    var desktops = document.querySelectorAll('.footer-desktop');
+    var mobiles  = document.querySelectorAll('.footer-mobile');
+    desktops.forEach(function(el) { el.style.display = isMobile ? 'none' : 'flex'; });
+    mobiles.forEach(function(el)  { el.style.display = isMobile ? 'block' : 'none'; });
+  }
+  updateFooter();
+  window.addEventListener('resize', updateFooter);
 </script>
 </body>
 </html>
