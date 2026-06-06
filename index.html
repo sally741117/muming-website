@@ -1149,6 +1149,31 @@
     .footer-mobile  { display: block !important; }
     .footer-mobile-name { font-size: 13.5px; white-space: nowrap; }
   }
+
+  /* ── Copy Toast ── */
+  .copy-toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    background: var(--brown-deep);
+    color: var(--cream);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    padding: 10px 22px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(44,24,16,0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+    white-space: nowrap;
+  }
+  .copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -2179,5 +2204,69 @@
   }
 </script>
 
+
+  <div class="copy-toast" id="copyToast"></div>
+
+<script>
+(function() {
+  function showToast(msg) {
+    var t = document.getElementById('copyToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 2000);
+  }
+
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+           ('ontouchstart' in window);
+  }
+
+  function handleContactLink(e, type, value, displayText) {
+    // Mobile: let browser handle tel:/mailto: natively
+    if (isMobile()) return;
+
+    // Desktop: copy to clipboard + show toast
+    e.preventDefault();
+    navigator.clipboard.writeText(value).then(function() {
+      var msg = type === 'tel'
+        ? '電話號碼已複製：' + displayText
+        : 'Email 已複製：' + displayText;
+      showToast(msg);
+    }).catch(function() {
+      // fallback for older browsers
+      var ta = document.createElement('textarea');
+      ta.value = value;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      var msg = type === 'tel'
+        ? '電話號碼已複製：' + displayText
+        : 'Email 已複製：' + displayText;
+      showToast(msg);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Bind all tel: links (NOT LINE links)
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        handleContactLink(e, 'tel', '0970-393-155', '0970-393-155');
+      });
+    });
+
+    // Bind all mailto: links
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        handleContactLink(e, 'email', 'sally741117@gmail.com', 'sally741117@gmail.com');
+      });
+    });
+
+    // LINE links: do nothing — let browser open directly
+  });
+})();
+</script>
 </body>
 </html>
