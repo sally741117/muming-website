@@ -1242,6 +1242,8 @@
   .support-service-card, .info-card, .process-card { padding: 24px; background: #fffdf9; border: 1px solid var(--border); }
   .support-service-card h4 { font-family: 'Noto Serif TC', serif; font-size: 16px; font-weight: 500; margin-bottom: 8px; color: var(--brown-deep); }
   .support-service-card p, .simple-list li { color: var(--text-muted); font-size: 13.5px; line-height: 1.75; }
+  .card-text-link { display: inline-flex; margin-top: 14px; padding: 0; border: 0; background: transparent; color: var(--orange); font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 400; text-decoration: none; cursor: pointer; }
+  .card-text-link:hover { text-decoration: underline; text-underline-offset: 3px; }
   .simple-list { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; margin: 0; }
   .simple-list li::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); margin-right: 9px; transform: translateY(-1px); }
   .process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; }
@@ -1310,21 +1312,21 @@
 
     <!-- LEFT -->
     <div class="hero-left">
-      <span class="hero-label">AI 工具策展 · 導入陪跑 · 企業基礎課程</span>
+      <span class="hero-label">企業 AI 基礎課程 · 工具認識 · 小範圍導入</span>
       <h1 class="hero-title">
-        讓企業真正用得上的<br>
-        <em>AI</em>導入顧問
+        讓企業從真正用得上的<br>
+        <em>AI</em>開始
       </h1>
-      <p class="hero-sub">從需求盤點、工具選擇到流程落地</p>
-      <p class="hero-guide">牧茗不是只推薦工具，而是協助企業從需求盤點、工具選擇、流程設計、教育訓練到實際落地，建立能持續運作的 AI 工作方式。</p>
+      <p class="hero-sub">先建立觀念，再找到適合工作的工具與方向</p>
+      <p class="hero-guide">牧茗從企業 AI 基礎課程出發，協助團隊建立正確觀念、認識適合的工具，並依實際工作需求逐步規劃導入方向。</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="goTo('free-course')">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 8L8 14M14 8H2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           免費申請企業 AI 基礎課程
         </button>
-        <button class="btn-secondary" onclick="goTo('consultation')">
+        <button class="btn-secondary" onclick="goTo('quiz')">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 2.5H2.5A1 1 0 001.5 3.5V10.5A1 1 0 002.5 11.5H5V14L8.5 11.5H13.5A1 1 0 0014.5 10.5V3.5A1 1 0 0013.5 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          預約 AI 導入諮詢
+          先做 AI 起步診斷
         </button>
       </div>
     </div>
@@ -1415,8 +1417,8 @@
 
       <!-- caption card -->
       <div class="hero-caption">
-        <strong>我們的角色，是 AI 策展顧問</strong>
-        <p>協助企業挑對工具、設計流程，<br>讓 AI 真正落地於工作，提升效率與成長。</p>
+        <strong>先從基礎課程開始</strong>
+        <p>讓團隊先理解 AI 可以怎麼用，<br>再評估是否需要工具、流程或陪跑協助。</p>
       </div>
 
     </div><!-- /hero-right -->
@@ -1424,18 +1426,44 @@
 
   <section class="line-entry-section">
     <div class="section-intro">
-      <span class="section-kicker">LINE Rich Menu · Quick Access</span>
-      <h2>六個入口，快速找到需要的協助</h2>
-      <p>對應牧茗 LINE 官方帳號六宮格圖文選單，可直接分享給團隊或從 LINE 點選進入。</p>
+      <span class="section-kicker">Free AI Course</span>
+      <h2>免費企業 AI 基礎課程</h2>
+      <p>先不用急著買工具或導入系統。牧茗會從基礎觀念、常見工具與工作情境開始，協助團隊理解 AI 可以怎麼協助日常工作。</p>
     </div>
-    <div class="entry-grid">
-      <button class="entry-card" onclick="goTo('services')"><span>01</span><h3>服務項目</h3><p>了解 AI 工具策展、企業 AI 陪跑、基礎課程與管理顧問服務。</p></button>
-      <button class="entry-card" onclick="goTo('free-course')"><span>02</span><h3>免費課程申請</h3><p>申請一堂企業 AI 基礎課程，先建立團隊共同語言。</p></button>
-      <button class="entry-card" onclick="goTo('consultation')"><span>03</span><h3>預約諮詢</h3><p>先聊企業狀況、導入方向、工具選擇與流程改善需求。</p></button>
-      <button class="entry-card" onclick="goTo('faq')"><span>04</span><h3>常見問題</h3><p>快速了解免費課程、工具策展、陪跑合作與費用評估方式。</p></button>
-      <button class="entry-card" onclick="goTo('about')"><span>05</span><h3>關於牧茗</h3><p>認識牧茗的服務角色、品牌理念與務實陪伴方式。</p></button>
-      <button class="entry-card" onclick="goTo('contact')"><span>06</span><h3>聯絡我們</h3><p>透過 LINE、電話或 Email 讓我們更快理解你的需求。</p></button>
+    <div class="info-grid">
+      <article class="info-card"><h3>課程先解決什麼</h3><ul class="simple-list"><li>不知道 AI 可以用在哪些工作</li><li>已經用過 ChatGPT，但團隊沒有共同方法</li><li>擔心資料安全、成本或工具選錯</li><li>想先判斷公司適不適合開始使用 AI</li></ul></article>
+      <article class="info-card"><h3>適合的企業</h3><ul class="simple-list"><li>完全沒使用過 AI 的公司</li><li>行政、人資、行銷或營運團隊想提升效率</li><li>主管想先建立基本判斷能力</li><li>希望從小範圍測試開始的團隊</li></ul></article>
     </div>
+    <div class="line-note"><div><strong>加入 LINE 後請傳送：</strong><p>「我要申請免費企業 AI 基礎課程」<br>實際課程形式與時間會在確認申請需求後另行說明。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-kicker">Common Frictions</span>
+      <h2>企業常見的 AI 使用困難</h2>
+      <p>多數困難不是「沒有工具」，而是不知道怎麼把工具放進現有工作。</p>
+    </div>
+    <div class="support-service-grid">
+      <article class="support-service-card"><h4>工具太多</h4><p>熱門工具很多，但不一定符合企業能力、預算、資料安全與實際流程。</p></article>
+      <article class="support-service-card"><h4>場景不清楚</h4><p>知道 AI 很重要，卻不確定行政、人資、行銷或營運可以先從哪裡開始。</p></article>
+      <article class="support-service-card"><h4>團隊不同步</h4><p>有人每天使用，有人完全沒碰過，導致內部很難形成共同工作方式。</p></article>
+      <article class="support-service-card"><h4>怕一次做太大</h4><p>牧茗建議先建立觀念，再從小範圍測試與可操作的流程開始。</p></article>
+    </div>
+  </section>
+
+  <section class="line-entry-section">
+    <div class="section-intro">
+      <span class="section-kicker">After Course</span>
+      <h2>課程後可延伸的合作方向</h2>
+      <p>完成基礎課程後，若企業有進一步需求，牧茗可依實際工作情境協助評估適合的工具、流程整理與後續導入方式。</p>
+    </div>
+    <div class="support-service-grid">
+      <article class="support-service-card"><h4>AI 工具策展</h4><p>依企業需求、使用者能力、成本與資料安全，評估適合先測試的工具。</p><button class="card-text-link" onclick="goTo('tool-curation')">了解 AI 工具策展</button></article>
+      <article class="support-service-card"><h4>工作流程整理</h4><p>協助找出適合導入 AI 的小範圍流程，避免一開始就做過大。</p></article>
+      <article class="support-service-card"><h4>AI 導入陪跑</h4><p>陪同團隊測試工具、調整流程，逐步建立可持續使用的方式。</p><button class="card-text-link" onclick="goTo('ai-coaching')">了解企業 AI 陪跑</button></article>
+      <article class="support-service-card"><h4>管理顧問討論</h4><p>從人資、管理與日常營運角度，討論 AI 可以協助改善的環節。</p></article>
+    </div>
+    <div class="line-note"><div><strong>不確定需求也可以先討論</strong><p>先說明公司產業、目前遇到的問題，以及希望改善的流程。</p></div><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div>
   </section>
 
   <!-- Quiz Entry (second screen) -->
@@ -1447,6 +1475,12 @@
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 8L8 14M14 8H2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       開始診斷
     </button>
+  </section>
+
+  <section class="about-section">
+    <p>牧茗管理顧問從實際工作問題出發，不急著一次導入大量 AI 工具，而是先協助企業建立基本觀念，理解 AI 在日常工作中的可能用途。</p>
+    <p>我們重視可理解、可操作與實際使用。若企業後續需要工具選擇、流程整理或陪跑協助，也會先依需求範圍與可行性評估，再討論適合的合作方式。</p>
+    <div class="hero-btns"><button class="btn-secondary" onclick="goTo('about')">認識牧茗</button><button class="btn-primary" onclick="goTo('contact')">聯絡牧茗</button></div>
   </section>
 
   <footer>
@@ -1481,12 +1515,18 @@
 
 <!-- ═══════════════════ SERVICES ═══════════════════ -->
 <div class="page" id="page-services">
-  <section class="page-hero"><span class="page-hero-label">Services · 服務項目</span><h1>從工具選擇到導入落地</h1><p>牧茗協助企業把 AI 從「知道有工具」推進到「團隊真的用得起來」。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('consultation')">預約 AI 導入諮詢</button><button class="btn-secondary" onclick="goTo('free-course')">申請免費基礎課程</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('faq')">查看常見問題</button></div></section>
+  <section class="page-hero"><span class="page-hero-label">Services · 服務項目</span><h1>先從企業 AI 基礎課程開始</h1><p>牧茗目前以企業 AI 基礎課程為主要服務，協助團隊建立觀念、認識工具，並找出適合開始的工作方向。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('free-course')">申請免費企業 AI 基礎課程</button><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('faq')">查看常見問題</button><button onclick="goTo('contact')">加入 LINE 洽詢</button></div></section>
   <section class="content-section">
-    <div class="section-intro"><span class="section-kicker">Core Services</span><h2>三個核心服務</h2><p>先釐清需求，再選工具、設計流程、陪伴團隊導入。</p></div>
-    <div class="core-service-grid"><article class="core-service-card"><h3>AI 工具策展</h3><p>不是單純列出熱門工具，而是依照企業需求、使用者能力、成本、資料安全與實際流程，篩選適合的 AI 工具，避免把時間花在不適合的嘗試上。</p></article><article class="core-service-card"><h3>企業 AI 導入陪跑</h3><p>從需求盤點、工具導入、內部測試、教育訓練到實際使用，陪同企業逐步落地，而不是上完課就結束。</p></article><article class="core-service-card"><h3>企業 AI 基礎課程</h3><p>用生活化、實務化的方式建立 AI 基礎觀念，讓沒有工程背景的主管與團隊也能理解 AI 能做什麼、該怎麼開始。</p></article></div>
-    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Supporting Services</span><h2>可搭配的既有服務</h2></div>
-    <div class="support-service-grid"><article class="support-service-card"><h4>AI 導入評估</h4><p>了解企業現況與工作流程，找出適合優先導入 AI 的環節。</p></article><article class="support-service-card"><h4>AI 工作流程設計</h4><p>將 AI 整合進行政、人資、行銷、客服或日常營運流程。</p></article><article class="support-service-card"><h4>AI 教育訓練</h4><p>協助團隊建立正確使用觀念，學會把 AI 融入工作決策。</p></article><article class="support-service-card"><h4>人資與管理顧問</h4><p>結合管理與人力資源實務，協助組織提升效率與制度運作。</p></article></div>
+    <div class="section-intro"><span class="section-kicker">Main Service</span><h2>目前主要服務：企業 AI 基礎課程</h2><p>先建立共同語言，再判斷企業是否需要更進一步的工具或流程協助。</p></div>
+    <div class="info-grid">
+      <article class="info-card"><h3>課程重點</h3><ul class="simple-list"><li>AI 基本觀念</li><li>ChatGPT 與常見工具應用</li><li>行政、人資、行銷及日常工作情境</li><li>資料安全與使用注意事項</li><li>協助企業找出適合開始的方向</li></ul></article>
+      <article class="info-card"><h3>適合先處理的問題</h3><p>當團隊對 AI 理解不一致、不知道從哪個工具開始，或擔心一開始就導入過大時，基礎課程可以先讓主管與同仁有共同判斷基礎。</p><div style="margin-top:18px;"><button class="btn-primary" onclick="goTo('free-course')">申請免費企業 AI 基礎課程</button></div></article>
+    </div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">After Course</span><h2>課程後可延伸的合作方向</h2><p>完成基礎課程後，若企業有進一步需求，牧茗可依實際工作情境協助評估適合的工具、流程整理與後續導入方式。</p></div>
+    <div class="support-service-grid"><article class="support-service-card"><h4>AI 工具策展</h4><p>不是單純列出熱門工具，而是依企業需求、使用者能力、成本、資料安全與實際流程，評估適合測試的工具。</p><button class="card-text-link" onclick="goTo('tool-curation')">了解 AI 工具策展</button></article><article class="support-service-card"><h4>工作流程整理</h4><p>協助盤點日常工作，找出適合先試用 AI 的小範圍情境。</p></article><article class="support-service-card"><h4>AI 導入陪跑</h4><p>依企業需求陪同測試工具、調整流程與觀察團隊使用狀況。</p><button class="card-text-link" onclick="goTo('ai-coaching')">了解企業 AI 陪跑</button></article><article class="support-service-card"><h4>AI 教育訓練</h4><p>依團隊程度安排後續訓練，讓 AI 使用方式更貼近日常工作。</p></article><article class="support-service-card"><h4>人資與管理顧問</h4><p>從人資、管理與組織流程角度，討論 AI 可以協助改善的環節。</p></article></div>
+    <div class="line-note"><div><strong>提出需求或預約初步討論</strong><p>每一項後續合作都會依企業實際需求評估，不預設固定方案，也不要求課後一定購買其他服務。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 洽詢</a></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Advanced Needs</span><h2>客製與進階需求</h2></div>
+    <div class="info-grid"><article class="info-card"><h3>可能包含</h3><ul class="simple-list"><li>客製 App</li><li>AI Skill</li><li>跨部門整合</li><li>進階自動化</li><li>系統串接</li></ul></article><article class="info-card"><h3>先評估可行性</h3><p>涉及客製系統、跨部門整合或進階自動化的需求，將先進行可行性評估，並依專案內容確認執行方式與合作範圍。</p></article></div>
   </section>
   <footer>
     <div class="footer-inner">
@@ -1519,8 +1559,18 @@
 
 <!-- ═══════════════════ FREE COURSE ═══════════════════ -->
 <div class="page" id="page-free-course">
-  <section class="page-hero"><span class="page-hero-label">Free Course · 免費課程申請</span><h1>免費申請企業 AI 基礎課程</h1><p>現在立即申請，即可免費獲得一堂企業 AI 基礎課程。加入 LINE 後請輸入「我要申請免費企業 AI 基礎課程」。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a><button class="btn-secondary" onclick="goTo('services')">先看服務項目</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('consultation')">預約諮詢</button><button onclick="goTo('faq')">查看 FAQ</button></div></section>
-  <section class="content-section"><div class="info-grid"><article class="info-card"><h3>適合對象</h3><ul class="simple-list"><li>想開始使用 AI，但不知道從哪裡開始的企業</li><li>已使用 ChatGPT，但尚未建立工作流程的團隊</li><li>希望先了解 AI 是否適合公司的主管</li><li>想提升行政、人資、行銷或日常營運效率的公司</li></ul></article><article class="info-card"><h3>課程可以解決的問題</h3><ul class="simple-list"><li>不知道 AI 工具各自適合什麼場景</li><li>擔心團隊只學工具，回到工作仍用不起來</li><li>不確定是否需要付費工具或完整導入計畫</li><li>需要先建立主管與團隊之間的共同語言</li></ul></article><article class="info-card"><h3>課程內容概覽</h3><ul class="simple-list"><li>企業常見 AI 應用場景</li><li>ChatGPT 等工具的基礎使用觀念</li><li>如何判斷哪些流程適合先導入 AI</li><li>資料安全、成本與團隊使用習慣的基本提醒</li></ul></article><article class="info-card"><h3>注意事項</h3><p>本階段網站不建立資料收集表單。申請時請加入牧茗 LINE 官方帳號，並輸入指定文字，我們會再透過 LINE 了解公司狀況與安排方式。</p></article></div><div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Apply Steps</span><h2>申請流程</h2></div><div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>點擊下方按鈕加入牧茗 LINE 官方帳號。</p></article><article class="process-card"><small>STEP 02</small><h3>輸入指定文字</h3><p>請輸入：「我要申請免費企業 AI 基礎課程」。</p></article><article class="process-card"><small>STEP 03</small><h3>簡述需求</h3><p>補充公司產業、團隊狀況與想改善的流程。</p></article><article class="process-card"><small>STEP 04</small><h3>確認安排</h3><p>牧茗會依你的訊息回覆後續安排方式。</p></article></div><div class="line-note"><div><strong>加入 LINE 官方帳號後，請傳送：</strong><p>「我要申請免費企業 AI 基礎課程」<br>備用聯絡方式：<a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a></p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a></div></section>
+  <section class="page-hero"><span class="page-hero-label">Free Course · 免費課程申請</span><h1>免費企業 AI 基礎課程</h1><p>未使用過 AI 也可以參加。課程以基礎觀念與常見工作應用為主，協助企業先建立正確理解。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a><button class="btn-secondary" onclick="goTo('faq')">查看常見問題</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('consultation')">預約初步討論</button></div></section>
+  <section class="content-section">
+    <div class="info-grid">
+      <article class="info-card"><h3>適合對象</h3><ul class="simple-list"><li>完全沒有使用過 AI，但想開始了解的企業</li><li>已使用 ChatGPT，但尚未建立工作流程的團隊</li><li>希望先判斷 AI 是否適合公司的主管</li><li>想提升行政、人資、行銷或日常營運效率的公司</li></ul></article>
+      <article class="info-card"><h3>主要課程內容</h3><ul class="simple-list"><li>AI 基本觀念與常見誤解</li><li>ChatGPT 與常見工具的工作應用</li><li>行政、人資、行銷與營運情境示例</li><li>資料安全、成本與使用注意事項</li><li>如何找出公司適合開始的小方向</li></ul></article>
+      <article class="info-card"><h3>課程原則</h3><p>課程以基礎觀念與常見工作應用為主，不要求課後一定購買其他服務。若企業有後續需求，會再依實際情況討論。</p></article>
+      <article class="info-card"><h3>形式與時間</h3><p>實際課程形式、時間與安排方式，會在確認申請需求後另行說明；本頁不寫死固定日期、人數上限、到場範圍或免費次數規則。</p></article>
+    </div>
+    <div class="line-note"><div><strong>加入 LINE 官方帳號後，請傳送：</strong><p>「我要申請免費企業 AI 基礎課程」<br>備用聯絡方式：<a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a></p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Apply Steps</span><h2>申請流程</h2></div>
+    <div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>點擊按鈕加入牧茗 LINE 官方帳號。</p></article><article class="process-card"><small>STEP 02</small><h3>傳送指定文字</h3><p>請輸入：「我要申請免費企業 AI 基礎課程」。</p></article><article class="process-card"><small>STEP 03</small><h3>簡述需求</h3><p>補充公司產業、團隊狀況與想改善的工作。</p></article><article class="process-card"><small>STEP 04</small><h3>確認安排</h3><p>牧茗會確認申請需求後另行說明課程安排。</p></article></div>
+  </section>
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1550,10 +1600,45 @@
   </footer>
 </div>
 
+<!-- ═══════════════════ TOOL CURATION ═══════════════════ -->
+<div class="page" id="page-tool-curation">
+  <section class="page-hero"><span class="page-hero-label">AI TOOL CURATION</span><h1>AI 工具策展</h1><p>不是追逐最多、最新的工具，而是從企業實際工作需求出發，協助找出比較適合的選擇。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 提出需求</a><button class="btn-secondary" onclick="goTo('services')">查看全部服務</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('ai-coaching')">企業 AI 陪跑</button><button onclick="goTo('free-course')">免費課程</button></div></section>
+  <section class="content-section">
+    <div class="section-intro"><span class="section-kicker">What It Means</span><h2>什麼是 AI 工具策展</h2><p>牧茗不只整理熱門工具清單，而是先了解企業目前的工作方式、使用人員、預算、資料安全與導入難度，再協助比較適合的工具與使用方向。</p></div>
+    <div class="info-grid"><article class="info-card"><h3>為什麼不是工具越多越好</h3><ul class="simple-list"><li>工具太多，員工反而不知道從哪裡開始</li><li>不同工具可能功能重疊</li><li>免費與付費方案限制不同</li><li>企業資料不一定適合輸入所有平台</li><li>工具若無法融入原有流程，很容易停止使用</li></ul></article><article class="info-card"><h3>可能協助的內容</h3><ul class="simple-list"><li>了解目前想改善的工作問題</li><li>整理可能適用的工具方向</li><li>比較操作門檻、費用與使用限制</li><li>提醒資料安全與帳號管理注意事項</li><li>規劃小範圍測試方式</li><li>依需求評估是否需要後續教學或流程整理</li></ul></article></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Suitable For</span><h2>適合哪些情況</h2></div>
+    <div class="support-service-grid"><article class="support-service-card"><h4>工具選擇太多</h4><p>已經聽過很多 AI 工具，但不知道該選哪一個。</p></article><article class="support-service-card"><h4>團隊各用各的</h4><p>公司不同同仁各自使用不同工具，缺乏共同方向。</p></article><article class="support-service-card"><h4>擔心付費浪費</h4><p>想先確認工具是否真的能融入工作，再決定是否投入。</p></article><article class="support-service-card"><h4>想先小範圍測試</h4><p>希望先從一個部門或一項工作開始測試。</p></article><article class="support-service-card"><h4>重視資料安全</h4><p>想了解工具使用時的資料安全與帳號管理注意事項。</p></article></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Working Flow</span><h2>合作方式</h2></div>
+    <div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>提出問題</h3><p>先說明目前遇到的工作問題。</p></article><article class="process-card"><small>STEP 02</small><h3>初步了解</h3><p>釐清使用情境、人員、預算與限制。</p></article><article class="process-card"><small>STEP 03</small><h3>確認評估</h3><p>判斷是否適合進一步評估工具方向。</p></article><article class="process-card"><small>STEP 04</small><h3>說明範圍</h3><p>依實際範圍說明合作內容。</p></article></div>
+    <div class="line-note"><div><strong>先不用急著買工具，先確認工具是否真的適合。</strong><p>實際服務內容會依企業需求與可行性確認，正式合作前會先說明範圍。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 初步討論</a></div>
+  </section>
+  <footer>
+    <div class="footer-inner"><div class="footer-brand"><span class="footer-name-zh">牧茗管理顧問有限公司</span><span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span></div><div class="footer-contacts"><a href="tel:0970393155" class="footer-contact-item">0970-393-155</a><a href="mailto:muming9000@gmail.com" class="footer-contact-item">muming9000@gmail.com</a><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="footer-contact-item">LINE：@498hxein</a><span class="footer-contact-item footer-addr">桃園市平鎮區環南路 18 號 6 樓之 2</span></div><p class="footer-copy">© 2025 牧茗管理顧問有限公司</p></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ AI COACHING ═══════════════════ -->
+<div class="page" id="page-ai-coaching">
+  <section class="page-hero"><span class="page-hero-label">AI IMPLEMENTATION SUPPORT</span><h1>企業 AI 陪跑</h1><p>從一個實際問題開始，陪同企業逐步測試工具、整理流程，並確認適合自己的使用方式。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('consultation')">預約初步討論</button><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-secondary">加入 LINE 洽詢</a></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('tool-curation')">AI 工具策展</button><button onclick="goTo('services')">全部服務</button></div></section>
+  <section class="content-section">
+    <div class="section-intro"><span class="section-kicker">What It Means</span><h2>企業 AI 陪跑是什麼</h2><p>AI 陪跑不是只上一堂課，也不是一次把所有工作全面自動化，而是在確認具體問題後，從較小的範圍開始測試、調整與整理使用方式。</p></div>
+    <div class="info-grid"><article class="info-card"><h3>適合哪些企業</h3><ul class="simple-list"><li>上過課，但回到工作現場仍不知道怎麼開始</li><li>已使用 ChatGPT，但沒有形成穩定流程</li><li>希望從一個部門或一項高頻工作先測試</li><li>需要有人協助整理操作方式與使用問題</li><li>想先確認效益，再決定是否擴大導入</li></ul></article><article class="info-card"><h3>可能進行的內容</h3><ul class="simple-list"><li>了解實際工作問題</li><li>選定一個適合先測試的情境</li><li>協助整理提示詞、操作步驟或簡單範本</li><li>陪同測試與修正使用方式</li><li>整理基礎操作說明</li><li>依實際情況討論後續方向</li></ul></article></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Principles</span><h2>陪跑原則</h2></div>
+    <div class="support-service-grid"><article class="support-service-card"><h4>從小範圍開始</h4><p>先選一個真實且高頻的工作問題測試。</p></article><article class="support-service-card"><h4>不硬改所有流程</h4><p>不為了使用 AI 而一次改變所有工作方式。</p></article><article class="support-service-card"><h4>優先可理解</h4><p>選擇同仁能理解與操作的方法。</p></article><article class="support-service-card"><h4>先測試再擴大</h4><p>確認真的可用後，再討論是否擴大範圍。</p></article><article class="support-service-card"><h4>進階需求先評估</h4><p>涉及系統串接與進階開發時，先評估可行性。</p></article></div>
+    <div class="line-note"><div><strong>進階與客製需求會先界定範圍</strong><p>涉及客製 App、系統串接、跨部門大型整合、資料庫或進階自動化的需求，需先進行可行性評估，並依實際專案確認執行方式與合作範圍。</p></div><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Starting Point</span><h2>合作起點</h2></div>
+    <div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>說明產業與問題</h3><p>描述公司產業與目前困擾。</p></article><article class="process-card"><small>STEP 02</small><h3>選定優先工作</h3><p>先找出最想改善的一項工作。</p></article><article class="process-card"><small>STEP 03</small><h3>初步討論</h3><p>討論是否適合進入陪跑或其他協助。</p></article><article class="process-card"><small>STEP 04</small><h3>確認測試範圍</h3><p>再決定是否進入後續合作。</p></article></div>
+    <div class="line-note"><div><strong>不需要一次改變整家公司，先從一個真正困擾你的流程開始。</strong><p>若還不確定適合哪一項工作，也可以先從初步討論開始。</p></div><button class="btn-primary" onclick="goTo('consultation')">預約初步討論</button></div>
+  </section>
+  <footer>
+    <div class="footer-inner"><div class="footer-brand"><span class="footer-name-zh">牧茗管理顧問有限公司</span><span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span></div><div class="footer-contacts"><a href="tel:0970393155" class="footer-contact-item">0970-393-155</a><a href="mailto:muming9000@gmail.com" class="footer-contact-item">muming9000@gmail.com</a><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="footer-contact-item">LINE：@498hxein</a><span class="footer-contact-item footer-addr">桃園市平鎮區環南路 18 號 6 樓之 2</span></div><p class="footer-copy">© 2025 牧茗管理顧問有限公司</p></div>
+  </footer>
+</div>
+
 <!-- ═══════════════════ CONSULTATION ═══════════════════ -->
 <div class="page" id="page-consultation">
-  <section class="page-hero"><span class="page-hero-label">Consultation · 預約諮詢</span><h1>預約 AI 導入諮詢</h1><p>先釐清企業目前遇到的問題，再討論適合的工具、流程與導入節奏。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約諮詢</a><button class="btn-secondary" onclick="goTo('services')">了解服務內容</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('free-course')">免費課程申請</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
-  <section class="content-section"><div class="info-grid"><article class="info-card"><h3>可以諮詢的事項</h3><ul class="simple-list"><li>AI 導入方向</li><li>AI 工具選擇</li><li>企業工作流程優化</li><li>AI 教育訓練</li><li>AI 陪跑合作</li><li>人資與管理流程</li></ul></article><article class="info-card"><h3>企業可先準備</h3><ul class="simple-list"><li>公司產業與團隊規模概況</li><li>目前最花時間或最想改善的流程</li><li>團隊是否已使用 ChatGPT 或其他 AI 工具</li><li>希望先課程、先評估或直接陪跑導入</li></ul></article></div><div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Consulting Flow</span><h2>諮詢流程</h2></div><div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>透過官方 LINE 留下初步需求。</p></article><article class="process-card"><small>STEP 02</small><h3>釐清狀況</h3><p>說明公司產業、問題與想改善的流程。</p></article><article class="process-card"><small>STEP 03</small><h3>討論方向</h3><p>判斷適合課程、工具策展、流程設計或陪跑。</p></article><article class="process-card"><small>STEP 04</small><h3>評估合作</h3><p>依需求範圍與執行方式提供後續建議。</p></article></div><div class="line-note"><div><strong>LINE 為主要聯絡方式，Email 可作為替代方式</strong><p>請透過 LINE 官方帳號留下初步需求，也可寄信至 <a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a>。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約諮詢</a></div></section>
+  <section class="page-hero"><span class="page-hero-label">Consultation · 預約諮詢</span><h1>預約初步討論</h1><p>完成課程後，或企業已有明確的工作問題，都可以先與牧茗進行初步討論。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約初步討論</a><button class="btn-secondary" onclick="goTo('free-course')">先申請免費課程</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
+  <section class="content-section"><div class="info-grid"><article class="info-card"><h3>適合討論的事項</h3><ul class="simple-list"><li>免費課程安排討論</li><li>AI 使用問題初步了解</li><li>單一工作流程改善方向</li><li>AI 工具選擇</li><li>後續合作可行性</li><li>人資與管理流程問題</li></ul></article><article class="info-card"><h3>企業可先準備</h3><ul class="simple-list"><li>公司產業與團隊概況</li><li>目前最花時間或最想改善的工作</li><li>團隊是否已使用 ChatGPT 或其他工具</li><li>希望先安排課程，或先討論某個明確問題</li></ul></article></div><div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Discussion Flow</span><h2>討論流程</h2></div><div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>透過官方 LINE 留下初步需求。</p></article><article class="process-card"><small>STEP 02</small><h3>說明問題</h3><p>簡單說明公司產業、目前遇到的問題與想改善的流程。</p></article><article class="process-card"><small>STEP 03</small><h3>判斷方向</h3><p>先確認適合課程、工具選擇、流程整理或其他後續討論。</p></article><article class="process-card"><small>STEP 04</small><h3>確認下一步</h3><p>若需要進一步合作，會依需求範圍與可行性再討論。</p></article></div><div class="line-note"><div><strong>LINE 為主要聯絡方式，Email 可作為替代方式</strong><p>請透過 LINE 官方帳號留下初步需求，也可寄信至 <a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a>。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約初步討論</a></div></section>
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1585,8 +1670,8 @@
 
 <!-- ═══════════════════ FAQ ═══════════════════ -->
 <div class="page" id="page-faq">
-  <section class="page-hero"><span class="page-hero-label">FAQ · 常見問題</span><h1>開始導入 AI 前，你可能想先知道</h1><p>用務實的方式回答課程、工具策展、陪跑合作與費用評估問題。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('consultation')">預約諮詢</button><button class="btn-secondary" onclick="goTo('services')">回到服務項目</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('free-course')">免費課程申請</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
-  <section class="content-section"><div class="faq-list"><details><summary>我們公司完全沒有使用過 AI，也適合嗎？</summary><p>適合。牧茗會先從基礎觀念與工作情境開始，不需要工程背景，也不會一開始就要求導入複雜工具。</p></details><details><summary>免費企業 AI 基礎課程包含什麼？</summary><p>課程會說明企業常見 AI 應用場景、基礎工具使用觀念、適合先導入的流程，以及資料安全與成本判斷的基本提醒。</p></details><details><summary>牧茗會直接推薦 AI 工具嗎？</summary><p>會提供工具方向，但不會只列熱門工具清單。會先看企業需求、使用者能力、成本、資料安全與實際流程，再判斷哪些工具值得測試。</p></details><details><summary>AI 工具策展與一般工具推薦有什麼不同？</summary><p>一般工具推薦多半著重功能介紹；AI 工具策展會把工具放回企業流程中評估，包含誰要用、怎麼用、資料是否適合、成本是否合理，以及能否持續落地。</p></details><details><summary>AI 陪跑顧問會協助到什麼程度？</summary><p>陪跑可涵蓋需求盤點、工具導入、內部測試、教育訓練與實際使用調整。實際範圍會依企業狀況與合作方式確認。</p></details><details><summary>可以只安排一次企業課程嗎？</summary><p>可以。若目前只需要建立基礎概念或讓團隊先了解 AI，也可以先從一次課程開始。</p></details><details><summary>導入 AI 是否一定需要購買付費工具？</summary><p>不一定。會依需求判斷免費工具、既有工具或付費工具是否合適；重點是先找到真的能改善流程的用法。</p></details><details><summary>牧茗是否提供人資與管理顧問服務？</summary><p>有。牧茗既有服務包含人資與管理顧問，可與 AI 導入、流程設計或教育訓練一起討論。</p></details><details><summary>如何預約諮詢？</summary><p>建議加入牧茗 LINE 官方帳號，簡單說明公司產業、目前遇到的問題與希望改善的流程，也可使用網站既有電話與 Email 聯繫。</p></details><details><summary>服務費用如何計算？</summary><p>費用會依企業規模、需求範圍與執行方式評估後提供報價，不會在未了解需求前填寫固定金額。</p></details></div></section>
+  <section class="page-hero"><span class="page-hero-label">FAQ · 常見問題</span><h1>申請課程前，你可能想先知道</h1><p>誠實說明免費課程、工具選擇、後續合作與客製需求的處理方式。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('free-course')">申請免費課程</button><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
+  <section class="content-section"><div class="faq-list"><details><summary>免費企業 AI 基礎課程真的免費嗎？</summary><p>目前可透過 LINE 申請免費企業 AI 基礎課程。實際課程形式、時間與安排方式，會在確認申請需求後另行說明。</p></details><details><summary>公司完全沒使用過 AI，也可以參加嗎？</summary><p>可以。課程會從基礎觀念、常見工具與工作情境開始，不需要工程背景，也不需要先買付費工具。</p></details><details><summary>課程結束後一定要購買其他服務嗎？</summary><p>不需要。基礎課程可以單獨安排；若課後有進一步需求，再依企業實際情況討論是否需要工具策展、流程整理或陪跑協助。</p></details><details><summary>課程可以依公司需求客製嗎？</summary><p>可以先提供公司產業、團隊狀況與想改善的流程。牧茗會依需求判斷可調整的方向，但不會在未了解狀況前承諾固定課綱或固定成果。</p></details><details><summary>可以到公司現場上課嗎？</summary><p>可先提出需求，實際形式會依地點、時間、課程內容與雙方安排確認後另行說明。</p></details><details><summary>牧茗會協助選擇 AI 工具嗎？</summary><p>會協助評估工具方向，但不是單純列出熱門工具。會考量需求、使用者能力、成本、資料安全與實際流程，再判斷哪些工具適合先測試。</p></details><details><summary>使用 AI 是否一定需要購買付費工具？</summary><p>不一定。會先看企業需求與工作情境，判斷免費工具、既有工具或付費工具是否合適；不會一開始就要求購買特定工具。</p></details><details><summary>牧茗是否提供客製 App 或系統開發？</summary><p>涉及客製 App、AI Skill、跨部門整合、進階自動化或系統串接時，會先進行可行性評估，並依專案內容確認執行方式與合作範圍。</p></details><details><summary>課程後還可以有哪些合作方式？</summary><p>若企業有後續需求，可討論 AI 工具策展、工作流程整理、AI 導入陪跑、AI 教育訓練，以及人資與管理顧問等方向。實際範圍會依需求評估。</p></details><details><summary>如何提出需求或預約討論？</summary><p>建議加入牧茗 LINE 官方帳號，簡單說明公司產業、目前遇到的問題與希望改善的流程，也可使用網站既有 Email 聯繫。</p></details></div></section>
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1721,10 +1806,10 @@
   <section class="page-hero">
     <span class="page-hero-label">About · 關於牧茗</span>
     <h1>我們是誰</h1>
-    <p>不是補習班，不是工程公司。我們是陪你把 AI 真正用起來的顧問夥伴。</p>
+    <p>牧茗從實際工作問題出發，協助企業先理解 AI，再逐步找到適合自己的使用方式。</p>
     <div class="page-hero-actions">
-      <button class="btn-primary" onclick="goTo('consultation')">預約諮詢</button>
-      <button class="btn-secondary" onclick="goTo('services')">查看服務項目</button>
+      <button class="btn-primary" onclick="goTo('free-course')">申請免費課程</button>
+      <button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button>
     </div>
     <div class="page-related-links">
       <button onclick="goTo('home')">返回首頁</button>
@@ -1735,42 +1820,42 @@
 
   <section class="about-section">
     <p>
-      牧茗管理顧問相信：企業需要的不是更多工具，而是更清楚的方向。
+      牧茗管理顧問相信：企業導入 AI 的第一步，不一定是購買更多工具，而是先看懂自己的工作問題。
     </p>
     <p>
-      AI 工具會不斷改變，但企業真正需要的是一套能夠持續運作的工作模式。
-      牧茗透過 <strong style="font-weight:500;color:var(--brown-deep)">AI 策展</strong>，協助企業理解 AI、規劃 AI、運用 AI，找到最適合自身產業與團隊的 AI 工作方式，讓技術真正轉化為效率與成長。
+      AI 工具會持續變化，但企業真正需要的是能被團隊理解、操作並持續使用的方法。
+      牧茗從企業 AI 基礎課程出發，協助主管與團隊建立共同觀念，再依實際情境討論工具、流程與後續導入方向。
     </p>
     <p>
-      牧茗的角色不是工程開發團隊，而是協助企業在導入 AI 之前，先釐清方向、選對工具、設計流程，並陪伴團隊建立人與 AI 協作的新工作方式。
-      多數企業面臨的問題並非不知道 AI 是什麼，而是不知道該從哪裡開始、該選擇哪些工具，以及如何讓員工真正願意使用。
+      我們不急著一次導入大量 AI 工具，也不把 AI 包裝成萬能解法。
+      更務實的做法，是先建立觀念，從小範圍測試開始，確認團隊真的理解、願意使用，再逐步評估下一步。
     </p>
 
     <div class="about-features">
       <div class="about-feature">
         <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">需求釐清</strong>　先搞清楚你的狀況與目標，再討論怎麼做</p>
+        <p><strong style="font-weight:500;color:var(--brown-deep)">實際問題出發</strong>　先理解工作卡在哪裡，再討論 AI 是否適合介入</p>
       </div>
       <div class="about-feature">
         <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">工具策選</strong>　依據需求評估與挑選工具，避免測試錯誤方向</p>
+        <p><strong style="font-weight:500;color:var(--brown-deep)">先建立觀念</strong>　讓主管與團隊先有共同語言，不急著買工具</p>
       </div>
       <div class="about-feature">
         <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">流程設計</strong>　將 AI 整合進現有工作模式，設計可持續運作的流程</p>
+        <p><strong style="font-weight:500;color:var(--brown-deep)">小範圍測試</strong>　從行政、人資、行銷或日常營運中選擇適合的起點</p>
       </div>
       <div class="about-feature">
         <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">實際應用</strong>　從熟悉的工作情境出發，讓 AI 真的用得起來</p>
+        <p><strong style="font-weight:500;color:var(--brown-deep)">可理解、可操作</strong>　避免過度技術化，讓非工程背景團隊也能跟上</p>
       </div>
       <div class="about-feature">
         <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">團隊導入</strong>　陪伴團隊逐步建立 AI 工作文化與習慣</p>
+        <p><strong style="font-weight:500;color:var(--brown-deep)">逐步評估後續</strong>　若需要工具策展、流程整理或陪跑，再依需求確認合作範圍</p>
       </div>
     </div>
 
     <div style="margin-top: 52px; text-align: left;">
-      <button class="btn-primary" onclick="goTo('consultation')">預約諮詢</button>
+      <button class="btn-primary" onclick="goTo('free-course')">申請免費課程</button>
     </div>
   </section>
 
@@ -2151,6 +2236,8 @@
     home: 'page-home',
     services: 'page-services',
     'free-course': 'page-free-course',
+    'tool-curation': 'page-tool-curation',
+    'ai-coaching': 'page-ai-coaching',
     consultation: 'page-consultation',
     faq: 'page-faq',
     strengths: 'page-strengths',
@@ -2166,6 +2253,8 @@
   const hashRoutes = {
     '#services': 'services',
     '#free-course': 'free-course',
+    '#tool-curation': 'tool-curation',
+    '#ai-coaching': 'ai-coaching',
     '#consultation': 'consultation',
     '#faq': 'faq',
     '#about': 'about',
@@ -2179,6 +2268,8 @@
     home: '牧茗管理顧問｜企業 AI 導入顧問',
     services: '服務項目｜牧茗管理顧問',
     'free-course': '免費企業 AI 基礎課程｜牧茗管理顧問',
+    'tool-curation': 'AI 工具策展｜牧茗管理顧問',
+    'ai-coaching': '企業 AI 陪跑｜牧茗管理顧問',
     consultation: '預約 AI 導入諮詢｜牧茗管理顧問',
     faq: '常見問題｜牧茗管理顧問',
     strengths: '核心優勢｜牧茗管理顧問',
