@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -194,6 +194,7 @@
   }
 
   .btn-primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+  .btn-primary:disabled, .btn-secondary:disabled, .btn-accent:disabled { opacity: 0.58; cursor: not-allowed; transform: none; }
 
   .btn-secondary {
     display: inline-flex;
@@ -217,6 +218,31 @@
     background: var(--brown-deep);
     color: var(--cream);
     border-color: var(--brown-deep);
+  }
+
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #FFF4EA;
+    color: var(--orange);
+    border: 1px solid rgba(212, 88, 26, 0.58);
+    padding: 13px 26px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .btn-accent:hover {
+    background: #FFE9D8;
+    border-color: var(--orange);
+    transform: translateY(-1px);
   }
 
   /* ── HOME PAGE HERO ── */
@@ -268,22 +294,22 @@
 
   .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(26px, 3.4vw, 48px);
-    font-weight: 400; line-height: 1.45;
+    font-size: clamp(24px, 3vw, 42px);
+    font-weight: 400; line-height: 1.2;
     letter-spacing: 0.02em; color: var(--brown-deep);
     margin-bottom: 12px;
   }
   .hero-title em { font-style: normal; color: var(--orange); }
 
   .hero-sub {
-    font-size: clamp(14px, 1.3vw, 16px);
+    font-size: clamp(15px, 1.35vw, 18px);
     color: var(--brown-warm); font-weight: 300;
     margin-bottom: 8px; letter-spacing: 0.05em;
   }
 
   .hero-guide {
-    font-size: 13px; color: var(--text-muted);
-    margin-bottom: 36px; letter-spacing: 0.04em;
+    font-size: clamp(13px, 1.05vw, 15px); color: var(--text-muted);
+    margin-bottom: 30px; letter-spacing: 0.04em;
     display: flex; align-items: center; gap: 10px;
   }
   .hero-guide::before {
@@ -293,6 +319,54 @@
   }
 
   .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .hero-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 64px;
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+    align-items: stretch;
+  }
+
+  .hero-cta-grid > * {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.3;
+    padding: 12px 16px;
+    font-size: clamp(14.5px, 1vw, 16px);
+  }
+
+  .hero-cta-grid .btn-primary {
+    white-space: nowrap;
+  }
+
+  .hero-diagnosis-btn {
+    border: 1px solid var(--border);
+    background: rgba(250,247,242,0.72);
+    color: var(--brown-mid);
+    padding: 12px 16px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: clamp(14.5px, 1vw, 16px);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .hero-diagnosis-btn:hover {
+    border-color: rgba(212,88,26,0.35);
+    color: var(--orange);
+  }
+
+  .hero-supplement-links {
+    margin-top: 14px;
+  }
 
   /* ── RIGHT ── */
   .hero-right {
@@ -507,12 +581,27 @@
 
   .page-hero h1 {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(26px, 3.5vw, 44px);
+    font-size: clamp(26px, 3.2vw, 42px);
     font-weight: 400;
     color: var(--brown-deep);
-    max-width: 560px;
+    max-width: min(780px, 100%);
     line-height: 1.5;
     letter-spacing: 0.03em;
+    text-wrap: balance;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-hero-title {
+    font-size: clamp(28px, 3.2vw, 42px);
+    max-width: min(760px, 100%);
+    text-wrap: balance;
+  }
+
+  .short-title {
+    max-width: min(820px, 100%);
+    text-wrap: balance;
+    word-break: keep-all;
   }
 
   .page-hero p {
@@ -528,6 +617,11 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 28px;
+  }
+
+  .services-hero-actions > * {
+    min-width: 198px;
+    justify-content: center;
   }
 
   .page-related-links {
@@ -1095,10 +1189,16 @@
     .hero-caption strong { font-size: 11.5px; }
     .hero-caption p      { font-size: 10px; }
     .hero-btns { flex-direction: column; }
+    .hero-cta-grid { grid-template-columns: 1fr; grid-auto-rows: 60px; width: 100%; max-width: none; gap: 12px; }
+    .hero-left .hero-btns > * { width: 100%; min-height: 52px; text-align: center; white-space: nowrap; }
+    .hero-left .hero-cta-grid > * { height: 100%; min-height: 0; white-space: normal; }
+    .hero-left .hero-cta-grid .btn-primary { white-space: normal; }
 
     .quiz-entry { padding: 60px 24px; }
     .page-hero { padding: 60px 24px 48px; }
     .page-hero-actions { flex-direction: column; margin-top: 22px; }
+    .services-hero-actions { align-items: stretch; }
+    .services-hero-actions > * { width: 100%; min-width: 0; min-height: 52px; text-align: center; white-space: nowrap; }
     .page-related-links { margin-top: 14px; }
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 36px 24px; }
@@ -1182,7 +1282,7 @@
     .hero-btns { flex-direction: column; }
     .result-btns { flex-direction: column; }
 
-    .btn-primary, .btn-secondary { justify-content: center; }
+    .btn-primary, .btn-secondary, .btn-accent { justify-content: center; }
   }
 
   /* ── Narrow phone (iPhone SE, small Android) ── */
@@ -1222,7 +1322,7 @@
   .line-entry-section { padding: 72px 40px 84px; background: linear-gradient(180deg, var(--cream-light), #fffdf9); border-top: 1px solid var(--border); }
   .section-intro { max-width: 760px; margin: 0 auto 34px; text-align: center; }
   .section-kicker { display: block; font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
-  .section-intro h2 { font-family: 'Noto Serif TC', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 400; color: var(--brown-deep); margin-bottom: 12px; }
+  .section-intro h2 { font-family: 'Noto Serif TC', serif; font-size: clamp(24px, 2.8vw, 34px); font-weight: 400; color: var(--brown-deep); margin-bottom: 12px; text-wrap: balance; word-break: keep-all; overflow-wrap: anywhere; }
   .section-intro p { color: var(--text-muted); font-size: 15px; }
   .entry-grid, .core-service-grid, .info-grid, .faq-list { max-width: 1120px; margin: 0 auto; }
   .entry-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -1246,10 +1346,52 @@
   .card-text-link:hover { text-decoration: underline; text-underline-offset: 3px; }
   .simple-list { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; margin: 0; }
   .simple-list li::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); margin-right: 9px; transform: translateY(-1px); }
-  .process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; }
+  .process-grid { grid-template-columns: repeat(4, minmax(180px, 1fr)); margin-top: 18px; }
   .process-card small { display: block; font-family: 'Cormorant Garamond', serif; color: var(--orange); letter-spacing: 0.16em; margin-bottom: 8px; }
   .line-note { max-width: 900px; margin: 34px auto 0; padding: 30px; border-left: 3px solid var(--orange); display: flex; gap: 24px; justify-content: space-between; align-items: center; }
   .line-note strong { display: block; color: var(--brown-deep); font-weight: 500; margin-bottom: 6px; }
+  .prototype-shell { max-width: 860px; margin: 0 auto; }
+  .prototype-banner { background: #fff7ed; border: 1px solid rgba(212,88,26,0.28); color: var(--brown-deep); padding: 16px 18px; border-radius: 14px; margin-bottom: 22px; font-weight: 400; }
+  .form-card { background: #fffdf9; border: 1px solid var(--border); border-radius: 24px; padding: 30px; box-shadow: 0 18px 50px rgba(44,24,16,0.06); }
+  .form-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+  .form-kicker { font-family: 'Cormorant Garamond', serif; color: var(--orange); letter-spacing: 0.22em; text-transform: uppercase; font-size: 12px; }
+  .form-title { font-family: 'Noto Serif TC', serif; font-size: clamp(26px, 4vw, 36px); font-weight: 500; line-height: 1.35; margin-top: 6px; }
+  .form-progress-text { color: var(--brown-mid); font-size: 14px; white-space: nowrap; padding-top: 10px; }
+  .form-progress { height: 10px; background: var(--cream-dark); border-radius: 999px; overflow: hidden; margin-bottom: 28px; }
+  .form-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--orange), var(--brown-warm)); border-radius: inherit; transition: width 0.25s ease; }
+  .question-title { font-family: 'Noto Serif TC', serif; font-size: clamp(24px, 3.4vw, 32px); font-weight: 500; line-height: 1.35; margin-bottom: 10px; }
+  .question-help, .field-help { color: var(--text-muted); font-size: 15px; line-height: 1.8; margin-bottom: 18px; }
+  .selection-count { color: var(--brown-mid); font-size: 14px; font-weight: 400; margin-top: -6px; margin-bottom: 14px; }
+  .field-label { display: block; font-weight: 400; color: var(--brown-deep); margin: 14px 0 8px; }
+  .form-input, .form-textarea, .form-date { width: 100%; border: 1px solid rgba(107,68,35,0.22); background: #fffaf2; color: var(--brown-deep); border-radius: 14px; padding: 15px 16px; font: inherit; font-size: 16px; outline: none; }
+  .form-textarea { min-height: 142px; resize: vertical; }
+  .form-input:focus, .form-textarea:focus, .form-date:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(212,88,26,0.12); }
+  .option-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .option-card { width: 100%; min-height: 62px; text-align: left; border: 1px solid rgba(107,68,35,0.18); background: #fffaf2; border-radius: 18px; padding: 17px 18px; color: var(--brown-deep); cursor: pointer; font: inherit; font-size: 16px; transition: border-color 0.18s, background 0.18s, transform 0.15s; }
+  .option-card:hover { transform: translateY(-1px); border-color: rgba(212,88,26,0.55); }
+  .option-card.selected { background: #fff1e6; border-color: var(--orange); box-shadow: 0 0 0 2px rgba(212,88,26,0.12) inset; }
+  .conditional-box { margin-top: 16px; }
+  .number-stepper { display: inline-grid; grid-template-columns: 58px minmax(130px, 190px) 58px; align-items: stretch; border: 1px solid rgba(107,68,35,0.2); border-radius: 18px; overflow: hidden; background: #fffaf2; }
+  .number-stepper button { min-height: 58px; border: 0; background: var(--cream); color: var(--orange); font-size: 28px; cursor: pointer; }
+  .number-input-wrap { min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); background: #fff7ed; padding: 8px 12px; }
+  .number-stepper input { width: 82px; min-height: 42px; border: 1px solid rgba(107,68,35,0.32); border-radius: 12px; text-align: center; background: #fffdf9; color: var(--brown-deep); font-size: 22px; font-family: inherit; font-weight: 400; outline: none; }
+  .number-stepper input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(212,88,26,0.12); }
+  .number-stepper input::-webkit-outer-spin-button, .number-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .number-stepper input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+  .number-unit { color: var(--brown-mid); font-weight: 400; white-space: nowrap; }
+  .date-time-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .file-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .file-list { margin-top: 12px; color: var(--brown-mid); font-size: 14px; }
+  .warning-note { background: #fff7ed; border-left: 3px solid var(--orange); padding: 14px 16px; border-radius: 12px; color: var(--brown-mid); margin-top: 16px; }
+  .form-error { min-height: 26px; color: #9d3518; font-weight: 400; margin-top: 14px; }
+  .form-actions { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+  .summary-grid { display: grid; gap: 14px; margin-top: 18px; }
+  .summary-item { border: 1px solid var(--border); border-radius: 16px; padding: 16px; background: #fffaf2; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: start; }
+  .summary-item h3 { font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 500; margin-bottom: 6px; }
+  .summary-item p { color: var(--text-muted); white-space: pre-wrap; word-break: break-word; }
+  .link-button { border: 0; background: transparent; color: var(--orange); cursor: pointer; font: inherit; font-weight: 400; padding: 4px; }
+  .completion-box { display: grid; gap: 18px; }
+  .preview-copy { background: #fffaf2; border: 1px solid var(--border); padding: 18px; border-radius: 16px; color: var(--brown-mid); }
   .line-contact-panel { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center; padding: 32px; background: #fffdf9; border: 1px solid var(--border); margin-bottom: 28px; }
   .line-qr-wrap { display: grid; place-items: center; background: #fff; border: 1px solid var(--border); padding: 18px; }
   .line-qr-wrap img { width: 100%; max-width: 180px; aspect-ratio: 1 / 1; object-fit: contain; display: block; }
@@ -1265,8 +1407,11 @@
   .faq-list details[open] summary::after { content: '-'; }
   .faq-list p { padding-bottom: 22px; color: var(--text-muted); font-size: 14.5px; line-height: 1.85; }
   .nav-links a.is-active, .mobile-menu a.is-active { color: var(--orange); }
-  @media (max-width: 900px) { .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .process-grid { grid-template-columns: 1fr 1fr; } .line-note { align-items: flex-start; flex-direction: column; } }
-  @media (max-width: 768px) { .line-entry-section, .content-section { padding: 56px 22px 64px; } .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .process-grid { grid-template-columns: 1fr; } .entry-card { min-height: auto; padding: 22px; } .core-service-card, .info-card, .process-card, .support-service-card { padding: 22px; } .line-note { padding: 24px; } .line-contact-panel { grid-template-columns: 1fr; padding: 22px; gap: 22px; } .line-qr-wrap img { max-width: 210px; } .faq-list details { padding: 0 18px; } }
+  @media (min-width: 769px) { .short-title { white-space: nowrap; } }
+  @media (max-width: 1100px) { .process-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); } }
+  @media (max-width: 900px) { .entry-grid, .core-service-grid, .support-service-grid, .info-grid { grid-template-columns: 1fr 1fr; } .line-note { align-items: flex-start; flex-direction: column; } }
+  @media (max-width: 768px) { .line-entry-section, .content-section { padding: 56px 22px 64px; } .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .process-grid, .option-grid { grid-template-columns: 1fr; } .page-hero h1, .section-intro h2, .short-title { word-break: keep-all; overflow-wrap: anywhere; white-space: normal; } .entry-card { min-height: auto; padding: 22px; } .core-service-card, .info-card, .process-card, .support-service-card, .form-card { padding: 22px; } .line-note { padding: 24px; } .line-contact-panel { grid-template-columns: 1fr; padding: 22px; gap: 22px; } .line-qr-wrap img { max-width: 210px; } .faq-list details { padding: 0 18px; } .form-top { flex-direction: column; gap: 6px; } .form-progress-text { white-space: normal; padding-top: 0; } .summary-item { grid-template-columns: 1fr; } .form-actions .btn-primary, .form-actions .btn-secondary, .completion-box .btn-primary, .completion-box .btn-secondary { width: 100%; justify-content: center; } }
+  @media (max-width: 420px) { .content-section { padding-left: 18px; padding-right: 18px; } .number-stepper { grid-template-columns: 54px minmax(0, 1fr) 54px; width: 100%; } .number-input-wrap { padding: 8px; } .number-stepper input { width: min(82px, 100%); } .option-card { padding: 15px; } .form-card { border-radius: 18px; } }
 
 </style>
 </head>
@@ -1283,7 +1428,7 @@
   </div>
   <ul class="nav-links">
     <li><a data-nav-key="services" onclick="goTo('services')">服務項目</a></li>
-    <li><a data-nav-key="free-course" onclick="goTo('free-course')">免費課程</a></li>
+    <li><a data-nav-key="free-tools" onclick="goTo('free-tools')">免費工具</a></li>
     <li><a data-nav-key="consultation" onclick="goTo('consultation')">預約諮詢</a></li>
     <li><a data-nav-key="faq" onclick="goTo('faq')">常見問題</a></li>
     <li><a data-nav-key="about" onclick="goTo('about')">關於牧茗</a></li>
@@ -1296,7 +1441,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a data-nav-key="services" onclick="goTo('services'); closeMenu()">服務項目</a>
-  <a data-nav-key="free-course" onclick="goTo('free-course'); closeMenu()">免費課程申請</a>
+  <a data-nav-key="free-tools" onclick="goTo('free-tools'); closeMenu()">免費工具</a>
   <a data-nav-key="consultation" onclick="goTo('consultation'); closeMenu()">預約諮詢</a>
   <a data-nav-key="faq" onclick="goTo('faq'); closeMenu()">常見問題</a>
   <a data-nav-key="about" onclick="goTo('about'); closeMenu()">關於牧茗</a>
@@ -1319,15 +1464,14 @@
       </h1>
       <p class="hero-sub">先建立觀念，再找到適合工作的工具與方向</p>
       <p class="hero-guide">牧茗從企業 AI 基礎課程出發，協助團隊建立正確觀念、認識適合的工具，並依實際工作需求逐步規劃導入方向。</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="goTo('free-course')">
+      <div class="hero-btns hero-cta-grid">
+        <button class="btn-primary" onclick="goTo('course-application')">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 8L8 14M14 8H2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           免費申請企業 AI 基礎課程
         </button>
-        <button class="btn-secondary" onclick="goTo('quiz')">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 2.5H2.5A1 1 0 001.5 3.5V10.5A1 1 0 002.5 11.5H5V14L8.5 11.5H13.5A1 1 0 0014.5 10.5V3.5A1 1 0 0013.5 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          先做 AI 起步診斷
-        </button>
+        <button class="btn-accent" onclick="goTo('workflow-request')">填寫工作改善需求</button>
+        <button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button>
+        <button class="hero-diagnosis-btn" onclick="goTo('quiz')">先做 AI 起步診斷</button>
       </div>
     </div>
 
@@ -1427,14 +1571,10 @@
   <section class="line-entry-section">
     <div class="section-intro">
       <span class="section-kicker">Free AI Course</span>
-      <h2>免費企業 AI 基礎課程</h2>
-      <p>先不用急著買工具或導入系統。牧茗會從基礎觀念、常見工具與工作情境開始，協助團隊理解 AI 可以怎麼協助日常工作。</p>
+      <h2>想先了解課程內容？</h2>
+      <p>免費企業 AI 基礎課程的適合對象、課程重點與申請方式，已整理在服務項目與申請表開頭。</p>
     </div>
-    <div class="info-grid">
-      <article class="info-card"><h3>課程先解決什麼</h3><ul class="simple-list"><li>不知道 AI 可以用在哪些工作</li><li>已經用過 ChatGPT，但團隊沒有共同方法</li><li>擔心資料安全、成本或工具選錯</li><li>想先判斷公司適不適合開始使用 AI</li></ul></article>
-      <article class="info-card"><h3>適合的企業</h3><ul class="simple-list"><li>完全沒使用過 AI 的公司</li><li>行政、人資、行銷或營運團隊想提升效率</li><li>主管想先建立基本判斷能力</li><li>希望從小範圍測試開始的團隊</li></ul></article>
-    </div>
-    <div class="line-note"><div><strong>加入 LINE 後請傳送：</strong><p>「我要申請免費企業 AI 基礎課程」<br>實際課程形式與時間會在確認申請需求後另行說明。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a></div>
+    <div class="line-note"><div><strong>首頁先幫你選起點。</strong><p>如果還想看免費工具與診斷，可以前往免費工具頁；若已經確定要申請課程，也可以直接填寫申請資料。</p></div><div class="hero-btns" style="margin-top:0;"><button class="btn-secondary" onclick="goTo('free-tools')">查看免費工具</button><button class="btn-primary" onclick="goTo('course-application')">免費申請企業 AI 基礎課程</button></div></div>
   </section>
 
   <section class="content-section">
@@ -1515,18 +1655,18 @@
 
 <!-- ═══════════════════ SERVICES ═══════════════════ -->
 <div class="page" id="page-services">
-  <section class="page-hero"><span class="page-hero-label">Services · 服務項目</span><h1>先從企業 AI 基礎課程開始</h1><p>牧茗目前以企業 AI 基礎課程為主要服務，協助團隊建立觀念、認識工具，並找出適合開始的工作方向。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('free-course')">申請免費企業 AI 基礎課程</button><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('faq')">查看常見問題</button><button onclick="goTo('contact')">加入 LINE 洽詢</button></div></section>
+  <section class="page-hero"><span class="page-hero-label">Services · 服務項目</span><h1>從基礎認識到實際工作改善</h1><p>牧茗依企業目前的 AI 使用程度與實際工作問題，提供課程、工具評估、流程整理與後續陪跑等不同協助方式。</p><div class="page-hero-actions"><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('free-tools')">免費工具</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
   <section class="content-section">
-    <div class="section-intro"><span class="section-kicker">Main Service</span><h2>目前主要服務：企業 AI 基礎課程</h2><p>先建立共同語言，再判斷企業是否需要更進一步的工具或流程協助。</p></div>
-    <div class="info-grid">
-      <article class="info-card"><h3>課程重點</h3><ul class="simple-list"><li>AI 基本觀念</li><li>ChatGPT 與常見工具應用</li><li>行政、人資、行銷及日常工作情境</li><li>資料安全與使用注意事項</li><li>協助企業找出適合開始的方向</li></ul></article>
-      <article class="info-card"><h3>適合先處理的問題</h3><p>當團隊對 AI 理解不一致、不知道從哪個工具開始，或擔心一開始就導入過大時，基礎課程可以先讓主管與同仁有共同判斷基礎。</p><div style="margin-top:18px;"><button class="btn-primary" onclick="goTo('free-course')">申請免費企業 AI 基礎課程</button></div></article>
+    <div class="section-intro"><span class="section-kicker">Service Overview</span><h2 class="short-title">牧茗目前提供的服務</h2><p>不同企業的起點不一定相同。服務項目頁說明目前可協助的方向，免費工具頁則整理診斷與陸續提供的免費資源。</p></div>
+    <div class="support-service-grid">
+      <article class="support-service-card"><h4>企業 AI 基礎課程</h4><p>協助團隊建立 AI 基本觀念，了解 ChatGPT 與常見工具在行政、人資、行銷與日常工作中的應用，也會提醒資料安全與使用注意事項。</p><ul class="simple-list"><li>適合完全沒有使用過 AI，或團隊使用方式尚未一致的企業</li><li>協助判斷 AI 可以先用在哪些工作</li><li>適合作為工具評估、流程整理或後續陪跑前的第一步</li></ul><button class="card-text-link" onclick="goTo('course-application')">申請免費企業 AI 基礎課程</button></article>
+      <article class="support-service-card"><h4>AI 工具策展</h4><p>依企業工作需求、操作門檻、費用與資料安全等條件，協助比較適合的工具方向。</p><button class="card-text-link" onclick="goTo('tool-curation')">了解 AI 工具策展</button></article>
+      <article class="support-service-card"><h4>工作流程改善</h4><p>針對重複、耗時、容易出錯或資料分散的工作，先從單一流程進行需求了解與可行性評估。</p><button class="card-text-link" onclick="goTo('workflow-request')">填寫工作改善需求</button></article>
+      <article class="support-service-card"><h4>企業 AI 陪跑</h4><p>完成基礎認識後，陪同企業從小範圍測試、整理操作方式並逐步調整。</p><button class="card-text-link" onclick="goTo('ai-coaching')">了解企業 AI 陪跑</button></article>
+      <article class="support-service-card"><h4>AI 教育訓練</h4><p>依參與人員、產業與工作情境，評估適合的課程或實作安排。</p><button class="card-text-link" onclick="goTo('consultation')">預約初步討論</button></article>
+      <article class="support-service-card"><h4>人資與管理顧問</h4><p>依企業實際管理、人力資源與工作流程需求進行初步了解與合作評估。</p><button class="card-text-link" onclick="goTo('consultation')">提出需求</button></article>
+      <article class="support-service-card"><h4>客製與進階需求</h4><p>涉及 App、AI Skill、系統串接、資料庫、跨部門整合或進階自動化時，需先進行可行性評估，再確認執行方式與合作範圍。</p><button class="card-text-link" onclick="goTo('consultation')">預約初步討論</button></article>
     </div>
-    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">After Course</span><h2>課程後可延伸的合作方向</h2><p>完成基礎課程後，若企業有進一步需求，牧茗可依實際工作情境協助評估適合的工具、流程整理與後續導入方式。</p></div>
-    <div class="support-service-grid"><article class="support-service-card"><h4>AI 工具策展</h4><p>不是單純列出熱門工具，而是依企業需求、使用者能力、成本、資料安全與實際流程，評估適合測試的工具。</p><button class="card-text-link" onclick="goTo('tool-curation')">了解 AI 工具策展</button></article><article class="support-service-card"><h4>工作流程整理</h4><p>協助盤點日常工作，找出適合先試用 AI 的小範圍情境。</p></article><article class="support-service-card"><h4>AI 導入陪跑</h4><p>依企業需求陪同測試工具、調整流程與觀察團隊使用狀況。</p><button class="card-text-link" onclick="goTo('ai-coaching')">了解企業 AI 陪跑</button></article><article class="support-service-card"><h4>AI 教育訓練</h4><p>依團隊程度安排後續訓練，讓 AI 使用方式更貼近日常工作。</p></article><article class="support-service-card"><h4>人資與管理顧問</h4><p>從人資、管理與組織流程角度，討論 AI 可以協助改善的環節。</p></article></div>
-    <div class="line-note"><div><strong>提出需求或預約初步討論</strong><p>每一項後續合作都會依企業實際需求評估，不預設固定方案，也不要求課後一定購買其他服務。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 洽詢</a></div>
-    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Advanced Needs</span><h2>客製與進階需求</h2></div>
-    <div class="info-grid"><article class="info-card"><h3>可能包含</h3><ul class="simple-list"><li>客製 App</li><li>AI Skill</li><li>跨部門整合</li><li>進階自動化</li><li>系統串接</li></ul></article><article class="info-card"><h3>先評估可行性</h3><p>涉及客製系統、跨部門整合或進階自動化的需求，將先進行可行性評估，並依專案內容確認執行方式與合作範圍。</p></article></div>
   </section>
   <footer>
     <div class="footer-inner">
@@ -1557,19 +1697,16 @@
   </footer>
 </div>
 
-<!-- ═══════════════════ FREE COURSE ═══════════════════ -->
-<div class="page" id="page-free-course">
-  <section class="page-hero"><span class="page-hero-label">Free Course · 免費課程申請</span><h1>免費企業 AI 基礎課程</h1><p>未使用過 AI 也可以參加。課程以基礎觀念與常見工作應用為主，協助企業先建立正確理解。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a><button class="btn-secondary" onclick="goTo('faq')">查看常見問題</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('consultation')">預約初步討論</button></div></section>
+<!-- ═══════════════════ FREE TOOLS ═══════════════════ -->
+<div class="page" id="page-free-tools">
+  <section class="page-hero"><span class="page-hero-label">Free Tools · 免費工具</span><h1>免費 AI 工具與資源</h1><p>從簡單、可直接使用的工具與範本開始，協助企業逐步認識 AI 的工作應用。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('quiz')">開始 AI 起步診斷</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('consultation')">預約初步討論</button></div></section>
   <section class="content-section">
+    <div class="section-intro"><span class="section-kicker">Start Here</span><h2>先用簡單工具看懂目前位置</h2><p>免費工具頁不取代課程或顧問服務，而是提供低門檻的自我檢查與整理資源，幫企業先釐清可能的起步方向。</p></div>
     <div class="info-grid">
-      <article class="info-card"><h3>適合對象</h3><ul class="simple-list"><li>完全沒有使用過 AI，但想開始了解的企業</li><li>已使用 ChatGPT，但尚未建立工作流程的團隊</li><li>希望先判斷 AI 是否適合公司的主管</li><li>想提升行政、人資、行銷或日常營運效率的公司</li></ul></article>
-      <article class="info-card"><h3>主要課程內容</h3><ul class="simple-list"><li>AI 基本觀念與常見誤解</li><li>ChatGPT 與常見工具的工作應用</li><li>行政、人資、行銷與營運情境示例</li><li>資料安全、成本與使用注意事項</li><li>如何找出公司適合開始的小方向</li></ul></article>
-      <article class="info-card"><h3>課程原則</h3><p>課程以基礎觀念與常見工作應用為主，不要求課後一定購買其他服務。若企業有後續需求，會再依實際情況討論。</p></article>
-      <article class="info-card"><h3>形式與時間</h3><p>實際課程形式、時間與安排方式，會在確認申請需求後另行說明；本頁不寫死固定日期、人數上限、到場範圍或免費次數規則。</p></article>
+      <article class="info-card"><h3>AI 起步診斷</h3><p>透過簡短問題了解企業目前的 AI 使用狀況與可能的起步方向。診斷結果只是初步參考，實際安排仍需依企業需求討論。</p><div style="margin-top:18px;"><button class="btn-primary" onclick="goTo('quiz')">開始 AI 起步診斷</button></div></article>
+      <article class="info-card"><h3>即將提供的免費資源</h3><p>牧茗會依常見工作情境陸續整理可用資源。以下項目仍在整理中，目前不提供下載，也不假裝已經完成。</p><ul class="simple-list"><li>工作需求整理範本</li><li>常用提示詞範本</li><li>AI 工具選擇清單</li><li>免費網頁小工具</li></ul><div class="warning-note" style="margin-top:18px;">陸續整理中</div></article>
     </div>
-    <div class="line-note"><div><strong>加入 LINE 官方帳號後，請傳送：</strong><p>「我要申請免費企業 AI 基礎課程」<br>備用聯絡方式：<a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a></p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 申請免費課程</a></div>
-    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Apply Steps</span><h2>申請流程</h2></div>
-    <div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>點擊按鈕加入牧茗 LINE 官方帳號。</p></article><article class="process-card"><small>STEP 02</small><h3>傳送指定文字</h3><p>請輸入：「我要申請免費企業 AI 基礎課程」。</p></article><article class="process-card"><small>STEP 03</small><h3>簡述需求</h3><p>補充公司產業、團隊狀況與想改善的工作。</p></article><article class="process-card"><small>STEP 04</small><h3>確認安排</h3><p>牧茗會確認申請需求後另行說明課程安排。</p></article></div>
+    <div class="line-note"><div><strong>想看牧茗目前提供哪些服務？</strong><p>免費工具只放自我檢查與資源整理；若想了解課程、工具策展、流程改善或陪跑，請前往服務項目頁。</p></div><button class="btn-secondary" onclick="goTo('services')">查看服務項目</button></div>
   </section>
   <footer>
     <div class="footer-inner">
@@ -1602,7 +1739,7 @@
 
 <!-- ═══════════════════ TOOL CURATION ═══════════════════ -->
 <div class="page" id="page-tool-curation">
-  <section class="page-hero"><span class="page-hero-label">AI TOOL CURATION</span><h1>AI 工具策展</h1><p>不是追逐最多、最新的工具，而是從企業實際工作需求出發，協助找出比較適合的選擇。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 提出需求</a><button class="btn-secondary" onclick="goTo('services')">查看全部服務</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('ai-coaching')">企業 AI 陪跑</button><button onclick="goTo('free-course')">免費課程</button></div></section>
+  <section class="page-hero"><span class="page-hero-label">AI TOOL CURATION</span><h1>AI 工具策展</h1><p>不是追逐最多、最新的工具，而是從企業實際工作需求出發，協助找出比較適合的選擇。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 提出需求</a><button class="btn-secondary" onclick="goTo('services')">查看全部服務</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('ai-coaching')">企業 AI 陪跑</button><button onclick="goTo('free-tools')">免費工具</button></div></section>
   <section class="content-section">
     <div class="section-intro"><span class="section-kicker">What It Means</span><h2>什麼是 AI 工具策展</h2><p>牧茗不只整理熱門工具清單，而是先了解企業目前的工作方式、使用人員、預算、資料安全與導入難度，再協助比較適合的工具與使用方向。</p></div>
     <div class="info-grid"><article class="info-card"><h3>為什麼不是工具越多越好</h3><ul class="simple-list"><li>工具太多，員工反而不知道從哪裡開始</li><li>不同工具可能功能重疊</li><li>免費與付費方案限制不同</li><li>企業資料不一定適合輸入所有平台</li><li>工具若無法融入原有流程，很容易停止使用</li></ul></article><article class="info-card"><h3>可能協助的內容</h3><ul class="simple-list"><li>了解目前想改善的工作問題</li><li>整理可能適用的工具方向</li><li>比較操作門檻、費用與使用限制</li><li>提醒資料安全與帳號管理注意事項</li><li>規劃小範圍測試方式</li><li>依需求評估是否需要後續教學或流程整理</li></ul></article></div>
@@ -1619,8 +1756,11 @@
 
 <!-- ═══════════════════ AI COACHING ═══════════════════ -->
 <div class="page" id="page-ai-coaching">
-  <section class="page-hero"><span class="page-hero-label">AI IMPLEMENTATION SUPPORT</span><h1>企業 AI 陪跑</h1><p>從一個實際問題開始，陪同企業逐步測試工具、整理流程，並確認適合自己的使用方式。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('consultation')">預約初步討論</button><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-secondary">加入 LINE 洽詢</a></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('tool-curation')">AI 工具策展</button><button onclick="goTo('services')">全部服務</button></div></section>
+  <section class="page-hero"><span class="page-hero-label">AI IMPLEMENTATION SUPPORT</span><h1>企業 AI 陪跑</h1><p>從一個實際問題開始，陪同企業逐步測試工具、整理流程，並確認適合自己的使用方式。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('workflow-request')">填寫工作改善需求</button><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('tool-curation')">AI 工具策展</button><button onclick="goTo('services')">全部服務</button></div></section>
   <section class="content-section">
+    <div class="section-intro"><span class="section-kicker">Start Here</span><h2>你可以從哪一種方式開始？</h2><p>不需要一開始就決定完整方案，可以依現在最清楚的需求，先選一個入口開始討論。</p></div>
+    <div class="support-service-grid"><article class="support-service-card"><h4>一對一初步討論</h4><p>適合還不確定應該從課程、工具或流程改善開始的企業。</p><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></article><article class="support-service-card"><h4>企業 AI 基礎課程</h4><p>適合團隊尚未建立 AI 基礎觀念，希望先了解常見工作應用。</p><button class="btn-secondary" onclick="goTo('services')">查看服務項目</button></article><article class="support-service-card"><h4>單一工作流程試辦</h4><p>適合已經有一項明確、重複且花時間的工作，希望先小範圍改善。</p><button class="btn-primary" onclick="goTo('workflow-request')">填寫工作改善需求</button></article><article class="support-service-card"><h4>企業 AI 陪跑</h4><p>適合上過課或已經開始使用 AI，希望持續測試、修正與整理工作方式的企業。</p><button class="btn-secondary" onclick="goTo('consultation')">預約討論陪跑方式</button></article></div>
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">What It Means</span><h2>陪跑不是一次性課程，而是一起把 AI 放進工作裡</h2></div>
     <div class="section-intro"><span class="section-kicker">What It Means</span><h2>企業 AI 陪跑是什麼</h2><p>AI 陪跑不是只上一堂課，也不是一次把所有工作全面自動化，而是在確認具體問題後，從較小的範圍開始測試、調整與整理使用方式。</p></div>
     <div class="info-grid"><article class="info-card"><h3>適合哪些企業</h3><ul class="simple-list"><li>上過課，但回到工作現場仍不知道怎麼開始</li><li>已使用 ChatGPT，但沒有形成穩定流程</li><li>希望從一個部門或一項高頻工作先測試</li><li>需要有人協助整理操作方式與使用問題</li><li>想先確認效益，再決定是否擴大導入</li></ul></article><article class="info-card"><h3>可能進行的內容</h3><ul class="simple-list"><li>了解實際工作問題</li><li>選定一個適合先測試的情境</li><li>協助整理提示詞、操作步驟或簡單範本</li><li>陪同測試與修正使用方式</li><li>整理基礎操作說明</li><li>依實際情況討論後續方向</li></ul></article></div>
     <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Principles</span><h2>陪跑原則</h2></div>
@@ -1628,7 +1768,7 @@
     <div class="line-note"><div><strong>進階與客製需求會先界定範圍</strong><p>涉及客製 App、系統串接、跨部門大型整合、資料庫或進階自動化的需求，需先進行可行性評估，並依實際專案確認執行方式與合作範圍。</p></div><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div>
     <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Starting Point</span><h2>合作起點</h2></div>
     <div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>說明產業與問題</h3><p>描述公司產業與目前困擾。</p></article><article class="process-card"><small>STEP 02</small><h3>選定優先工作</h3><p>先找出最想改善的一項工作。</p></article><article class="process-card"><small>STEP 03</small><h3>初步討論</h3><p>討論是否適合進入陪跑或其他協助。</p></article><article class="process-card"><small>STEP 04</small><h3>確認測試範圍</h3><p>再決定是否進入後續合作。</p></article></div>
-    <div class="line-note"><div><strong>不需要一次改變整家公司，先從一個真正困擾你的流程開始。</strong><p>若還不確定適合哪一項工作，也可以先從初步討論開始。</p></div><button class="btn-primary" onclick="goTo('consultation')">預約初步討論</button></div>
+    <div class="line-note"><div><strong>單一工作流程 AI 試辦：先從一個真正困擾你的流程開始。</strong><p>若還不確定適合哪一項工作，可以先填寫需求資料，牧茗會再依內容評估適合的討論方向。</p></div><button class="btn-primary" onclick="goTo('workflow-request')">填寫工作改善需求</button></div>
   </section>
   <footer>
     <div class="footer-inner"><div class="footer-brand"><span class="footer-name-zh">牧茗管理顧問有限公司</span><span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span></div><div class="footer-contacts"><a href="tel:0970393155" class="footer-contact-item">0970-393-155</a><a href="mailto:muming9000@gmail.com" class="footer-contact-item">muming9000@gmail.com</a><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="footer-contact-item">LINE：@498hxein</a><span class="footer-contact-item footer-addr">桃園市平鎮區環南路 18 號 6 樓之 2</span></div><p class="footer-copy">© 2025 牧茗管理顧問有限公司</p></div>
@@ -1637,8 +1777,35 @@
 
 <!-- ═══════════════════ CONSULTATION ═══════════════════ -->
 <div class="page" id="page-consultation">
-  <section class="page-hero"><span class="page-hero-label">Consultation · 預約諮詢</span><h1>預約初步討論</h1><p>完成課程後，或企業已有明確的工作問題，都可以先與牧茗進行初步討論。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約初步討論</a><button class="btn-secondary" onclick="goTo('free-course')">先申請免費課程</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
-  <section class="content-section"><div class="info-grid"><article class="info-card"><h3>適合討論的事項</h3><ul class="simple-list"><li>免費課程安排討論</li><li>AI 使用問題初步了解</li><li>單一工作流程改善方向</li><li>AI 工具選擇</li><li>後續合作可行性</li><li>人資與管理流程問題</li></ul></article><article class="info-card"><h3>企業可先準備</h3><ul class="simple-list"><li>公司產業與團隊概況</li><li>目前最花時間或最想改善的工作</li><li>團隊是否已使用 ChatGPT 或其他工具</li><li>希望先安排課程，或先討論某個明確問題</li></ul></article></div><div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Discussion Flow</span><h2>討論流程</h2></div><div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>透過官方 LINE 留下初步需求。</p></article><article class="process-card"><small>STEP 02</small><h3>說明問題</h3><p>簡單說明公司產業、目前遇到的問題與想改善的流程。</p></article><article class="process-card"><small>STEP 03</small><h3>判斷方向</h3><p>先確認適合課程、工具選擇、流程整理或其他後續討論。</p></article><article class="process-card"><small>STEP 04</small><h3>確認下一步</h3><p>若需要進一步合作，會依需求範圍與可行性再討論。</p></article></div><div class="line-note"><div><strong>LINE 為主要聯絡方式，Email 可作為替代方式</strong><p>請透過 LINE 官方帳號留下初步需求，也可寄信至 <a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a>。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約初步討論</a></div></section>
+  <section class="page-hero"><span class="page-hero-label">Consultation · 預約諮詢</span><h1 class="short-title">預約初步討論</h1><p>不確定應該先上課、整理流程、評估工具，或討論人資與管理問題時，都可以先與牧茗進行初步討論。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約初步討論</a><button class="btn-secondary" onclick="goTo('services')">查看服務項目</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
+  <section class="content-section">
+    <div class="section-intro"><span class="section-kicker">Available Services</span><h2 class="short-title">牧茗目前提供的服務</h2><p>初步討論會先釐清企業目前狀況，再判斷適合從課程、工具評估、流程改善、人資管理或後續陪跑哪個方向開始。</p></div>
+    <div class="info-grid">
+      <article class="info-card"><h3>適合討論的事項</h3><ul class="simple-list"><li>企業 AI 基礎課程安排</li><li>AI 使用問題初步了解</li><li>AI 工具選擇與評估</li><li>單一工作流程改善方向</li><li>企業 AI 陪跑或教育訓練</li><li>人資、勞動管理與組織運作問題</li></ul></article>
+      <article class="info-card"><h3>企業可先準備</h3><ul class="simple-list"><li>公司產業與團隊概況</li><li>目前最花時間或最想改善的工作</li><li>團隊是否已使用 ChatGPT 或其他工具</li><li>是否有課程、流程、人資或管理上的明確需求</li></ul></article>
+    </div>
+
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">How We Work</span><h2 class="short-title">牧茗如何協助企業</h2><p>牧茗重視可理解、可操作與循序漸進，不會在尚未了解情況前承諾固定成果。</p></div>
+    <div class="about-features">
+      <div class="about-feature"><div class="about-dot"></div><p><strong style="font-weight:500;color:var(--brown-deep)">從實際問題出發</strong>：先了解工作卡在哪裡，再判斷 AI 是否適合介入。</p></div>
+      <div class="about-feature"><div class="about-dot"></div><p><strong style="font-weight:500;color:var(--brown-deep)">先建立共同觀念</strong>：讓主管與團隊先有共同語言，不急著購買工具。</p></div>
+      <div class="about-feature"><div class="about-dot"></div><p><strong style="font-weight:500;color:var(--brown-deep)">從小範圍開始測試</strong>：優先選擇一個部門或一項高頻工作。</p></div>
+      <div class="about-feature"><div class="about-dot"></div><p><strong style="font-weight:500;color:var(--brown-deep)">重視可理解與可操作</strong>：避免過度技術化，讓實際使用者能夠跟上。</p></div>
+      <div class="about-feature"><div class="about-dot"></div><p><strong style="font-weight:500;color:var(--brown-deep)">逐步評估後續方向</strong>：再依需求討論工具策展、流程整理、教育訓練或陪跑。</p></div>
+    </div>
+
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Starting Point</span><h2 class="short-title">不知道怎麼開始？</h2><p>如果還不確定要先上課、先整理流程，或先討論需求，可以用目前狀態選一個低門檻入口。</p></div>
+    <div class="info-grid">
+      <article class="info-card"><h3>還沒有 AI 基礎</h3><p>若團隊對 AI 還沒有共同理解，可以先從企業 AI 基礎課程開始，建立基本觀念後再評估後續工具或流程協助。</p><div style="margin-top:18px;"><button class="btn-secondary" onclick="goTo('course-application')">申請免費企業 AI 基礎課程</button></div></article>
+      <article class="info-card"><h3>已經有明確工作問題</h3><p>若已經知道哪一項工作重複、耗時或容易出錯，可以直接填寫工作改善需求，先讓牧茗初步了解情況。</p><div style="margin-top:18px;"><button class="btn-accent" onclick="goTo('workflow-request')">填寫工作改善需求</button></div></article>
+    </div>
+    <div class="line-note"><div><strong>還不確定適合從哪裡開始？</strong><p>可以先完成 AI 起步診斷，再依結果了解可能的起步方向。診斷只是輔助判斷，實際合作仍會依企業需求討論。</p></div><button class="btn-secondary" onclick="goTo('quiz')">開始 AI 起步診斷</button></div>
+
+    <div class="section-intro" style="margin-top:52px;"><span class="section-kicker">Discussion Flow</span><h2 class="short-title">討論流程</h2></div>
+    <div class="process-grid"><article class="process-card"><small>STEP 01</small><h3>加入 LINE</h3><p>透過官方 LINE 留下初步需求。</p></article><article class="process-card"><small>STEP 02</small><h3>說明問題</h3><p>簡單說明公司產業、目前遇到的問題與想改善的流程。</p></article><article class="process-card"><small>STEP 03</small><h3>判斷方向</h3><p>先確認適合課程、工具選擇、流程整理或其他後續討論。</p></article><article class="process-card"><small>STEP 04</small><h3>確認下一步</h3><p>若需要進一步合作，會依需求範圍與可行性再討論。</p></article></div>
+
+    <div class="line-note"><div><strong>LINE 為主要聯絡方式，Email 可作為替代方式</strong><p>請透過 LINE 官方帳號留下初步需求，也可寄信至 <a href="mailto:muming9000@gmail.com">muming9000@gmail.com</a>。</p></div><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">透過 LINE 預約初步討論</a></div>
+  </section>
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1670,7 +1837,7 @@
 
 <!-- ═══════════════════ FAQ ═══════════════════ -->
 <div class="page" id="page-faq">
-  <section class="page-hero"><span class="page-hero-label">FAQ · 常見問題</span><h1>申請課程前，你可能想先知道</h1><p>誠實說明免費課程、工具選擇、後續合作與客製需求的處理方式。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('free-course')">申請免費課程</button><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
+  <section class="page-hero"><span class="page-hero-label">FAQ · 常見問題</span><h1 class="faq-hero-title">申請課程前，先了解這些</h1><p>誠實說明免費課程、工具選擇、後續合作與客製需求的處理方式。</p><div class="page-hero-actions"><button class="btn-primary" onclick="goTo('services')">查看服務項目</button><button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('contact')">聯絡我們</button></div></section>
   <section class="content-section"><div class="faq-list"><details><summary>免費企業 AI 基礎課程真的免費嗎？</summary><p>目前可透過 LINE 申請免費企業 AI 基礎課程。實際課程形式、時間與安排方式，會在確認申請需求後另行說明。</p></details><details><summary>公司完全沒使用過 AI，也可以參加嗎？</summary><p>可以。課程會從基礎觀念、常見工具與工作情境開始，不需要工程背景，也不需要先買付費工具。</p></details><details><summary>課程結束後一定要購買其他服務嗎？</summary><p>不需要。基礎課程可以單獨安排；若課後有進一步需求，再依企業實際情況討論是否需要工具策展、流程整理或陪跑協助。</p></details><details><summary>課程可以依公司需求客製嗎？</summary><p>可以先提供公司產業、團隊狀況與想改善的流程。牧茗會依需求判斷可調整的方向，但不會在未了解狀況前承諾固定課綱或固定成果。</p></details><details><summary>可以到公司現場上課嗎？</summary><p>可先提出需求，實際形式會依地點、時間、課程內容與雙方安排確認後另行說明。</p></details><details><summary>牧茗會協助選擇 AI 工具嗎？</summary><p>會協助評估工具方向，但不是單純列出熱門工具。會考量需求、使用者能力、成本、資料安全與實際流程，再判斷哪些工具適合先測試。</p></details><details><summary>使用 AI 是否一定需要購買付費工具？</summary><p>不一定。會先看企業需求與工作情境，判斷免費工具、既有工具或付費工具是否合適；不會一開始就要求購買特定工具。</p></details><details><summary>牧茗是否提供客製 App 或系統開發？</summary><p>涉及客製 App、AI Skill、跨部門整合、進階自動化或系統串接時，會先進行可行性評估，並依專案內容確認執行方式與合作範圍。</p></details><details><summary>課程後還可以有哪些合作方式？</summary><p>若企業有後續需求，可討論 AI 工具策展、工作流程整理、AI 導入陪跑、AI 教育訓練，以及人資與管理顧問等方向。實際範圍會依需求評估。</p></details><details><summary>如何提出需求或預約討論？</summary><p>建議加入牧茗 LINE 官方帳號，簡單說明公司產業、目前遇到的問題與希望改善的流程，也可使用網站既有 Email 聯繫。</p></details></div></section>
   <footer>
     <div class="footer-inner">
@@ -1805,57 +1972,52 @@
 <div class="page" id="page-about">
   <section class="page-hero">
     <span class="page-hero-label">About · 關於牧茗</span>
-    <h1>我們是誰</h1>
-    <p>牧茗從實際工作問題出發，協助企業先理解 AI，再逐步找到適合自己的使用方式。</p>
+    <h1>從人力資源管理出發，陪伴企業面對人力與數位轉型</h1>
+    <p>牧茗結合人力資源管理、企業實務與 AI 應用視角，協助企業在變動中逐步整理人力安排與工作方式。</p>
     <div class="page-hero-actions">
-      <button class="btn-primary" onclick="goTo('free-course')">申請免費課程</button>
+      <button class="btn-primary" onclick="goTo('services')">查看服務項目</button>
       <button class="btn-secondary" onclick="goTo('consultation')">預約初步討論</button>
     </div>
     <div class="page-related-links">
       <button onclick="goTo('home')">返回首頁</button>
-      <button onclick="goTo('free-course')">免費課程申請</button>
+      <button onclick="goTo('free-tools')">免費工具</button>
       <button onclick="goTo('contact')">聯絡我們</button>
     </div>
   </section>
 
   <section class="about-section">
+    <div class="section-intro" style="text-align:left;margin-left:0;margin-right:0;"><span class="section-kicker">Company Background</span><h2>公司背景</h2></div>
     <p>
-      牧茗管理顧問相信：企業導入 AI 的第一步，不一定是購買更多工具，而是先看懂自己的工作問題。
+      牧茗管理顧問有限公司由具有人力資源管理、勞動法規與企業實務經驗的成員組成，長期關注企業在人力配置、勞動管理與組織運作上遇到的實際問題。
     </p>
     <p>
-      AI 工具會持續變化，但企業真正需要的是能被團隊理解、操作並持續使用的方法。
-      牧茗從企業 AI 基礎課程出發，協助主管與團隊建立共同觀念，再依實際情境討論工具、流程與後續導入方向。
-    </p>
-    <p>
-      我們不急著一次導入大量 AI 工具，也不把 AI 包裝成萬能解法。
-      更務實的做法，是先建立觀念，從小範圍測試開始，確認團隊真的理解、願意使用，再逐步評估下一步。
+      我們熟悉不同產業的人力需求與相關申辦流程，協助企業依現行法規、產業條件與實際需求，評估適合的人力安排方式。針對有國際人才需求的企業，也可協助了解國際實習合作或其他人力方案的可行性與申辦方向。
     </p>
 
-    <div class="about-features">
-      <div class="about-feature">
-        <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">實際問題出發</strong>　先理解工作卡在哪裡，再討論 AI 是否適合介入</p>
-      </div>
-      <div class="about-feature">
-        <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">先建立觀念</strong>　讓主管與團隊先有共同語言，不急著買工具</p>
-      </div>
-      <div class="about-feature">
-        <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">小範圍測試</strong>　從行政、人資、行銷或日常營運中選擇適合的起點</p>
-      </div>
-      <div class="about-feature">
-        <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">可理解、可操作</strong>　避免過度技術化，讓非工程背景團隊也能跟上</p>
-      </div>
-      <div class="about-feature">
-        <div class="about-dot"></div>
-        <p><strong style="font-weight:500;color:var(--brown-deep)">逐步評估後續</strong>　若需要工具策展、流程整理或陪跑，再依需求確認合作範圍</p>
+    <div class="section-intro" style="text-align:left;margin:52px 0 18px;"><span class="section-kicker">AI Consulting Extension</span><h2>AI 顧問服務延伸</h2></div>
+    <p>
+      隨著 AI 技術快速發展，牧茗也將企業顧問服務延伸至 AI 應用領域。我們理解，多數企業並不是缺少 AI 工具，而是不知道該從哪一項工作開始、如何選擇適合的工具，以及如何讓同仁真正使用。
+    </p>
+    <p>
+      牧茗從企業目前的工作方式與團隊能力出發，協助企業建立基本觀念，再逐步評估適合的工具、流程與導入方向。
+    </p>
+
+    <div class="section-intro" style="text-align:left;margin:52px 0 18px;"><span class="section-kicker">AI Support</span><h2>三項 AI 協助方向</h2></div>
+    <div class="info-grid" style="max-width:none;">
+      <article class="info-card"><h3>AI 導入方向規劃</h3><p>先了解企業目前的工作方式、團隊能力與最常遇到的卡點，再協助判斷適合從課程、工具評估或單一流程改善開始。</p></article>
+      <article class="info-card"><h3>AI 工具選擇與評估</h3><p>依實際需求、操作門檻、費用與資料安全等條件，比較可能適合的工具方向，避免一開始就被熱門工具牽著走。</p></article>
+      <article class="info-card"><h3>企業 AI 課程與陪跑</h3><p>透過基礎課程建立共同觀念，後續再依企業狀況討論小範圍測試、操作整理或陪跑協助。</p></article>
+    </div>
+
+    <div class="line-note" style="max-width:none;">
+      <div>
+        <strong>品牌理念</strong>
+        <p>牧茗結合人力資源管理的實務經驗與 AI 應用視角，希望成為企業在人力調整、組織升級與數位轉型過程中，能夠長期討論、逐步前進的合作夥伴。</p>
       </div>
     </div>
 
     <div style="margin-top: 52px; text-align: left;">
-      <button class="btn-primary" onclick="goTo('free-course')">申請免費課程</button>
+      <button class="btn-primary" onclick="goTo('consultation')">預約初步討論</button>
     </div>
   </section>
 
@@ -2230,14 +2392,42 @@
   </footer>
 </div>
 
+<!-- ═══════════════════ COURSE APPLICATION PROTOTYPE ═══════════════════ -->
+<div class="page" id="page-course-application">
+  <section class="content-section">
+    <div class="prototype-shell">
+      <div class="prototype-banner">免費企業 AI 基礎課程會先協助團隊建立基本觀念、認識常見工作應用與使用注意事項。送出後，牧茗會依您提供的聯絡方式與您聯繫。</div>
+      <div id="courseApplicationForm" class="form-card" data-prototype-form="course"></div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-inner"><div class="footer-brand"><span class="footer-name-zh">牧茗管理顧問有限公司</span><span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span></div><div class="footer-contacts"><a href="tel:0970393155" class="footer-contact-item">0970-393-155</a><a href="mailto:muming9000@gmail.com" class="footer-contact-item">muming9000@gmail.com</a><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="footer-contact-item">LINE：@498hxein</a><span class="footer-contact-item footer-addr">桃園市平鎮區環南路 18 號 6 樓之 2</span></div><p class="footer-copy">© 2025 牧茗管理顧問有限公司</p></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ WORKFLOW REQUEST PROTOTYPE ═══════════════════ -->
+<div class="page" id="page-workflow-request">
+  <section class="content-section">
+    <div class="prototype-shell">
+      <div class="prototype-banner">送出後，牧茗會依您提供的聯絡方式與您聯繫。</div>
+      <div id="workflowRequestForm" class="form-card" data-prototype-form="workflow"></div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-inner"><div class="footer-brand"><span class="footer-name-zh">牧茗管理顧問有限公司</span><span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span></div><div class="footer-contacts"><a href="tel:0970393155" class="footer-contact-item">0970-393-155</a><a href="mailto:muming9000@gmail.com" class="footer-contact-item">muming9000@gmail.com</a><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="footer-contact-item">LINE：@498hxein</a><span class="footer-contact-item footer-addr">桃園市平鎮區環南路 18 號 6 樓之 2</span></div><p class="footer-copy">© 2025 牧茗管理顧問有限公司</p></div>
+  </footer>
+</div>
+
 
 <script>
   const pageMap = {
     home: 'page-home',
     services: 'page-services',
-    'free-course': 'page-free-course',
+    'free-tools': 'page-free-tools',
+    'course-application': 'page-course-application',
     'tool-curation': 'page-tool-curation',
     'ai-coaching': 'page-ai-coaching',
+    'workflow-request': 'page-workflow-request',
     consultation: 'page-consultation',
     faq: 'page-faq',
     strengths: 'page-strengths',
@@ -2252,9 +2442,12 @@
 
   const hashRoutes = {
     '#services': 'services',
-    '#free-course': 'free-course',
+    '#free-tools': 'free-tools',
+    '#free-course': 'course-application',
+    '#course-application': 'course-application',
     '#tool-curation': 'tool-curation',
     '#ai-coaching': 'ai-coaching',
+    '#workflow-request': 'workflow-request',
     '#consultation': 'consultation',
     '#faq': 'faq',
     '#about': 'about',
@@ -2267,9 +2460,11 @@
   const pageTitles = {
     home: '牧茗管理顧問｜企業 AI 導入顧問',
     services: '服務項目｜牧茗管理顧問',
-    'free-course': '免費企業 AI 基礎課程｜牧茗管理顧問',
+    'free-tools': '免費 AI 工具｜牧茗管理顧問',
+    'course-application': '免費課程申請｜牧茗管理顧問',
     'tool-curation': 'AI 工具策展｜牧茗管理顧問',
     'ai-coaching': '企業 AI 陪跑｜牧茗管理顧問',
+    'workflow-request': '工作改善需求｜牧茗管理顧問',
     consultation: '預約 AI 導入諮詢｜牧茗管理顧問',
     faq: '常見問題｜牧茗管理顧問',
     strengths: '核心優勢｜牧茗管理顧問',
@@ -2281,6 +2476,419 @@
     'result-C': '企業 AI 導入規劃型｜牧茗管理顧問',
     'result-D': '技術開發需求型｜牧茗管理顧問',
   };
+
+  const lineUrl = 'https://line.me/R/ti/p/@498hxein';
+  const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynxLn01UXLxLCrvzzNh1zJ2N88TxHIT4omEjpH3S_M--mSMiP2jIPdquRhwaanoeUq/exec';
+  const FORM_TIMEOUT_MS = 20000;
+  const todayIso = () => {
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().slice(0, 10);
+  };
+  const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+  const formatValue = value => Array.isArray(value) ? (value.length ? value.join('、') : '未填寫') : (value || '未填寫');
+
+  const formConfigs = {
+    course: {
+      mountId: 'courseApplicationForm',
+      title: '免費企業 AI 基礎課程申請',
+      backPage: 'home',
+      doneTitle: '已收到您的免費課程申請。',
+      liveCopy: '牧茗會依人數、地點與需求確認適合的課程安排，再透過 LINE 或 Email 與您聯絡確認上課時間，感謝您耐心填寫資訊。',
+      submitLabel: '送出免費課程申請',
+      submittingLabel: '送出中…',
+      loadingText: '資料送出中，請稍候…',
+      doneActions: [
+        { label: '加入 LINE 官方帳號', type: 'link', href: lineUrl },
+        { label: '重新填寫', type: 'restart' },
+        { label: '返回首頁', type: 'page', page: 'home', secondary: true },
+      ],
+      initial: { people: 5 },
+      summary: [
+        ['company', '公司與聯絡資料'], ['people', '預計上課人數'], ['address', '地址'], ['schedule', '希望日期與時段'],
+        ['aiLevel', 'AI 使用程度'], ['topics', '想了解的主題'], ['notes', '其他備註'],
+      ],
+      steps: [
+        { key: 'company', title: '公司與聯絡資料', help: '請簡單填寫公司名稱、產業、聯絡人與聯絡方式。', type: 'textarea', required: true, minLength: 8, placeholder: '牧茗管理顧問／管理顧問業／詹小姐／電話 09xx-xxx-xxx 或 Email', error: '請先填寫公司與聯絡資料' },
+        { key: 'people', title: '預計上課人數', help: '可用加減按鈕調整，也可直接輸入人數。', type: 'number', required: true, min: 1 },
+        { key: 'address', title: '希望安排的上課地點', help: '目前只規劃實體課程，若完整地址尚未確認，可先填縣市與區域。', type: 'textarea', required: true, minLength: 4, placeholder: '例如：桃園市中壢區○○路○○號\n若完整地址尚未確認，可先填縣市與區域。', error: '請填寫希望安排的上課地址' },
+        { key: 'schedule', title: '希望上課日期與時段', help: '此日期與時段僅為希望安排時間，實際上課時間仍需由牧茗聯絡確認，尚不代表預約成立。', type: 'dateTime', required: true, error: '請選擇希望上課日期與時段' },
+        { key: 'aiLevel', title: '團隊目前使用 AI 的程度', type: 'single', required: true, options: ['完全沒有使用過', '偶爾使用 ChatGPT', '已用於部分工作', '已有固定使用的 AI 工具'], autoNext: true, error: '請選擇團隊目前使用 AI 的程度' },
+        { key: 'topics', title: '想了解的主題', type: 'multi', required: true, otherKey: 'topicsOther', options: ['ChatGPT 基礎操作', '行政與文書應用', '人資與招募應用', '行銷內容應用', '工作流程應用', 'AI 資料安全與注意事項', '不確定，希望牧茗建議', '其他'], error: '請選擇至少一個想了解的主題' },
+        { key: 'notes', title: '其他需求或備註', type: 'textarea', placeholder: '可以補充公司目前遇到的問題、希望課程特別說明的內容，或其他需要我們先了解的事項。' },
+      ],
+    },
+    workflow: {
+      mountId: 'workflowRequestForm',
+      title: '填寫工作改善需求',
+      backPage: 'ai-coaching',
+      doneTitle: '已收到您想改善的工作內容。',
+      liveCopy: '牧茗會先依照目前流程、使用工具與實際困擾，評估是否適合透過 AI、流程整理或其他簡單工具改善，再與您聯絡確認初步討論時間及可能的處理方向。',
+      submitLabel: '送出工作改善需求',
+      submittingLabel: '送出中…',
+      loadingText: '資料送出中，請稍候…',
+      doneActions: [
+        { label: '加入 LINE 並補充資料', type: 'link', href: lineUrl },
+        { label: '重新填寫', type: 'restart' },
+        { label: '返回企業 AI 陪跑', type: 'page', page: 'ai-coaching', secondary: true },
+        { label: '返回首頁', type: 'page', page: 'home', secondary: true },
+      ],
+      initial: {},
+      summary: [
+        ['company', '公司與聯絡資料'], ['workType', '工作類型'], ['currentFlow', '目前流程'], ['painPoints', '困擾項目'],
+        ['frequency', '執行頻率'], ['timeSpent', '花費時間'], ['tools', '使用工具'], ['files', '選取的參考檔名'],
+        ['schedule', '希望討論時間'], ['budget', '預算狀況'],
+      ],
+      steps: [
+        { key: 'company', title: '公司與聯絡資料', help: '請簡單填寫公司名稱、產業、聯絡人與聯絡方式。', type: 'textarea', required: true, minLength: 8, placeholder: '○○餐飲有限公司／餐飲業／王小姐／電話或 Email', error: '請先填寫公司與聯絡資料' },
+        { key: 'workType', title: '想改善哪些工作？', help: '可複選，請選擇目前最希望優先改善的項目，最多 3 項。', type: 'multi', required: true, maxSelections: 3, otherKey: 'workTypeOther', options: ['客戶訊息與客服回覆', '行政文件與資料整理', '報價、訂單或表單處理', '會議紀錄與工作追蹤', '人資、招募與員工管理', '行銷內容與社群文案', '庫存或內部營運管理', '其他'], error: '請至少選擇 1 項想改善的工作' },
+        { key: 'currentFlow', title: '目前的工作流程怎麼做', type: 'textarea', required: true, minLength: 8, placeholder: '請簡單描述目前從開始到完成怎麼處理。\n例如：客戶從 LINE 傳需求，我們人工整理到 Excel，再製作報價單回傳。', error: '請簡單說明目前的工作流程' },
+        { key: 'painPoints', title: '最困擾的是哪一部分', type: 'multi', required: true, otherKey: 'painPointsOther', options: ['花費時間太多', '重複輸入相同資料', '容易漏掉或出錯', '不同人做法不一致', '資料分散、不好整理', '很難追蹤目前進度', '不知道適合使用什麼工具', '其他'], error: '請選擇至少一個困擾項目' },
+        { key: 'frequency', title: '這項工作多久做一次', type: 'single', required: true, options: ['每天多次', '每天一次', '每週數次', '每月數次', '不固定'], autoNext: true, error: '請選擇這項工作的執行頻率' },
+        { key: 'timeSpent', title: '大約花多少時間', type: 'text', placeholder: '例如：每天約 2 小時、每件約 20 分鐘，或每週約半天。' },
+        { key: 'tools', title: '目前使用哪些工具', type: 'multi', otherKey: 'toolsOther', options: ['LINE', 'Email', 'Excel', 'Google 試算表', 'Word', 'Google 文件', '紙本', 'POS 系統', 'CRM／內部管理系統', '其他'] },
+        { key: 'files', title: '可提供的參考資料', help: '此處只會送出您選取的檔名，檔案內容不會上傳。送出後，可再透過 LINE 提供參考資料。', type: 'file', accept: 'image/*,.pdf,.doc,.docx,.xls,.xlsx', warning: '請勿提供身分證、帳號密碼、客戶個資或其他敏感資料。' },
+        { key: 'schedule', title: '希望初步討論日期與時段', help: '此時間僅為希望聯絡或初步討論的時段，仍需由牧茗確認，不代表預約已成立。', type: 'dateTime', required: true, error: '請選擇希望初步討論日期與時段' },
+        { key: 'budget', title: '預算資訊', type: 'single', otherKey: 'budgetOther', options: ['希望牧茗先協助評估', '已有預算範圍', '目前尚未設定預算'], otherTrigger: '已有預算範圍', otherPlaceholder: '例如：5,000～50,000 元' },
+      ],
+    },
+  };
+
+  const formStates = {};
+  Object.keys(formConfigs).forEach(id => {
+    formStates[id] = { step: 0, values: { ...formConfigs[id].initial }, done: false, error: '', submitting: false, submitted: false, submission: null, submitError: '' };
+  });
+
+  function initPrototypeForm(id) {
+    const config = formConfigs[id];
+    const mount = document.getElementById(config.mountId);
+    if (mount && !mount.dataset.ready) {
+      mount.dataset.ready = 'true';
+      renderPrototypeForm(id);
+    }
+  }
+
+  function renderPrototypeForm(id) {
+    const config = formConfigs[id];
+    const state = formStates[id];
+    const mount = document.getElementById(config.mountId);
+    if (!mount) return;
+    const total = config.steps.length + 2;
+    const displayStep = state.done ? total : Math.min(state.step + 1, total);
+    const progress = Math.round((displayStep / total) * 100);
+    mount.innerHTML = `
+      <div class="form-top">
+        <div><div class="form-kicker">Application Form</div><h1 class="form-title">${config.title}</h1></div>
+        <div class="form-progress-text">第 ${displayStep} 題／共 ${total} 題</div>
+      </div>
+      <div class="form-progress" aria-hidden="true"><span style="width:${progress}%"></span></div>
+      ${state.done ? renderDone(id) : state.step >= config.steps.length ? renderSummary(id) : renderStep(id)}
+    `;
+  }
+
+  function renderStep(id) {
+    const config = formConfigs[id];
+    const state = formStates[id];
+    const step = config.steps[state.step];
+    return `
+      <h2 class="question-title">${step.title}</h2>
+      ${step.help ? `<p class="question-help">${escapeHtml(step.help)}</p>` : ''}
+      ${renderInput(id, step)}
+      ${step.warning ? `<div class="warning-note">${escapeHtml(step.warning)}</div>` : ''}
+      <div class="form-error" role="alert">${state.error ? escapeHtml(state.error) : ''}</div>
+      <div class="form-actions">
+        <button class="btn-secondary" type="button" onclick="prototypeBack('${id}')">${state.step === 0 ? '返回介紹頁' : '上一步'}</button>
+        <button class="btn-primary" type="button" onclick="prototypeNext('${id}')">下一步</button>
+      </div>
+    `;
+  }
+
+  function renderInput(id, step) {
+    const state = formStates[id];
+    const value = state.values[step.key] || '';
+    if (step.type === 'textarea') return `<textarea class="form-textarea" oninput="prototypeSet('${id}','${step.key}',this.value)" placeholder="${escapeHtml(step.placeholder || '')}">${escapeHtml(value)}</textarea>`;
+    if (step.type === 'text') return `<input class="form-input" type="text" value="${escapeHtml(value)}" oninput="prototypeSet('${id}','${step.key}',this.value)" placeholder="${escapeHtml(step.placeholder || '')}">`;
+    if (step.type === 'number') return `<div class="number-stepper" aria-label="預計上課人數"><button type="button" aria-label="減少人數" onclick="prototypeAdjust('${id}','${step.key}',-1)">−</button><label class="number-input-wrap"><input type="text" inputmode="numeric" pattern="[0-9]*" aria-label="可直接輸入的上課人數" value="${escapeHtml(value)}" oninput="prototypeSetNumber('${id}','${step.key}',this.value,${step.min || 1},this)"><span class="number-unit">人</span></label><button type="button" aria-label="增加人數" onclick="prototypeAdjust('${id}','${step.key}',1)">＋</button></div>`;
+    if (step.type === 'dateTime') return renderDateTime(id, step);
+    if (step.type === 'single' || step.type === 'multi') return renderOptions(id, step);
+    if (step.type === 'file') return `<p class="field-help">${escapeHtml(step.help || '')}</p><div class="file-row"><input class="form-input" type="file" multiple accept="${escapeHtml(step.accept || '')}" onchange="prototypeFiles('${id}','${step.key}',this.files)"></div><div class="file-list">${formatValue(state.values[step.key])}</div>`;
+    return '';
+  }
+
+  function renderDateTime(id, step) {
+    const value = formStates[id].values[step.key] || {};
+    const slots = ['上午', '下午', '晚上', '時間皆可', '其他時段'];
+    return `<div class="date-time-grid">
+      <label class="field-label">希望日期</label>
+      <input class="form-date" type="date" min="${todayIso()}" value="${escapeHtml(value.date || '')}" onchange="prototypeSetDateTime('${id}','${step.key}','date',this.value)">
+      <label class="field-label">希望時段</label>
+      <div class="option-grid">${slots.map(slot => `<button type="button" class="option-card ${value.slot === slot ? 'selected' : ''}" onclick="prototypeSetDateTime('${id}','${step.key}','slot','${slot}')">${slot}</button>`).join('')}</div>
+      ${value.slot === '其他時段' ? `<div class="conditional-box"><input class="form-input" type="text" value="${escapeHtml(value.other || '')}" oninput="prototypeSetDateTime('${id}','${step.key}','other',this.value)" placeholder="請簡單說明希望的時段"></div>` : ''}
+    </div>`;
+  }
+
+  function renderOptions(id, step) {
+    const state = formStates[id];
+    const current = state.values[step.key] || (step.type === 'multi' ? [] : '');
+    const showOther = step.otherKey && (step.otherTrigger ? current === step.otherTrigger : (Array.isArray(current) ? current.includes('其他') : current === '其他'));
+    const selectionCount = step.type === 'multi' && step.maxSelections ? `<p class="selection-count">已選擇 ${Array.isArray(current) ? current.length : 0}／最多 ${step.maxSelections} 項</p>` : '';
+    return `${selectionCount}<div class="option-grid">${step.options.map(option => {
+      const selected = Array.isArray(current) ? current.includes(option) : current === option;
+      return `<button type="button" class="option-card ${selected ? 'selected' : ''}" onclick="prototypeChoose('${id}','${step.key}','${escapeHtml(option)}','${step.type}',${step.autoNext ? 'true' : 'false'})">${escapeHtml(option)}</button>`;
+    }).join('')}</div>${showOther ? `<div class="conditional-box"><input class="form-input" type="text" value="${escapeHtml(state.values[step.otherKey] || '')}" oninput="prototypeSet('${id}','${step.otherKey}',this.value)" placeholder="${escapeHtml(step.otherPlaceholder || '請補充說明')}"></div>` : ''}`;
+  }
+
+  function renderSummary(id) {
+    const config = formConfigs[id];
+    const state = formStates[id];
+    return `<h2 class="question-title">${id === 'course' ? '確認申請資料' : '確認需求資料'}</h2>
+      <p class="question-help">您提供的資料僅用於課程安排、需求評估與後續聯絡，不會在未經同意的情況下提供給無關第三方。</p>
+      <div class="summary-grid">${config.summary.map(([key, label]) => renderSummaryItem(id, key, label)).join('')}</div>
+      <p class="field-help" style="margin-top:18px;">送出後，牧茗會依您提供的聯絡方式與您聯繫。</p>
+      ${state.submitting ? `<div class="warning-note">${escapeHtml(config.loadingText)}</div>` : ''}
+      ${state.submitError ? `<div class="warning-note">${escapeHtml(state.submitError)} <a href="${lineUrl}" target="_blank" rel="noopener noreferrer">加入 LINE 與牧茗聯絡</a></div>` : ''}
+      <div class="form-error" role="alert">${state.error ? escapeHtml(state.error) : ''}</div>
+      <div class="form-actions"><button class="btn-secondary" type="button" onclick="prototypeBack('${id}')" ${state.submitting ? 'disabled' : ''}>上一步</button><button class="btn-primary" type="button" onclick="prototypeFinish('${id}')" ${state.submitting || state.submitted ? 'disabled' : ''}>${state.submitting ? config.submittingLabel : (state.submitError ? '重新送出' : config.submitLabel)}</button>${state.submitError ? `<a class="btn-secondary" href="${lineUrl}" target="_blank" rel="noopener noreferrer">加入 LINE 官方帳號</a>` : ''}</div>`;
+  }
+
+  function renderSummaryItem(id, key, label) {
+    const config = formConfigs[id];
+    const state = formStates[id];
+    const stepIndex = config.steps.findIndex(step => step.key === key);
+    let value = state.values[key];
+    if (key === 'schedule' && value) value = [value.date, value.slot, value.other].filter(Boolean).join('／');
+    if (key === 'people' && value) value = `${value} 人`;
+    const relatedStep = config.steps[stepIndex];
+    if (relatedStep?.otherKey && state.values[relatedStep.otherKey]) value = Array.isArray(value) ? [...value, state.values[relatedStep.otherKey]] : `${value || ''}：${state.values[relatedStep.otherKey]}`;
+    return `<article class="summary-item"><div><h3>${label}</h3><p>${escapeHtml(formatValue(value))}</p></div>${stepIndex >= 0 ? `<button class="link-button" type="button" onclick="prototypeJump('${id}',${stepIndex})">修改</button>` : ''}</article>`;
+  }
+
+  function renderDone(id) {
+    const config = formConfigs[id];
+    const state = formStates[id];
+    const submissionId = state.submission?.submissionId || '';
+    return `<div class="completion-box"><h2 class="question-title">${config.doneTitle}</h2><div class="preview-copy"><p>${escapeHtml(config.liveCopy)}</p></div>${submissionId ? `<div class="prototype-banner">申請編號：${escapeHtml(submissionId)}</div>` : ''}<div class="form-actions">${config.doneActions.map(action => {
+      if (action.type === 'link') return `<a class="btn-primary" href="${action.href}" target="_blank" rel="noopener noreferrer">${action.label}</a>`;
+      if (action.type === 'restart') return `<button class="btn-primary" type="button" onclick="prototypeRestart('${id}')">${action.label}</button>`;
+      return `<button class="${action.secondary ? 'btn-secondary' : 'btn-primary'}" type="button" onclick="goTo('${action.page}')">${action.label}</button>`;
+    }).join('')}</div></div>`;
+  }
+
+  function prototypeSet(id, key, value) { formStates[id].values[key] = value; formStates[id].error = ''; formStates[id].submitError = ''; }
+  function isValidPositiveInteger(value, min = 1) { return /^\d+$/.test(String(value || '').trim()) && Number(String(value).trim()) >= min; }
+  function prototypeSetNumber(id, key, value, min, inputEl) {
+    formStates[id].values[key] = value;
+    formStates[id].error = isValidPositiveInteger(value, min) ? '' : '上課人數至少為 1 人';
+    const form = inputEl?.closest('.form-card');
+    const errorEl = form?.querySelector('.form-error');
+    if (errorEl) errorEl.textContent = formStates[id].error;
+  }
+  function prototypeAdjust(id, key, delta) {
+    const step = formConfigs[id].steps.find(s => s.key === key);
+    const min = step.min || 1;
+    const current = formStates[id].values[key];
+    const base = isValidPositiveInteger(current, min) ? Number(current) : min;
+    formStates[id].values[key] = Math.max(min, base + delta);
+    formStates[id].error = '';
+    renderPrototypeForm(id);
+  }
+  function prototypeSetDateTime(id, key, part, value) { formStates[id].values[key] = { ...(formStates[id].values[key] || {}), [part]: value }; formStates[id].error = ''; formStates[id].submitError = ''; renderPrototypeForm(id); }
+  function prototypeFiles(id, key, files) { formStates[id].values[key] = Array.from(files || []).map(file => file.name); formStates[id].error = ''; formStates[id].submitError = ''; renderPrototypeForm(id); }
+  function prototypeChoose(id, key, option, type, autoNext) {
+    const state = formStates[id];
+    if (type === 'multi') {
+      const step = formConfigs[id].steps.find(s => s.key === key);
+      const current = state.values[key] || [];
+      if (current.includes(option)) {
+        state.values[key] = current.filter(item => item !== option);
+      } else if (step?.maxSelections && current.length >= step.maxSelections) {
+        state.error = `最多選擇 ${step.maxSelections} 項，請先取消一個項目。`;
+        state.submitError = '';
+        renderPrototypeForm(id);
+        return;
+      } else {
+        state.values[key] = [...current, option];
+      }
+      state.error = '';
+      state.submitError = '';
+      renderPrototypeForm(id);
+      return;
+    }
+    state.values[key] = option;
+    state.error = '';
+    state.submitError = '';
+    renderPrototypeForm(id);
+    if (autoNext) setTimeout(() => prototypeNext(id), 180);
+  }
+  function validatePrototypeStep(id) {
+    const config = formConfigs[id];
+    const state = formStates[id];
+    const step = config.steps[state.step];
+    const value = state.values[step.key];
+    if (step.required) {
+      if (step.type === 'textarea' && String(value || '').trim().length < (step.minLength || 1)) return step.error || '請完成此題';
+      if (step.type === 'single' && !value) return step.error || '請選擇一個選項';
+      if (step.type === 'multi' && (!Array.isArray(value) || value.length === 0)) return step.error || '請至少選擇一個選項';
+      if (step.type === 'multi' && step.maxSelections && Array.isArray(value) && value.length > step.maxSelections) return `最多選擇 ${step.maxSelections} 項，請先取消一個項目。`;
+      if (step.type === 'dateTime' && (!value?.date || !value?.slot || (value.slot === '其他時段' && !value.other))) return step.error || '請選擇日期與時段';
+      if (step.type === 'number' && !isValidPositiveInteger(value, step.min || 1)) return '上課人數至少為 1 人';
+    }
+    if (step.type === 'dateTime' && value?.date && value.date < todayIso()) return '日期不可選擇過去日期';
+    return '';
+  }
+  function prototypeNext(id) {
+    const state = formStates[id];
+    if (state.step < formConfigs[id].steps.length) {
+      const error = validatePrototypeStep(id);
+      if (error) { state.error = error; renderPrototypeForm(id); return; }
+      state.step += 1;
+    }
+    state.error = '';
+    renderPrototypeForm(id);
+  }
+  function prototypeBack(id) {
+    const state = formStates[id];
+    if (state.done) { state.done = false; state.step = formConfigs[id].steps.length; renderPrototypeForm(id); return; }
+    if (state.step === 0) { goTo(formConfigs[id].backPage); return; }
+    state.step -= 1;
+    state.error = '';
+    renderPrototypeForm(id);
+  }
+  function prototypeJump(id, step) { if (formStates[id].submitting) return; formStates[id].step = step; formStates[id].done = false; formStates[id].error = ''; formStates[id].submitError = ''; renderPrototypeForm(id); }
+
+  function buildFormPayload(id) {
+    const values = formStates[id].values;
+    const schedule = values.schedule || {};
+    if (id === 'course') {
+      return {
+        formType: 'course',
+        website: '',
+        companyContact: String(values.company || '').trim(),
+        attendeeCount: Number(values.people),
+        courseAddress: String(values.address || '').trim(),
+        preferredDate: schedule.date || '',
+        preferredTime: schedule.slot || '',
+        otherTime: schedule.slot === '其他時段' ? String(schedule.other || '').trim() : '',
+        aiLevel: values.aiLevel || '',
+        topics: Array.isArray(values.topics) ? values.topics : [],
+        otherTopic: Array.isArray(values.topics) && values.topics.includes('其他') ? String(values.topicsOther || '').trim() : '',
+        notes: String(values.notes || '').trim(),
+      };
+    }
+    return {
+      formType: 'workflow',
+      website: '',
+      companyContact: String(values.company || '').trim(),
+      workCategory: Array.isArray(values.workType) ? values.workType.join('、') : (values.workType || ''),
+      otherWorkCategory: Array.isArray(values.workType) && values.workType.includes('其他') ? String(values.workTypeOther || '').trim() : '',
+      currentProcess: String(values.currentFlow || '').trim(),
+      painPoints: Array.isArray(values.painPoints) ? values.painPoints : [],
+      otherPainPoint: Array.isArray(values.painPoints) && values.painPoints.includes('其他') ? String(values.painPointsOther || '').trim() : '',
+      frequency: values.frequency || '',
+      timeSpent: String(values.timeSpent || '').trim(),
+      tools: Array.isArray(values.tools) ? values.tools : [],
+      otherTool: Array.isArray(values.tools) && values.tools.includes('其他') ? String(values.toolsOther || '').trim() : '',
+      referenceFileNames: Array.isArray(values.files) ? values.files : [],
+      preferredDate: schedule.date || '',
+      preferredTime: schedule.slot || '',
+      otherTime: schedule.slot === '其他時段' ? String(schedule.other || '').trim() : '',
+      budgetChoice: values.budget || '',
+      budgetRange: values.budget === '已有預算範圍' ? String(values.budgetOther || '').trim() : '',
+    };
+  }
+
+  function submitPayloadThroughIframe(payload) {
+    return new Promise((resolve, reject) => {
+      const frameName = `mumingFormFrame_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const iframe = document.createElement('iframe');
+      iframe.name = frameName;
+      iframe.style.display = 'none';
+      iframe.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(iframe);
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = window.__MUMING_FORM_ENDPOINT_OVERRIDE || FORM_ENDPOINT;
+      form.target = frameName;
+      form.enctype = 'application/x-www-form-urlencoded';
+      form.style.display = 'none';
+
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'payload';
+      input.value = JSON.stringify(payload);
+      form.appendChild(input);
+      document.body.appendChild(form);
+
+      let settled = false;
+      let timeoutId;
+      const cleanup = () => {
+        window.removeEventListener('message', onMessage);
+        clearTimeout(timeoutId);
+        form.remove();
+        iframe.remove();
+      };
+      const finish = (fn, value) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        fn(value);
+      };
+      const isAllowedFormResponseOrigin = origin => {
+        if (origin === 'https://script.google.com' || origin === 'https://script.googleusercontent.com') return true;
+        try {
+          const url = new URL(origin);
+          return url.protocol === 'https:' && (
+            url.hostname.endsWith('.script.googleusercontent.com') ||
+            url.hostname.endsWith('-script.googleusercontent.com')
+          );
+        } catch (error) {
+          return false;
+        }
+      };
+      const onMessage = event => {
+        if (!isAllowedFormResponseOrigin(event.origin)) return;
+        let message = event.data;
+        if (typeof message === 'string') {
+          try { message = JSON.parse(message); } catch (error) { return; }
+        }
+        if (!message || message.type !== 'muming-form-response') return;
+        finish(resolve, message);
+      };
+      window.addEventListener('message', onMessage);
+      timeoutId = setTimeout(() => finish(reject, new Error('timeout')), FORM_TIMEOUT_MS);
+      form.submit();
+    });
+  }
+
+  async function prototypeFinish(id) {
+    const state = formStates[id];
+    if (state.submitting || state.submitted) return;
+    state.error = '';
+    state.submitError = '';
+    state.submitting = true;
+    renderPrototypeForm(id);
+    try {
+      const payload = buildFormPayload(id);
+      const response = await submitPayloadThroughIframe(payload);
+      if (response && response.ok === true) {
+        state.submission = response;
+        state.submitted = true;
+        state.done = true;
+        state.submitting = false;
+        renderPrototypeForm(id);
+        return;
+      }
+      throw new Error(response?.message || 'not ok');
+    } catch (error) {
+      state.submitting = false;
+      state.submitted = false;
+      state.done = false;
+      state.submitError = '資料暫時無法送出，請稍後再試，或透過 LINE 與牧茗聯絡。';
+      renderPrototypeForm(id);
+    }
+  }
+  function prototypeRestart(id) { formStates[id] = { step: 0, values: { ...formConfigs[id].initial }, done: false, error: '', submitting: false, submitted: false, submission: null, submitError: '' }; renderPrototypeForm(id); }
 
   function setActiveNav(key) {
     document.querySelectorAll('[data-nav-key]').forEach(link => {
@@ -2303,6 +2911,8 @@
       scores = { A: 0, B: 0, C: 0, D: 0 };
       setTimeout(() => renderQuestion(0), 60);
     }
+    if (resolvedKey === 'course-application') initPrototypeForm('course');
+    if (resolvedKey === 'workflow-request') initPrototypeForm('workflow');
   }
 
   function syncHashForPage(key, replace = false) {
