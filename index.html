@@ -809,26 +809,77 @@
 
   /* ── CONTACT PAGE ── */
   .contact-section {
-    padding: 80px 40px;
-    max-width: 640px;
-    margin: 0 auto;
+    padding: 72px 40px 88px;
   }
 
-  .contact-items {
-    margin-top: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .contact-item {
+  .contact-flow-grid {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 1120px;
+    margin: 0 auto 52px;
+  }
+
+  .contact-flow-card {
+    min-height: 176px;
+    padding: 22px;
+    background: #fffdf9;
+    border: 1px solid var(--border);
+    text-align: left;
+    cursor: pointer;
+    color: var(--brown-deep);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .contact-flow-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212,88,26,0.35);
+    box-shadow: 0 16px 36px rgba(44,24,16,0.07);
+  }
+
+  .contact-flow-card h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--brown-deep);
+  }
+
+  .contact-flow-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .contact-center-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
     align-items: center;
+    max-width: 900px;
+    margin: 0 auto 52px;
+    padding: 32px;
+    background: #fffdf9;
+    border: 1px solid var(--border);
+  }
+
+  .contact-details {
+    display: grid;
+    gap: 16px;
+  }
+
+  .contact-detail-row {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-detail-row:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
   }
 
   .contact-label {
@@ -841,6 +892,7 @@
 
   .contact-value {
     font-size: 15px;
+    line-height: 1.9;
     color: var(--brown-deep);
     font-weight: 300;
     text-decoration: none;
@@ -853,18 +905,37 @@
 
   .contact-value a:hover { text-decoration: underline; }
 
-  .contact-cta {
-    margin-top: 56px;
-    padding: 40px;
-    background: var(--cream-dark);
-    border-left: 3px solid var(--orange);
+  .contact-prep-card,
+  .contact-privacy-note {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fffdf9;
+    border: 1px solid var(--border);
+    padding: 30px;
   }
 
-  .contact-cta p {
-    font-size: 15px;
-    color: var(--text-muted);
+  .contact-prep-card {
     margin-bottom: 24px;
+  }
+
+  .contact-prep-card h2 {
+    font-size: clamp(24px, 2.2vw, 34px);
+    line-height: 1.25;
+    margin-bottom: 18px;
+    font-weight: 500;
+    color: var(--brown-deep);
+  }
+
+  .contact-prep-card p,
+  .contact-privacy-note p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-muted);
     font-weight: 300;
+  }
+
+  .contact-prep-card .simple-list {
+    margin: 18px 0;
   }
 
   /* ── QUIZ PAGE ── */
@@ -1409,8 +1480,8 @@
   .nav-links a.is-active, .mobile-menu a.is-active { color: var(--orange); }
   @media (min-width: 769px) { .short-title { white-space: nowrap; } }
   @media (max-width: 1100px) { .process-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); } }
-  @media (max-width: 900px) { .entry-grid, .core-service-grid, .support-service-grid, .info-grid { grid-template-columns: 1fr 1fr; } .line-note { align-items: flex-start; flex-direction: column; } }
-  @media (max-width: 768px) { .line-entry-section, .content-section { padding: 56px 22px 64px; } .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .process-grid, .option-grid { grid-template-columns: 1fr; } .page-hero h1, .section-intro h2, .short-title { word-break: keep-all; overflow-wrap: anywhere; white-space: normal; } .entry-card { min-height: auto; padding: 22px; } .core-service-card, .info-card, .process-card, .support-service-card, .form-card { padding: 22px; } .line-note { padding: 24px; } .line-contact-panel { grid-template-columns: 1fr; padding: 22px; gap: 22px; } .line-qr-wrap img { max-width: 210px; } .faq-list details { padding: 0 18px; } .form-top { flex-direction: column; gap: 6px; } .form-progress-text { white-space: normal; padding-top: 0; } .summary-item { grid-template-columns: 1fr; } .form-actions .btn-primary, .form-actions .btn-secondary, .completion-box .btn-primary, .completion-box .btn-secondary { width: 100%; justify-content: center; } }
+  @media (max-width: 900px) { .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .contact-flow-grid { grid-template-columns: 1fr 1fr; } .line-note { align-items: flex-start; flex-direction: column; } }
+  @media (max-width: 768px) { .line-entry-section, .content-section, .contact-section { padding: 56px 22px 64px; } .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .process-grid, .option-grid, .contact-flow-grid, .contact-center-card { grid-template-columns: 1fr; } .page-hero h1, .section-intro h2, .short-title { word-break: keep-all; overflow-wrap: anywhere; white-space: normal; } .entry-card { min-height: auto; padding: 22px; } .core-service-card, .info-card, .process-card, .support-service-card, .form-card, .contact-flow-card, .contact-center-card, .contact-prep-card, .contact-privacy-note { padding: 22px; } .contact-detail-row { grid-template-columns: 1fr; gap: 6px; } .line-note { padding: 24px; } .line-contact-panel { grid-template-columns: 1fr; padding: 22px; gap: 22px; } .line-qr-wrap img { max-width: 210px; } .faq-list details { padding: 0 18px; } .form-top { flex-direction: column; gap: 6px; } .form-progress-text { white-space: normal; padding-top: 0; } .summary-item { grid-template-columns: 1fr; } .form-actions .btn-primary, .form-actions .btn-secondary, .completion-box .btn-primary, .completion-box .btn-secondary { width: 100%; justify-content: center; } }
   @media (max-width: 420px) { .content-section { padding-left: 18px; padding-right: 18px; } .number-stepper { grid-template-columns: 54px minmax(0, 1fr) 54px; width: 100%; } .number-input-wrap { padding: 8px; } .number-stepper input { width: min(82px, 100%); } .option-card { padding: 15px; } .form-card { border-radius: 18px; } }
 
 </style>
@@ -2053,48 +2124,94 @@
 
 <!-- ═══════════════════ CONTACT ═══════════════════ -->
 <div class="page" id="page-contact">
-  <section class="page-hero"><span class="page-hero-label">Contact · 聯絡我們</span><h1>與牧茗聯繫</h1><p>為了更快了解您的需求，建議加入 LINE 官方帳號並簡單說明公司產業、目前遇到的問題與希望改善的流程。</p><div class="page-hero-actions"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入官方 LINE</a><button class="btn-secondary" onclick="goTo('quiz')">先做 AI 起步診斷</button></div><div class="page-related-links"><button onclick="goTo('home')">返回首頁</button><button onclick="goTo('services')">服務項目</button><button onclick="goTo('faq')">常見問題</button></div></section>
+  <section class="page-hero">
+    <span class="page-hero-label">Contact · 聯絡我們</span>
+    <h1>與牧茗聯繫</h1>
+    <p>無論您想安排企業 AI 課程、改善工作流程，或還不確定適合從哪裡開始，都可以先選擇下方入口；需要直接聯絡時，再透過 LINE、Email 或電話與牧茗聯繫。</p>
+    <div class="page-related-links">
+      <button onclick="goTo('home')">返回首頁</button>
+      <button onclick="goTo('services')">服務項目</button>
+      <button onclick="goTo('faq')">常見問題</button>
+    </div>
+  </section>
   <section class="contact-section">
-    <div class="line-contact-panel">
+    <div class="section-intro">
+      <span class="section-kicker">Start Here</span>
+      <h2>你現在想處理哪件事？</h2>
+      <p>先選擇最接近目前需求的入口，能讓後續聯絡更快聚焦。</p>
+    </div>
+
+    <div class="contact-flow-grid">
+      <button class="contact-flow-card" onclick="goTo('course-application')">
+        <h3>免費企業 AI 基礎課程</h3>
+        <p>填寫預計人數、上課地點與希望日期。</p>
+      </button>
+      <button class="contact-flow-card" onclick="goTo('workflow-request')">
+        <h3>工作改善需求</h3>
+        <p>告訴牧茗哪一項工作最耗時、重複或容易出錯。</p>
+      </button>
+      <button class="contact-flow-card" onclick="goTo('consultation')">
+        <h3>預約初步討論</h3>
+        <p>還不確定適合哪一種服務時，可以先說明目前需求。</p>
+      </button>
+      <button class="contact-flow-card" onclick="goTo('quiz')">
+        <h3>AI 起步診斷</h3>
+        <p>透過簡短問題了解目前可能的起步方向。</p>
+      </button>
+    </div>
+
+    <div class="contact-center-card">
       <div class="line-qr-wrap">
         <img src="assets/line-official-qr.png" alt="牧茗管理顧問 LINE 官方帳號 QR Code">
       </div>
-      <div class="line-contact-copy">
-        <h3>LINE 官方帳號</h3>
-        <p>為了更快了解您的需求，加入 LINE 後可簡單說明公司產業、目前遇到的問題與希望改善的流程。</p>
-        <div class="line-contact-id"><strong>LINE ID：</strong>@498hxein</div>
-        <a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入 LINE 官方帳號</a>
+      <div class="contact-details">
+        <div class="contact-detail-row">
+          <span class="contact-label">LINE</span>
+          <div class="contact-value">
+            <strong>LINE 官方帳號</strong><br>
+            LINE ID：@498hxein<br>
+            <a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="contact-action-link">加入 LINE 官方帳號</a>
+          </div>
+        </div>
+        <div class="contact-detail-row">
+          <span class="contact-label">Email</span>
+          <div class="contact-value">
+            Email：muming9000@gmail.com<br>
+            <a href="mailto:muming9000@gmail.com" class="contact-action-link">寄送 Email</a>
+          </div>
+        </div>
+        <div class="contact-detail-row">
+          <span class="contact-label">Phone</span>
+          <div class="contact-value">
+            電話：0970-393-155<br>
+            <a href="tel:0970393155" class="contact-action-link">撥打電話</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="contact-items">
-      <div class="contact-item"><span class="contact-label">Email</span><div class="contact-value"><div class="email-contact-text"><strong>Email：</strong>muming9000@gmail.com</div><a href="mailto:muming9000@gmail.com" class="contact-action-link">寄送 Email</a></div></div>
-      <div class="contact-item"><span class="contact-label">電話</span><div class="contact-value"><a href="tel:0970393155" class="contact-action-link">0970-393-155</a></div></div>
+
+    <div class="contact-prep-card">
+      <h2>聯絡前可以先準備</h2>
+      <p>為了更快了解您的需求，聯絡時可以先簡單提供：</p>
+      <ul class="simple-list">
+        <li>公司產業與聯絡人</li>
+        <li>目前遇到的工作或管理問題</li>
+        <li>希望改善的流程或安排的課程</li>
+        <li>預計參與人數或實際使用人員</li>
+        <li>希望討論或開始的時間</li>
+      </ul>
+      <p>不需要先知道該使用哪一個 AI 工具，只要說明目前怎麼做、哪裡最困擾即可。</p>
     </div>
-    <div class="contact-cta"><p>聯繫時可先提供公司產業、目前遇到的問題，以及希望改善的流程。若還不確定需求，也可以先完成 AI 起步診斷。</p><div class="hero-btns" style="margin-top:0;"><a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="btn-primary">加入官方 LINE</a><button class="btn-secondary" onclick="goTo('quiz')">先做測驗</button></div></div>
+
+    <div class="contact-privacy-note">
+      <p>您提供的資料僅用於課程安排、需求評估與後續聯絡，不會在未經同意的情況下提供給無關第三方。</p>
+    </div>
   </section>
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-name-zh">牧茗管理顧問有限公司</span>
         <span class="footer-name-en">Mu Ming Management Consulting Co., Ltd.</span>
-      </div>
-      <div class="footer-contacts">
-        <a href="tel:0970393155" class="footer-contact-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 013 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          0970-393-155
-        </a>
-        <a href="mailto:muming9000@gmail.com" class="footer-contact-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          muming9000@gmail.com
-        </a>
-        <a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          LINE：@498hxein
-        </a>
-        <span class="footer-contact-item footer-addr">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          桃園市平鎮區環南路 18 號 6 樓之 2
-        </span>
       </div>
       <p class="footer-copy">© 2025 牧茗管理顧問有限公司</p>
     </div>
@@ -2545,8 +2662,8 @@
         { key: 'currentFlow', title: '目前的工作流程怎麼做', type: 'textarea', required: true, minLength: 8, placeholder: '請簡單描述目前從開始到完成怎麼處理。\n例如：客戶從 LINE 傳需求，我們人工整理到 Excel，再製作報價單回傳。', error: '請簡單說明目前的工作流程' },
         { key: 'painPoints', title: '最困擾的是哪一部分', type: 'multi', required: true, otherKey: 'painPointsOther', options: ['花費時間太多', '重複輸入相同資料', '容易漏掉或出錯', '不同人做法不一致', '資料分散、不好整理', '很難追蹤目前進度', '不知道適合使用什麼工具', '其他'], error: '請選擇至少一個困擾項目' },
         { key: 'frequency', title: '這項工作多久做一次', type: 'single', required: true, options: ['每天多次', '每天一次', '每週數次', '每月數次', '不固定'], autoNext: true, error: '請選擇這項工作的執行頻率' },
-        { key: 'timeSpent', title: '大約花多少時間', type: 'text', placeholder: '例如：每天約 2 小時、每件約 20 分鐘，或每週約半天。' },
-        { key: 'tools', title: '目前使用哪些工具', type: 'multi', otherKey: 'toolsOther', options: ['LINE', 'Email', 'Excel', 'Google 試算表', 'Word', 'Google 文件', '紙本', 'POS 系統', 'CRM／內部管理系統', '其他'] },
+        { key: 'timeSpent', title: '大約花多少時間', type: 'text', required: true, placeholder: '例如：每天約 2 小時、每件約 20 分鐘，或每週約半天。', error: '請簡單填寫這項工作大約花多少時間' },
+        { key: 'tools', title: '目前使用哪些工具', type: 'multi', required: true, otherKey: 'toolsOther', options: ['LINE', 'Email', 'Excel', 'Google 試算表', 'Word', 'Google 文件', '紙本', 'POS 系統', 'CRM／內部管理系統', '沒有固定工具／不確定', '其他'], error: '請選擇至少一項目前使用的工具' },
         { key: 'files', title: '可提供的參考資料', help: '此處只會送出您選取的檔名，檔案內容不會上傳。送出後，可再透過 LINE 提供參考資料。', type: 'file', accept: 'image/*,.pdf,.doc,.docx,.xls,.xlsx', warning: '請勿提供身分證、帳號密碼、客戶個資或其他敏感資料。' },
         { key: 'schedule', title: '希望初步討論日期與時段', help: '此時間僅為希望聯絡或初步討論的時段，仍需由牧茗確認，不代表預約已成立。', type: 'dateTime', required: true, error: '請選擇希望初步討論日期與時段' },
         { key: 'budget', title: '預算資訊', type: 'single', otherKey: 'budgetOther', options: ['希望牧茗先協助評估', '已有預算範圍', '目前尚未設定預算'], otherTrigger: '已有預算範圍', otherPlaceholder: '例如：5,000～50,000 元' },
@@ -2727,6 +2844,7 @@
     const value = state.values[step.key];
     if (step.required) {
       if (step.type === 'textarea' && String(value || '').trim().length < (step.minLength || 1)) return step.error || '請完成此題';
+      if (step.type === 'text' && !String(value || '').trim()) return step.error || '請完成此題';
       if (step.type === 'single' && !value) return step.error || '請選擇一個選項';
       if (step.type === 'multi' && (!Array.isArray(value) || value.length === 0)) return step.error || '請至少選擇一個選項';
       if (step.type === 'multi' && step.maxSelections && Array.isArray(value) && value.length > step.maxSelections) return `最多選擇 ${step.maxSelections} 項，請先取消一個項目。`;
