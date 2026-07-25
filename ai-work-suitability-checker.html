@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="牧茗 AI 工作適用判斷器：透過簡單問題，判斷一項工作適合直接使用 AI、由 AI 協助，或應保留高度人工判斷。">
+<meta name="theme-color" content="#173C35">
+<title>AI 工作適不適合判斷器｜牧茗管理顧問</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#173C35;--ink2:#28594E;--ink3:#3D7568;--paper:#FFFCF7;
+  --cream:#F6F0E5;--sage:#DDEAE4;--sage2:#EEF5F1;
+  --orange:#F2A65A;--orange2:#FFE5C5;--red:#A6463E;--red2:#F8E3E0;
+  --text:#26332F;--muted:#68736F;--line:rgba(23,60,53,.16);
+  --white:#fff;--shadow:0 20px 58px rgba(23,60,53,.12);--content:1120px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;color:var(--text);line-height:1.7;
+  font-family:"Noto Sans TC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 5% 0%,rgba(242,166,90,.18),transparent 28rem),
+    radial-gradient(circle at 96% 14%,rgba(61,117,104,.13),transparent 31rem),
+    var(--paper)
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.site-header{
+  position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(23,60,53,.1);
+  background:rgba(255,252,247,.92);backdrop-filter:blur(15px)
+}
+.header-inner{
+  max-width:var(--content);min-height:72px;margin:auto;padding:10px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand-logo{width:42px;height:42px;object-fit:contain}
+.brand-name{display:block;color:var(--ink);font-family:"Noto Serif TC",serif;font-weight:700;letter-spacing:.08em}
+.brand-en{display:block;color:var(--ink3);font-size:10px;letter-spacing:.12em}
+.back-link{
+  min-height:44px;padding:9px 16px;display:inline-flex;align-items:center;
+  border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);
+  text-decoration:none;color:var(--ink);font-size:14px;font-weight:600
+}
+.hero{
+  max-width:var(--content);margin:auto;padding:66px 24px 34px;
+  display:grid;grid-template-columns:1.12fr .88fr;gap:42px;align-items:center
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:17px;padding:7px 12px;
+  border:1px solid rgba(23,60,53,.13);border-radius:999px;
+  background:rgba(221,234,228,.68);color:var(--ink2);font-size:13px;font-weight:700
+}
+.eyebrow:before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 0 5px rgba(242,166,90,.17)
+}
+h1{
+  margin:0;color:var(--ink);font-family:"Noto Serif TC",serif;
+  font-size:clamp(38px,6vw,64px);line-height:1.17
+}
+.hero-lead{margin:22px 0 0;max-width:680px;color:#40504A;font-size:clamp(17px,2vw,21px)}
+.hero-note{margin:16px 0 0;color:var(--muted);font-size:14px}
+.hero-card{
+  padding:28px;border:1px solid rgba(23,60,53,.12);border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(246,240,229,.9));
+  box-shadow:var(--shadow)
+}
+.hero-card small{color:var(--ink3);font-weight:700;letter-spacing:.1em}
+.hero-card h2{margin:8px 0 0;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:26px}
+.hero-card p{margin:10px 0 0;color:#4D5B56}
+.notice{max-width:var(--content);margin:auto;padding:0 24px 38px}
+.notice-inner{
+  padding:17px 20px;border-left:5px solid var(--orange);
+  border-radius:0 14px 14px 0;background:rgba(255,255,255,.8);
+  box-shadow:0 8px 30px rgba(23,60,53,.06)
+}
+.tool{max-width:var(--content);margin:auto;padding:0 24px 78px}
+.shell{display:grid;grid-template-columns:minmax(0,.98fr) minmax(380px,1.02fr);gap:24px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:28px;background:rgba(255,255,255,.94);box-shadow:var(--shadow)}
+.form-panel{padding:30px}
+.panel-title{display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}
+.step-badge{
+  width:36px;height:36px;display:grid;place-items:center;flex:none;border-radius:11px;
+  background:var(--ink);color:#fff;font-weight:700
+}
+.panel-title h2,.result-head h2{margin:0;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:27px}
+.panel-title p,.result-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.field{margin-top:22px}
+label,.legend{display:block;margin-bottom:9px;color:var(--ink);font-weight:700;font-size:15px}
+.required{color:var(--red)}
+input[type="text"],textarea,select{
+  width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:13px;
+  background:#fff;color:var(--text);outline:none
+}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--ink3);box-shadow:0 0 0 4px rgba(61,117,104,.1)
+}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice span{
+  min-height:58px;padding:12px 14px;display:flex;align-items:center;gap:9px;
+  border:1px solid var(--line);border-radius:14px;background:#fff;
+  color:#41504A;font-size:14px;font-weight:600;transition:.18s
+}
+.choice input:checked+span{
+  border-color:var(--ink3);background:var(--sage2);color:var(--ink);
+  box-shadow:0 0 0 3px rgba(61,117,104,.1)
+}
+.choice span:hover{border-color:var(--ink3);transform:translateY(-1px)}
+.hint{margin:6px 0 0;color:var(--muted);font-size:12px}
+.actions{margin-top:27px;display:flex;gap:10px;flex-wrap:wrap}
+.primary,.secondary{min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700}
+.primary{border:0;background:var(--ink);color:#fff}
+.primary:hover{background:var(--ink2);transform:translateY(-1px)}
+.secondary{border:1px solid var(--line);background:#fff;color:var(--ink)}
+.result-panel{overflow:hidden;position:sticky;top:94px}
+.result-head{
+  padding:27px 27px 20px;border-bottom:1px solid var(--line);
+  background:linear-gradient(145deg,var(--sage2),#fff)
+}
+.result-body{padding:22px}
+.empty{padding:42px 18px;text-align:center;color:var(--muted)}
+.empty-icon{
+  width:66px;height:66px;margin:0 auto 14px;display:grid;place-items:center;
+  border-radius:20px;background:var(--sage2);font-size:30px
+}
+.results{display:none}
+.results.show{display:block}
+.verdict{
+  padding:20px;border-radius:18px;border:1px solid var(--line);background:#fff
+}
+.verdict.safe{background:linear-gradient(145deg,#fff,var(--sage2))}
+.verdict.assist{background:linear-gradient(145deg,#fff,var(--orange2))}
+.verdict.human{background:linear-gradient(145deg,#fff,#F4EEE7)}
+.verdict.block{background:linear-gradient(145deg,#fff,var(--red2));border-color:rgba(166,70,62,.25)}
+.badge{
+  display:inline-flex;padding:5px 10px;border-radius:999px;
+  font-size:12px;font-weight:700;background:var(--cream);color:var(--ink)
+}
+.verdict h3{
+  margin:9px 0 0;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:29px
+}
+.verdict p{margin:9px 0 0}
+.score-wrap{margin-top:16px}
+.score-label{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
+.score-bar{margin-top:6px;height:10px;border-radius:999px;background:#E8ECEA;overflow:hidden}
+.score-fill{height:100%;border-radius:999px;background:var(--ink3);width:0;transition:width .35s ease}
+.section-title{margin:21px 0 10px;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:20px}
+.info-card{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.info-card ul{margin:6px 0 0;padding-left:20px}
+.info-card li{margin:5px 0}
+.warning{margin-top:14px;padding:15px;border-radius:14px;background:var(--red2);font-size:13px}
+.next-step{margin-top:14px;padding:15px;border-radius:14px;background:var(--sage2);font-size:14px}
+.related{max-width:var(--content);margin:auto;padding:0 24px 75px}
+.related-card{
+  padding:28px;display:flex;align-items:center;justify-content:space-between;gap:22px;
+  border-radius:24px;background:var(--ink);color:#fff
+}
+.related-card h2{margin:0;font-family:"Noto Serif TC",serif}
+.related-card p{margin:7px 0 0;color:rgba(255,255,255,.76)}
+.related-links{display:flex;gap:9px;flex-wrap:wrap}
+.related-links a{
+  padding:11px 16px;border-radius:11px;background:#fff;color:var(--ink);
+  text-decoration:none;font-weight:700;white-space:nowrap
+}
+footer{padding:28px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:900px){
+  .hero,.shell{grid-template-columns:1fr}
+  .hero{padding-top:48px}
+  .result-panel{position:static}
+  .hero-card{max-width:650px}
+  .related-card{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:620px){
+  .header-inner,.hero,.notice,.tool,.related{padding-left:16px;padding-right:16px}
+  .brand-en{display:none}
+  .back-link{padding:8px 12px}
+  .hero{padding-top:38px}
+  .form-panel{padding:22px 18px}
+  .choices{grid-template-columns:1fr}
+  .result-head{padding:22px 20px 17px}
+  .result-body{padding:18px}
+  h1{font-size:39px}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/image_1.png" alt="牧茗標誌">
+      <span>
+        <span class="brand-name">牧茗管理顧問</span>
+        <span class="brand-en">MU MING MANAGEMENT CONSULTING</span>
+      </span>
+    </a>
+    <a class="back-link" href="index.html#free-tools">返回免費工具</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <span class="eyebrow">免費 AI 使用判斷工具</span>
+    <h1>AI 工作適不適合判斷器</h1>
+    <p class="hero-lead">不是所有工作都適合直接交給 AI。回答幾個問題，判斷這項工作適合讓 AI 直接處理、協助產出，還是必須保留高度人工判斷。</p>
+    <p class="hero-note">這是入門風險判斷，不取代公司資安規範、專業意見或主管決策。</p>
+  </div>
+  <aside class="hero-card">
+    <small>你會得到</small>
+    <h2>適合程度＋使用方式＋風險提醒</h2>
+    <p>工具不會只回答「可以或不可以」，而是告訴你 AI 可以做到哪一步、哪些地方一定要人工確認。</p>
+  </aside>
+</section>
+
+<section class="notice">
+  <div class="notice-inner"><strong>重要提醒：</strong>請不要在下方輸入身分證字號、帳號密碼、完整病歷、薪資明細、客戶機密或未公開公司資料。</div>
+</section>
+
+<section class="tool">
+<div class="shell">
+  <form class="panel form-panel" id="judgeForm">
+    <div class="panel-title">
+      <span class="step-badge">1</span>
+      <div>
+        <h2>描述這項工作</h2>
+        <p>選最接近的答案即可，不需要懂 AI 技術。</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="taskName">工作名稱或簡短描述 <span class="required">＊</span></label>
+      <input id="taskName" type="text" maxlength="180" placeholder="例如：整理會議紀錄、翻譯合約、回覆客訴、製作教育訓練簡報">
+    </div>
+
+    <div class="field">
+      <span class="legend">這項工作是否涉及個資、機密或敏感資料？</span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="sensitive" value="0" checked><span>沒有或已去識別化</span></label>
+        <label class="choice"><input type="radio" name="sensitive" value="2"><span>有少量內部資料</span></label>
+        <label class="choice"><input type="radio" name="sensitive" value="5"><span>有完整個資或機密</span></label>
+        <label class="choice"><input type="radio" name="sensitive" value="4"><span>不確定是否敏感</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="legend">如果結果錯誤，影響有多大？</span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="impact" value="0" checked><span>影響小，可快速修改</span></label>
+        <label class="choice"><input type="radio" name="impact" value="2"><span>會影響工作品質</span></label>
+        <label class="choice"><input type="radio" name="impact" value="4"><span>涉及金錢、法律或權益</span></label>
+        <label class="choice"><input type="radio" name="impact" value="5"><span>涉及安全、醫療或重大決策</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="legend">這項工作是否需要人類同理、協商或價值判斷？</span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="judgment" value="0" checked><span>幾乎不需要</span></label>
+        <label class="choice"><input type="radio" name="judgment" value="2"><span>需要一些語氣判斷</span></label>
+        <label class="choice"><input type="radio" name="judgment" value="4"><span>需要高度人際判斷</span></label>
+        <label class="choice"><input type="radio" name="judgment" value="5"><span>會直接影響他人權益</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="legend">這項工作有沒有固定格式、範例或明確標準？</span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="structure" value="-2"><span>有清楚格式與範例</span></label>
+        <label class="choice"><input type="radio" name="structure" value="-1"><span>大致有規則</span></label>
+        <label class="choice"><input type="radio" name="structure" value="1" checked><span>規則不明確</span></label>
+        <label class="choice"><input type="radio" name="structure" value="2"><span>每次情況差很多</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="legend">這項工作是否需要最新、精確或可查證的資訊？</span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="freshness" value="0" checked><span>不太需要</span></label>
+        <label class="choice"><input type="radio" name="freshness" value="2"><span>需要部分查證</span></label>
+        <label class="choice"><input type="radio" name="freshness" value="4"><span>非常依賴最新資料</span></label>
+        <label class="choice"><input type="radio" name="freshness" value="5"><span>錯誤資訊會造成風險</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="legend">完成後是否會有人員再次檢查？</span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="review" value="-2" checked><span>一定會人工檢查</span></label>
+        <label class="choice"><input type="radio" name="review" value="-1"><span>通常會抽查</span></label>
+        <label class="choice"><input type="radio" name="review" value="2"><span>可能直接使用</span></label>
+        <label class="choice"><input type="radio" name="review" value="4"><span>沒有人工檢查</span></label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" type="submit">查看判斷結果</button>
+      <button class="secondary" type="button" id="resetBtn">重新判斷</button>
+    </div>
+  </form>
+
+  <section class="panel result-panel" aria-live="polite">
+    <div class="result-head">
+      <h2>判斷結果</h2>
+      <p>重點不是能不能用，而是 AI 可以參與到哪一步。</p>
+    </div>
+    <div class="result-body">
+      <div class="empty" id="emptyState">
+        <div class="empty-icon">⚖️</div>
+        <strong>完成左側問題後，結果會顯示在這裡。</strong>
+      </div>
+
+      <div class="results" id="results">
+        <div class="verdict" id="verdict">
+          <span class="badge" id="badge"></span>
+          <h3 id="verdictTitle"></h3>
+          <p id="verdictText"></p>
+          <div class="score-wrap">
+            <div class="score-label"><span>AI 使用風險</span><strong id="scoreText"></strong></div>
+            <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+          </div>
+        </div>
+
+        <h3 class="section-title">建議 AI 負責到哪裡</h3>
+        <div class="info-card"><ul id="usageList"></ul></div>
+
+        <h3 class="section-title">一定要人工確認</h3>
+        <div class="info-card"><ul id="reviewList"></ul></div>
+
+        <div class="warning" id="warning"></div>
+        <div class="next-step" id="nextStep"></div>
+      </div>
+    </div>
+  </section>
+</div>
+</section>
+
+<section class="related">
+  <div class="related-card">
+    <div>
+      <h2>確認適合使用 AI 之後</h2>
+      <p>先選工具，再把需求說完整；不要一次把所有資料和責任都交出去。</p>
+    </div>
+    <div class="related-links">
+      <a href="ai-tool-recommender.html">AI 工具推薦</a>
+      <a href="prompt-builder.html">AI 指令補強器</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 牧茗管理顧問有限公司 · 本工具不儲存輸入內容，也不取代專業判斷</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function selectedNumber(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? Number(el.value) : 0;
+}
+
+function createItems(items){
+  return items.map(item => `<li>${item}</li>`).join("");
+}
+
+function getResult(score, sensitive, impact, judgment){
+  if(sensitive >= 5 || impact >= 5){
+    return {
+      key:"block",
+      badge:"高風險",
+      title:"不建議直接使用公開 AI",
+      text:"這項工作涉及高度敏感資料或重大風險。AI 最多只能協助處理去識別化後的部分內容，不應直接取得完整資料或代替專業決策。",
+      usage:[
+        "先移除姓名、證件號碼、聯絡方式、帳號與可識別資訊",
+        "只請 AI 提供一般性架構、檢查清單或公開資訊整理",
+        "優先使用公司核准的內部工具或封閉環境"
+      ],
+      review:[
+        "確認是否符合公司資安與資料處理規範",
+        "由具權責的人員做最後決策",
+        "法律、醫療、安全與權益相關內容需由專業人員確認"
+      ],
+      warning:"不要將完整個資、病歷、薪資明細、帳號密碼、客戶機密或未公開資料貼入公開 AI。",
+      next:"建議先把工作拆成「可公開的部分」與「敏感的部分」，只讓 AI 處理前者。"
+    };
+  }
+
+  if(score >= 15 || judgment >= 5){
+    return {
+      key:"human",
+      badge:"高度人工判斷",
+      title:"AI 可以輔助，但不能代替人做決定",
+      text:"這項工作需要較高的人際、價值或權益判斷。AI 適合整理資訊、模擬不同說法與產生草稿，但最後判斷必須由人負責。",
+      usage:[
+        "請 AI 整理事實、問題與可能方案",
+        "請 AI 產生不同語氣或溝通版本供參考",
+        "把 AI 當成思考助手，不要讓它直接做錄用、處分、權益或衝突決定"
+      ],
+      review:[
+        "是否忽略當事人感受與實際情境",
+        "是否存在偏見、不公平或不合理推論",
+        "最後內容與決定是否由有權責的人員確認"
+      ],
+      warning:"涉及人事、勞資、客訴、醫療、法律或重大權益時，AI 的建議只能當參考。",
+      next:"建議先讓 AI 整理問題與選項，再由人員討論並做最後決定。"
+    };
+  }
+
+  if(score >= 7){
+    return {
+      key:"assist",
+      badge:"適合 AI 協助",
+      title:"適合先讓 AI 產生初稿，再由人員確認",
+      text:"這項工作可以明顯受益於 AI，但仍有資訊正確性、語氣、制度或執行風險，不建議直接使用未檢查的結果。",
+      usage:[
+        "請 AI 整理重點、建立架構或產生初稿",
+        "提供明確格式、範例與不能更動的資訊",
+        "把複雜任務拆成小步驟，不要一次要求全部完成"
+      ],
+      review:[
+        "姓名、日期、金額、數字與專有名詞",
+        "法規、公司制度、承諾與對外說法",
+        "內容是否符合真正對象與使用情境"
+      ],
+      warning:"AI 可能會自信地補出不存在的資訊。重要事實請回到原始文件或可信來源核對。",
+      next:"建議先用一小段非機密內容測試，確認格式與品質後再處理完整工作。"
+    };
+  }
+
+  return {
+    key:"safe",
+    badge:"低風險",
+    title:"很適合讓 AI 協助完成",
+    text:"這項工作風險較低、容易檢查，也較適合用規則或範例引導。可以讓 AI 處理較多內容，再由你快速確認。",
+    usage:[
+      "產生初稿、摘要、分類、標題或格式轉換",
+      "依範例改寫文字或整理表格",
+      "先完成重複性高、可快速核對的部分"
+    ],
+    review:[
+      "確認是否漏掉原始資料中的重要內容",
+      "檢查語氣、格式與實際使用需求",
+      "送出前做一次快速人工閱讀"
+    ],
+    warning:"低風險不代表完全不需檢查。若內容突然涉及個資、金額、法規或權益，請重新判斷。",
+    next:"建議直接挑一個小任務開始，並保留原始資料方便比對。"
+  };
+}
+
+const form = $("judgeForm");
+const results = $("results");
+const emptyState = $("emptyState");
+const verdict = $("verdict");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const taskName = $("taskName").value.trim();
+
+  if(!taskName){
+    alert("請先填寫工作名稱或簡短描述。");
+    return;
+  }
+
+  const sensitive = selectedNumber("sensitive");
+  const impact = selectedNumber("impact");
+  const judgment = selectedNumber("judgment");
+  const structure = selectedNumber("structure");
+  const freshness = selectedNumber("freshness");
+  const review = selectedNumber("review");
+
+  const rawScore = sensitive + impact + judgment + structure + freshness + review;
+  const score = Math.max(0, Math.min(25, rawScore));
+  const result = getResult(score, sensitive, impact, judgment);
+  const percent = Math.round((score / 25) * 100);
+
+  verdict.className = `verdict ${result.key}`;
+  $("badge").textContent = result.badge;
+  $("verdictTitle").textContent = result.title;
+  $("verdictText").textContent = `「${taskName}」：${result.text}`;
+  $("scoreText").textContent = `${percent}%`;
+  $("scoreFill").style.width = `${percent}%`;
+  $("usageList").innerHTML = createItems(result.usage);
+  $("reviewList").innerHTML = createItems(result.review);
+  $("warning").innerHTML = `<strong>風險提醒：</strong>${result.warning}`;
+  $("nextStep").innerHTML = `<strong>建議下一步：</strong>${result.next}`;
+
+  emptyState.style.display = "none";
+  results.classList.add("show");
+
+  if(window.innerWidth < 901){
+    document.querySelector(".result-panel").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+});
+
+$("resetBtn").addEventListener("click", () => {
+  form.reset();
+  $("taskName").value = "";
+  results.classList.remove("show");
+  emptyState.style.display = "block";
+  $("scoreFill").style.width = "0";
+});
+</script>
+</body>
+</html>
