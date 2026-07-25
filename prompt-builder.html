@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="牧茗 AI 指令補強器：直接說出需求，免費整理成可貼到 ChatGPT、Gemini 或其他 AI 使用的提示詞。">
+  <meta name="theme-color" content="#173C35">
+  <title>AI 指令補強器｜牧茗管理顧問</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #173C35;
+      --ink-2: #28594E;
+      --ink-3: #3D7568;
+      --cream: #F6F0E5;
+      --cream-light: #FFFCF7;
+      --sage: #DDEAE4;
+      --sage-light: #EEF5F1;
+      --apricot: #F2A65A;
+      --apricot-light: #FFE5C5;
+      --text: #26332F;
+      --muted: #68736F;
+      --line: rgba(23, 60, 53, .16);
+      --white: #FFFFFF;
+      --danger: #A6463E;
+      --shadow: 0 20px 58px rgba(23, 60, 53, .12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --content: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 5% 0%, rgba(242,166,90,.18), transparent 28rem),
+        radial-gradient(circle at 96% 15%, rgba(61,117,104,.12), transparent 31rem),
+        var(--cream-light);
+      font-family: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      z-index: 999;
+      padding: 10px 14px;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(23,60,53,.10);
+      background: rgba(255,252,247,.91);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      max-width: var(--content);
+      min-height: 72px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-copy { min-width: 0; }
+
+    .brand-name {
+      display: block;
+      color: var(--ink);
+      font-family: "Noto Serif TC", serif;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+
+    .brand-en {
+      display: block;
+      color: var(--ink-3);
+      font-size: 10px;
+      line-height: 1.3;
+      letter-spacing: .13em;
+      white-space: nowrap;
+    }
+
+    .header-link {
+      min-height: 44px;
+      padding: 9px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .header-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--ink-3);
+      background: #fff;
+    }
+
+    .hero {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 72px 24px 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+      align-items: center;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border: 1px solid rgba(23,60,53,.13);
+      border-radius: 999px;
+      color: var(--ink-2);
+      background: rgba(221,234,228,.65);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--apricot);
+      box-shadow: 0 0 0 5px rgba(242,166,90,.17);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Serif TC", serif;
+      font-size: clamp(39px, 6vw, 68px);
+      line-height: 1.17;
+      letter-spacing: -.02em;
+    }
+
+    .hero-lead {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: #40504A;
+      font-size: clamp(17px, 2.05vw, 21px);
+    }
+
+    .hero-lead strong { color: var(--ink); }
+
+    .hero-note {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(23,60,53,.12);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(246,240,229,.9));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -58px;
+      bottom: -72px;
+      width: 195px;
+      height: 195px;
+      border-radius: 50%;
+      background: rgba(242,166,90,.19);
+    }
+
+    .hero-card-label {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--ink-3);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .hero-card-text {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.75;
+    }
+
+    .hero-card-flow {
+      position: relative;
+      z-index: 1;
+      margin-top: 17px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .flow-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #46564F;
+      font-size: 14px;
+    }
+
+    .flow-num {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .principle {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 0 24px 42px;
+    }
+
+    .principle-inner {
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      border-left: 5px solid var(--apricot);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: rgba(255,255,255,.76);
+      box-shadow: 0 8px 30px rgba(23,60,53,.06);
+    }
+
+    .principle-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 11px;
+      color: var(--ink);
+      background: var(--apricot-light);
+      font-size: 19px;
+    }
+
+    .principle p { margin: 0; }
+    .principle strong { color: var(--ink); }
+
+    .tool-wrap {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 0 24px 76px;
+    }
+
+    .tool-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(340px, .94fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.93);
+      box-shadow: var(--shadow);
+    }
+
+    .builder-panel { padding: 30px; }
+
+    .panel-heading {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 11px;
+      color: #fff;
+      background: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Serif TC", serif;
+      font-size: 27px;
+      line-height: 1.35;
+    }
+
+    .heading-help {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .required {
+      margin-left: 4px;
+      color: var(--danger);
+    }
+
+    .optional {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .field-hint {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid rgba(23,60,53,.22);
+      border-radius: 12px;
+      color: var(--text);
+      background: #fff;
+      transition: border .2s, box-shadow .2s;
+    }
+
+    input, select {
+      min-height: 50px;
+      padding: 11px 13px;
+    }
+
+    textarea {
+      min-height: 118px;
+      padding: 13px 14px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    #request { min-height: 190px; }
+
+    input::placeholder, textarea::placeholder { color: #99A39F; }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--ink-3);
+      box-shadow: 0 0 0 4px rgba(61,117,104,.10);
+      outline: 0;
+    }
+
+    .examples {
+      margin-top: 18px;
+    }
+
+    .examples-head {
+      margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .example-btn {
+      min-height: 54px;
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--ink);
+      background: var(--cream-light);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .18s ease;
+    }
+
+    .example-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--ink-3);
+      background: var(--sage-light);
+    }
+
+    details {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(246,240,229,.45);
+    }
+
+    summary {
+      min-height: 58px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "＋";
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    details[open] summary::after { content: "－"; }
+
+    .settings-grid {
+      padding: 0 16px 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .mode-section {
+      margin-top: 22px;
+    }
+
+    .mode-title {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .mode-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mode-card {
+      position: relative;
+      display: block;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .mode-card input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mode-content {
+      padding: 14px 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      transition: .18s ease;
+    }
+
+    .mode-card input:checked + .mode-content {
+      border-color: var(--ink-3);
+      background: var(--sage-light);
+      box-shadow: 0 0 0 3px rgba(61,117,104,.09);
+    }
+
+    .mode-dot {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1.5px solid var(--ink-3);
+      border-radius: 50%;
+    }
+
+    .mode-card input:checked + .mode-content .mode-dot::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .mode-copy strong {
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .mode-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .check-row {
+      margin: 0;
+      padding: 12px 13px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(255,255,255,.75);
+      cursor: pointer;
+    }
+
+    .check-row input {
+      width: 20px;
+      min-height: 20px;
+      height: 20px;
+      margin: 2px 0 0;
+      flex: 0 0 auto;
+      accent-color: var(--ink);
+    }
+
+    .check-row span {
+      color: #475650;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 11px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      flex: 1 1 265px;
+      border: 1px solid var(--ink);
+      color: #fff;
+      background: var(--ink);
+      box-shadow: 0 10px 25px rgba(23,60,53,.20);
+    }
+
+    .btn-primary:hover { background: var(--ink-2); }
+
+    .btn-secondary {
+      border: 1px solid rgba(23,60,53,.22);
+      color: var(--ink);
+      background: var(--cream-light);
+    }
+
+    .btn-ghost {
+      border: 1px solid transparent;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    .result-panel {
+      position: sticky;
+      top: 94px;
+      overflow: hidden;
+    }
+
+    .result-head {
+      padding: 25px 25px 20px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 0%, rgba(242,166,90,.33), transparent 13rem),
+        var(--ink);
+    }
+
+    .result-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .result-head h2 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .result-sub {
+      margin: 7px 0 0;
+      color: rgba(255,255,255,.76);
+      font-size: 13px;
+    }
+
+    .completion {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #F9F5EB;
+      background: rgba(255,255,255,.13);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .result-body { padding: 24px; }
+
+    #result {
+      min-height: 485px;
+      background: #FCFBF7;
+      font-size: 15px;
+      line-height: 1.78;
+    }
+
+    .result-actions {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    .copy-btn {
+      border: 1px solid var(--ink);
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .copy-btn:disabled {
+      opacity: .48;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .privacy-box {
+      margin-top: 15px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      border-radius: 12px;
+      color: var(--muted);
+      background: var(--sage);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .privacy-box strong { color: var(--ink); }
+
+    .how {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .how-card {
+      padding: 32px;
+      border-radius: var(--radius-xl);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.05), transparent 60%),
+        var(--ink);
+    }
+
+    .how-card h2 {
+      color: #fff;
+      text-align: center;
+    }
+
+    .how-lead {
+      margin: 8px 0 26px;
+      color: rgba(255,255,255,.72);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .how-item {
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      background: rgba(255,255,255,.07);
+    }
+
+    .how-num {
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--apricot);
+      font-weight: 800;
+    }
+
+    .how-item h3 {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 17px;
+    }
+
+    .how-item p {
+      margin: 0;
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: rgba(246,240,229,.72);
+    }
+
+    .footer-inner {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--ink-2);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 100;
+      max-width: calc(100% - 32px);
+      padding: 11px 17px;
+      border-radius: 999px;
+      color: #fff;
+      background: #202B27;
+      box-shadow: 0 12px 30px rgba(0,0,0,.20);
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translate(-50%, 20px);
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .example-btn:focus-visible,
+    .btn:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    summary:focus-visible,
+    .mode-card input:focus-visible + .mode-content {
+      outline: 3px solid rgba(242,166,90,.42);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 54px;
+      }
+
+      .hero-card { max-width: 720px; }
+      .tool-shell { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
+      #result { min-height: 360px; }
+    }
+
+    @media (max-width: 700px) {
+      .header-inner {
+        min-height: 64px;
+        padding: 8px 16px;
+      }
+
+      .brand-logo { width: 36px; height: 36px; }
+      .brand-name { font-size: 14px; }
+      .brand-en { display: none; }
+      .header-link { padding: 8px 12px; font-size: 13px; }
+
+      .hero {
+        padding: 42px 18px 28px;
+        gap: 26px;
+      }
+
+      .hero-card { padding: 22px; }
+      .principle { padding: 0 18px 30px; }
+      .tool-wrap { padding: 0 14px 56px; }
+      .builder-panel { padding: 22px 17px; }
+      h2 { font-size: 23px; }
+      .example-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .settings-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: 1; }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-primary { grid-column: 1 / -1; }
+
+      .result-head { padding: 22px 18px 18px; }
+      .result-body { padding: 18px; }
+      .result-title-row { align-items: flex-start; }
+      .completion { white-space: normal; text-align: center; }
+
+      .how { padding: 0 14px 58px; }
+      .how-card { padding: 25px 18px; }
+      .how-grid { grid-template-columns: 1fr; }
+
+      .footer-inner {
+        padding: 22px 18px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#builder">直接開始使用</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="https://sally741117.github.io/muming-website/" aria-label="返回牧茗管理顧問首頁">
+        <img class="brand-logo" src="https://sally741117.github.io/muming-website/assets/image_1.png" alt="" width="42" height="42">
+        <span class="brand-copy">
+          <span class="brand-name">牧茗管理顧問</span>
+          <span class="brand-en">MU MING MANAGEMENT CONSULTING</span>
+        </span>
+      </a>
+      <a class="header-link" href="https://sally741117.github.io/muming-website/">返回牧茗官網</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">免費工具・免登入・不需 API</span>
+        <h1>AI 指令補強器</h1>
+        <p class="hero-lead">
+          不用學公式，也不用先整理。直接說出需求，就能變成一段
+          <strong>可貼到任何 AI 使用的提示詞</strong>。
+        </p>
+        <p class="hero-note">寫訊息、整理文件、規劃活動、製作簡報或任何其他需求都可以使用。</p>
+      </div>
+
+      <aside class="hero-card" aria-label="工具使用流程">
+        <span class="hero-card-label">它會幫你做什麼？</span>
+        <p class="hero-card-text">保留你的原始需求，再加上讓 AI 判斷、提問與完成任務的必要規則。</p>
+        <div class="hero-card-flow">
+          <div class="flow-item"><span class="flow-num">1</span>隨意輸入腦中的需求</div>
+          <div class="flow-item"><span class="flow-num">2</span>產生可直接使用的提示詞</div>
+          <div class="flow-item"><span class="flow-num">3</span>貼到 ChatGPT、Gemini 或其他 AI</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="principle" aria-label="重要說明">
+      <div class="principle-inner">
+        <div class="principle-icon" aria-hidden="true">✦</div>
+        <p><strong>這裡產生的是提示詞，不是最終答案。</strong>貼到你使用的 AI 後，資訊足夠就會直接完成；缺少關鍵資料時，也可以先反問你必要問題。</p>
+      </div>
+    </section>
+
+    <section class="tool-wrap" id="builder">
+      <div class="tool-shell">
+        <section class="panel builder-panel" aria-labelledby="builder-title">
+          <div class="panel-heading">
+            <span class="step">1</span>
+            <div>
+              <h2 id="builder-title">直接說出你的需求</h2>
+              <p class="heading-help">不用分類、不用寫完整，也不用知道什麼是提示詞。</p>
+            </div>
+          </div>
+
+          <form id="promptForm" novalidate>
+            <div class="field">
+              <label for="request">你想請 AI 幫什麼忙？<span class="required" aria-hidden="true">*</span></label>
+              <textarea id="request" required aria-required="true" placeholder="例如：原物料短缺，客戶的訂單要延期，但現在還不知道會延多久。我想跟長期合作的客戶道歉，也希望他能理解，我們會盡量趕進度。"></textarea>
+              <span class="field-hint">可以貼原文、事情經過、零散筆記，甚至只寫一句話。</span>
+            </div>
+
+            <div class="examples">
+              <p class="examples-head">
+                <span>快速套用範例</span>
+                <span class="optional">只是示範，不限制用途</span>
+              </p>
+              <div class="example-grid">
+                <button class="example-btn" type="button" data-example="message">寫訊息／Email</button>
+                <button class="example-btn" type="button" data-example="rewrite">修改與潤稿</button>
+                <button class="example-btn" type="button" data-example="summary">整理與摘要</button>
+                <button class="example-btn" type="button" data-example="meeting">會議紀錄</button>
+                <button class="example-btn" type="button" data-example="slides">簡報與企劃</button>
+                <button class="example-btn" type="button" data-example="plan">活動／工作規劃</button>
+              </div>
+            </div>
+
+            <details>
+              <summary>補充需求（全部選填）</summary>
+              <div class="settings-grid">
+                <div class="field">
+                  <label for="audience">使用對象 <span class="optional">選填</span></label>
+                  <input id="audience" type="text" placeholder="例如：公司客戶、主管、同事、一般民眾">
+                </div>
+
+                <div class="field">
+                  <label for="format">希望的輸出形式 <span class="optional">選填</span></label>
+                  <select id="format">
+                    <option value="">不指定，由 AI 判斷</option>
+                    <option>LINE 訊息</option>
+                    <option>Email</option>
+                    <option>條列式重點</option>
+                    <option>表格</option>
+                    <option>正式公告</option>
+                    <option>簡報大綱</option>
+                    <option>社群貼文</option>
+                    <option>執行清單</option>
+                    <option>完整說明文章</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="tone">希望的語氣 <span class="optional">選填</span></label>
+                  <select id="tone">
+                    <option value="">不指定，由 AI 判斷</option>
+                    <option>專業正式</option>
+                    <option>專業但自然</option>
+                    <option>禮貌且清楚</option>
+                    <option>簡單白話</option>
+                    <option>溫暖有同理心</option>
+                    <option>親切口語</option>
+                    <option>中性客觀</option>
+                    <option>活潑有吸引力</option>
+                    <option>有說服力但不強迫</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="length">希望的篇幅 <span class="optional">選填</span></label>
+                  <select id="length">
+                    <option value="">不限制，依內容需要</option>
+                    <option>50 字以內</option>
+                    <option>80～120 字</option>
+                    <option>130～180 字</option>
+                    <option>250～350 字</option>
+                    <option>500 字左右</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="mustInclude">一定要包含 <span class="optional">選填</span></label>
+                  <textarea id="mustInclude" placeholder="例如：目前延期時間未確定、會盡力趕進度、需要取得客戶同意。"></textarea>
+                </div>
+
+                <div class="field full">
+                  <label for="avoid">希望避免 <span class="optional">選填</span></label>
+                  <textarea id="avoid" placeholder="例如：不要太官方、不要責備對方、不要自行增加未提供的日期或承諾。"></textarea>
+                </div>
+
+                <label class="check-row field full">
+                  <input id="naturalLanguage" type="checkbox">
+                  <span><strong>使用自然易懂的文字</strong><br>需要時可勾選，避免過度制式、艱深或像公文的寫法。</span>
+                </label>
+              </div>
+            </details>
+
+            <div class="mode-section">
+              <p class="mode-title">資料不足時，希望 AI 怎麼處理？</p>
+              <div class="mode-grid">
+                <label class="mode-card">
+                  <input type="radio" name="mode" value="smart" checked>
+                  <span class="mode-content">
+                    <span class="mode-dot" aria-hidden="true"></span>
+                    <span class="mode-copy">
+                      <strong>智慧判斷｜建議</strong>
+                      <span>資訊夠就直接完成，真的缺少關鍵資料才問，最多 3 題。</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="mode-card">
+                  <input type="radio" name="mode" value="ask">
+                  <span class="mode-content">
+                    <span class="mode-dot" aria-hidden="true"></span>
+                    <span class="mode-copy">
+                      <strong>先問清楚</strong>
+                      <span>優先確認會影響結果的重要資訊，再整合回答完成任務。</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="mode-card">
+                  <input type="radio" name="mode" value="direct">
+                  <span class="mode-content">
+                    <span class="mode-dot" aria-hidden="true"></span>
+                    <span class="mode-copy">
+                      <strong>直接完成</strong>
+                      <span>不要反問；缺少但不能猜的資料，以【待補充】標示。</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-primary" type="submit">✨ 幫我整理成 AI 提示詞</button>
+              <button class="btn btn-secondary" id="demoBtn" type="button">套用完整示範</button>
+              <button class="btn btn-ghost" id="resetBtn" type="button">清空重填</button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="panel result-panel" aria-labelledby="result-title">
+          <div class="result-head">
+            <div class="result-title-row">
+              <div class="panel-heading" style="margin:0;">
+                <span class="step" style="background:var(--apricot); color:var(--ink);">2</span>
+                <div>
+                  <h2 id="result-title">可直接貼給 AI 的提示詞</h2>
+                  <p class="result-sub">產生後仍可自行修改，不會限制你最後想怎麼使用。</p>
+                </div>
+              </div>
+              <span class="completion" id="completion">尚未產生</span>
+            </div>
+          </div>
+
+          <div class="result-body">
+            <label for="result" class="optional">提示詞內容</label>
+            <textarea id="result" placeholder="完成左側設定後，按下「幫我整理成 AI 提示詞」。"></textarea>
+
+            <div class="result-actions">
+              <button class="btn copy-btn" id="copyBtn" type="button" disabled>複製提示詞</button>
+              <button class="btn btn-secondary" id="editBtn" type="button">回到輸入</button>
+            </div>
+
+            <div class="privacy-box">
+              <span aria-hidden="true">🔒</span>
+              <div><strong>內容只在你的瀏覽器內整理。</strong><br>不登入、不呼叫 AI API，也不會把輸入內容上傳或儲存。</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <div class="how-card">
+        <h2 id="how-title">三個步驟，開始和 AI 對話</h2>
+        <p class="how-lead">牧茗工具負責整理提示詞；真正理解、提問與完成任務的是你貼過去使用的 AI。</p>
+        <div class="how-grid">
+          <article class="how-item">
+            <div class="how-num">1</div>
+            <h3>直接說需求</h3>
+            <p>不必先分辨任務、背景或格式，把腦中的事情完整說出來即可。</p>
+          </article>
+
+          <article class="how-item">
+            <div class="how-num">2</div>
+            <h3>複製提示詞</h3>
+            <p>工具保留原始需求，並加入讓 AI 判斷、確認與執行的規則。</p>
+          </article>
+
+          <article class="how-item">
+            <div class="how-num">3</div>
+            <h3>貼到任一 AI</h3>
+            <p>資訊足夠就直接得到結果；資料不足時，AI 會依設定向你提問。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 牧茗管理顧問有限公司｜讓 AI 真正融入工作</div>
+      <div class="footer-links">
+        <a href="https://sally741117.github.io/muming-website/">官方網站</a>
+        <a href="https://line.me/R/ti/p/@498hxein" target="_blank" rel="noopener">LINE 官方帳號</a>
+        <a href="mailto:muming9000@gmail.com">聯絡我們</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $ = (id) => document.getElementById(id);
+      const form = $("promptForm");
+      const request = $("request");
+      const audience = $("audience");
+      const format = $("format");
+      const tone = $("tone");
+      const length = $("length");
+      const mustInclude = $("mustInclude");
+      const avoid = $("avoid");
+      const naturalLanguage = $("naturalLanguage");
+      const result = $("result");
+      const completion = $("completion");
+      const copyBtn = $("copyBtn");
+      const toast = $("toast");
+      let toastTimer;
+
+      const examples = {
+        message: {
+          request: "原物料短缺，客戶的訂單需要延期，但目前還不知道確切會延多久。我想跟長期合作的客戶說明並道歉，也希望取得對方理解。我們會持續追蹤並盡力趕進度。",
+          audience: "長期合作的公司客戶",
+          format: "LINE 訊息",
+          tone: "專業但自然",
+          length: "130～180 字",
+          mustInclude: "延期時間目前尚未確定、會盡力趕進度、希望取得客戶理解。",
+          avoid: "不要自行增加未提供的日期、補償方案或承諾。"
+        },
+        rewrite: {
+          request: "我有一段文字覺得太直接，希望保留原本意思，但改得比較有禮貌、自然，不要讓對方覺得我在責備他。我會把原文一起貼給 AI。",
+          audience: "",
+          format: "",
+          tone: "禮貌且清楚",
+          length: "",
+          mustInclude: "保留原本的核心意思。",
+          avoid: "不要過度客套，也不要擅自刪除重要資訊。"
+        },
+        summary: {
+          request: "我會貼上一篇很長的文章，希望 AI 幫我整理重點，讓沒有時間看全文的人也能快速理解，重要數據和結論不能漏掉。",
+          audience: "沒有時間閱讀全文的人",
+          format: "條列式重點",
+          tone: "簡單白話",
+          length: "250～350 字",
+          mustInclude: "核心結論、重要數據、關鍵原因與需要注意的事項。",
+          avoid: "不要加入原文沒有提到的推論。"
+        },
+        meeting: {
+          request: "我會貼上會議逐字稿或零散筆記，希望整理成可以追蹤的會議紀錄。",
+          audience: "與會人員與相關主管",
+          format: "表格",
+          tone: "專業正式",
+          length: "",
+          mustInclude: "會議結論、待辦事項、負責人、完成期限；沒有提供的資料標示待確認。",
+          avoid: "不要自行補充沒有出現在會議內容中的決議。"
+        },
+        slides: {
+          request: "我有一個簡報主題和一些資料，希望 AI 幫我規劃簡報架構，每頁要有標題和重點，順序要讓一般人容易理解。",
+          audience: "簡報聽眾",
+          format: "簡報大綱",
+          tone: "專業但自然",
+          length: "",
+          mustInclude: "開場、背景、核心問題、主要內容、建議與結尾。",
+          avoid: "每頁不要放太多文字。"
+        },
+        plan: {
+          request: "我有一個想法但還很零散，希望 AI 幫我整理成可以執行的計畫，並指出我還缺哪些重要資訊。",
+          audience: "",
+          format: "執行清單",
+          tone: "專業但自然",
+          length: "",
+          mustInclude: "目標、執行步驟、所需資源、可能風險與下一步。",
+          avoid: "不要假設我一定有足夠預算或人力。"
+        }
+      };
+
+      function clean(value) {
+        return String(value || "").trim().replace(/\n{3,}/g, "\n\n");
+      }
+
+      function setSelect(select, value) {
+        select.value = Array.from(select.options).some(option => option.value === value) ? value : "";
+      }
+
+      function showToast(message) {
+        clearTimeout(toastTimer);
+        toast.textContent = message;
+        toast.classList.add("show");
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+      }
+
+      function selectedMode() {
+        const checked = document.querySelector('input[name="mode"]:checked');
+        return checked ? checked.value : "smart";
+      }
+
+      function applyExample(key) {
+        const data = examples[key];
+        if (!data) return;
+
+        request.value = data.request;
+        audience.value = data.audience;
+        setSelect(format, data.format);
+        setSelect(tone, data.tone);
+        setSelect(length, data.length);
+        mustInclude.value = data.mustInclude;
+        avoid.value = data.avoid;
+        naturalLanguage.checked = false;
+        updateStatus();
+        request.focus();
+        showToast("範例已帶入，所有內容都可以修改。");
+      }
+
+      function buildHandlingRules(mode) {
+        if (mode === "ask") {
+          return [
+            "請先檢查目前資訊是否缺少會影響正確性或使用效果的重要內容。",
+            "若需要確認，請先提出最多 3 個最必要的問題，一次問完；問題需簡短、具體，必要時提供選項或範例。",
+            "不要詢問不影響任務完成的細節；若沒有缺少關鍵資訊，請直接完成，不必為了提問而提問。",
+            "收到我的回答後，請整合原始需求與補充資訊，再提供完整結果。"
+          ];
+        }
+
+        if (mode === "direct") {
+          return [
+            "請根據目前資訊直接完成任務，不要先向我提問。",
+            "未提供且不能合理推定的重要資料，請使用【待補充】或清楚的可替換欄位標示。",
+            "不得自行編造事實、日期、人物、承諾、條件或其他重要內容。"
+          ];
+        }
+
+        return [
+          "若現有資訊已足夠，請直接提供可使用的結果，不要多問。",
+          "只有缺少會明顯影響正確性或使用效果的關鍵資訊時，才先提出最多 3 個必要問題。",
+          "問題需簡短、具體，必要時提供選項或範例；不要詢問不影響任務完成的細節。",
+          "收到我的回答後，請整合原始需求與補充資訊，再完成任務。"
+        ];
+      }
+
+      function buildPrompt() {
+        const rawRequest = clean(request.value);
+
+        if (!rawRequest) {
+          request.focus();
+          request.setAttribute("aria-invalid", "true");
+          showToast("請先輸入你想請 AI 幫忙的事情。");
+          return "";
+        }
+
+        request.removeAttribute("aria-invalid");
+
+        const sections = [
+          "請協助我處理以下需求。",
+          `【我的原始需求】\n${rawRequest}`
+        ];
+
+        const settings = [];
+        if (clean(audience.value)) settings.push(`使用對象：${clean(audience.value)}`);
+        if (format.value) settings.push(`希望的輸出形式：${format.value}`);
+        if (tone.value) settings.push(`希望的語氣：${tone.value}`);
+        if (length.value) settings.push(`希望的篇幅：${length.value}`);
+        if (clean(mustInclude.value)) settings.push(`一定要包含：${clean(mustInclude.value)}`);
+        if (clean(avoid.value)) settings.push(`希望避免：${clean(avoid.value)}`);
+        if (naturalLanguage.checked) settings.push("文字風格：使用自然、容易理解的說法，避免過度制式、艱深或像公文的表達。");
+
+        if (settings.length) {
+          sections.push(`【補充設定】\n${settings.map(item => `- ${item}`).join("\n")}`);
+        }
+
+        const commonRules = [
+          "請先理解我真正想完成的事情，並依照需求判斷適合的內容形式、結構與表達方式。",
+          "請忠實保留我的原意與目的，不要擅自改成另一項任務。",
+          "補充設定只用來協助你完成需求；未指定的部分，請依內容合理判斷。",
+          "不得自行增加我未提供的事實、日期、人物、承諾、條件或其他重要資訊。",
+          ...buildHandlingRules(selectedMode()),
+          "請直接提供最終結果；不需要解釋提示詞、分析過程或重述全部需求。"
+        ];
+
+        sections.push(`【處理方式】\n${commonRules.map((rule, index) => `${index + 1}. ${rule}`).join("\n")}`);
+
+        return sections.join("\n\n");
+      }
+
+      function updateStatus() {
+        const optionalCount = [
+          audience.value,
+          format.value,
+          tone.value,
+          length.value,
+          mustInclude.value,
+          avoid.value,
+          naturalLanguage.checked ? "yes" : ""
+        ].filter(value => clean(value)).length;
+
+        completion.textContent = optionalCount
+          ? `已補充 ${optionalCount} 項設定`
+          : "可只填第一格";
+      }
+
+      async function copyResult() {
+        const text = clean(result.value);
+
+        if (!text) {
+          showToast("請先產生提示詞。");
+          return;
+        }
+
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (error) {
+          const temp = document.createElement("textarea");
+          temp.value = text;
+          temp.setAttribute("readonly", "");
+          temp.style.position = "fixed";
+          temp.style.opacity = "0";
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand("copy");
+          temp.remove();
+        }
+
+        copyBtn.textContent = "✓ 已複製";
+        showToast("提示詞已複製，可以貼到你使用的 AI。");
+
+        setTimeout(() => {
+          copyBtn.textContent = "複製提示詞";
+        }, 1700);
+      }
+
+      function renderPrompt(prompt) {
+        result.value = prompt;
+        copyBtn.disabled = false;
+        completion.textContent = "提示詞已完成";
+
+        if (window.matchMedia("(max-width: 980px)").matches) {
+          document.querySelector(".result-panel").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }
+
+      function resetAll() {
+        form.reset();
+        result.value = "";
+        copyBtn.disabled = true;
+        completion.textContent = "尚未產生";
+        request.removeAttribute("aria-invalid");
+        request.focus();
+        showToast("已清空，可以重新輸入。");
+      }
+
+      function applyDemo() {
+        applyExample("message");
+        naturalLanguage.checked = true;
+        document.querySelector('input[name="mode"][value="smart"]').checked = true;
+        updateStatus();
+        const prompt = buildPrompt();
+        if (prompt) renderPrompt(prompt);
+      }
+
+      document.querySelectorAll(".example-btn").forEach(button => {
+        button.addEventListener("click", () => applyExample(button.dataset.example));
+      });
+
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        const prompt = buildPrompt();
+        if (prompt) renderPrompt(prompt);
+      });
+
+      form.addEventListener("input", updateStatus);
+      form.addEventListener("change", updateStatus);
+      $("copyBtn").addEventListener("click", copyResult);
+      $("resetBtn").addEventListener("click", resetAll);
+      $("demoBtn").addEventListener("click", applyDemo);
+      $("editBtn").addEventListener("click", () => {
+        request.scrollIntoView({ behavior: "smooth", block: "center" });
+        request.focus();
+      });
+
+      updateStatus();
+    })();
+  </script>
+</body>
+</html>
