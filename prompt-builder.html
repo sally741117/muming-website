@@ -964,6 +964,19 @@
         justify-self: stretch !important;
       }
     }
+  
+    /* 牧茗：快速套用範例放在主要按鈕下方 */
+    .examples-after-primary {
+      grid-column: 1 / -1;
+      width: 100%;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(23,60,53,.18);
+    }
+
+    .examples-after-primary .examples-head {
+      margin-top: 0;
+    }
   </style>
 </head>
 <body>
@@ -1028,21 +1041,6 @@
               <label for="request">你想請 AI 幫什麼忙？<span class="required" aria-hidden="true">*</span></label>
               <textarea id="request" required aria-required="true" placeholder="例如：原物料短缺，客戶的訂單要延期，但現在還不知道會延多久。我想跟長期合作的客戶道歉，也希望他能理解，我們會盡量趕進度。"></textarea>
               <span class="field-hint">可以貼原文、事情經過、零散筆記，甚至只寫一句話。</span>
-            </div>
-
-            <div class="examples">
-              <p class="examples-head">
-                <span>快速套用範例</span>
-                <span class="optional">只是示範，不限制用途</span>
-              </p>
-              <div class="example-grid">
-                <button class="example-btn" type="button" data-example="message">寫訊息／Email</button>
-                <button class="example-btn" type="button" data-example="rewrite">修改與潤稿</button>
-                <button class="example-btn" type="button" data-example="summary">整理與摘要</button>
-                <button class="example-btn" type="button" data-example="meeting">會議紀錄</button>
-                <button class="example-btn" type="button" data-example="slides">簡報與企劃</button>
-                <button class="example-btn" type="button" data-example="plan">活動／工作規劃</button>
-              </div>
             </div>
 
             <details>
@@ -1154,6 +1152,21 @@
 
             <div class="actions">
   <button class="btn btn-primary" type="submit">✨ 幫我整理成 AI 提示詞</button>
+<div class="examples examples-after-primary">
+              <p class="examples-head">
+                <span>不知道怎麼填？可套用範例</span>
+                <span class="optional">套用時會覆蓋目前輸入</span>
+              </p>
+              <div class="example-grid">
+                <button class="example-btn" type="button" data-example="message">寫訊息／Email</button>
+                <button class="example-btn" type="button" data-example="rewrite">修改與潤稿</button>
+                <button class="example-btn" type="button" data-example="summary">整理與摘要</button>
+                <button class="example-btn" type="button" data-example="meeting">會議紀錄</button>
+                <button class="example-btn" type="button" data-example="slides">簡報與企劃</button>
+                <button class="example-btn" type="button" data-example="plan">活動／工作規劃</button>
+              </div>
+            </div>
+
   <button class="btn btn-secondary" id="demoBtn" type="button">套用完整示範（會覆蓋目前輸入）</button>
   <button class="btn btn-ghost" id="resetBtn" type="button">清空重填</button>
 </div>
@@ -1533,8 +1546,36 @@
 
       updateStatus();
     })();
-  </script>
+  
+      // 牧茗：避免快速範例誤覆蓋使用者已輸入的內容
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest(".example-btn");
+        if (!button) return;
+
+        const hasExistingInput = [
+          request.value,
+          audience.value,
+          format.value,
+          tone.value,
+          length.value,
+          mustInclude.value,
+          avoid.value
+        ].some(value => clean(value)) || naturalLanguage.checked;
+
+        if (!hasExistingInput) return;
+
+        const confirmed = window.confirm(
+          "套用範例會覆蓋你目前輸入的內容。\n\n確定要繼續嗎？"
+        );
+
+        if (!confirmed) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+</script>
 </body>
 </html>
+
 
 
