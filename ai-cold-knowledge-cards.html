@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="牧茗 AI 冷知識翻牌卡：用簡單翻牌方式認識 AI 的使用觀念、風險與實用技巧。">
+<meta name="theme-color" content="#173C35">
+<title>AI 冷知識翻牌卡｜牧茗管理顧問</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#173C35;--ink2:#28594E;--ink3:#3D7568;--paper:#FFFCF7;
+  --cream:#F6F0E5;--sage:#DDEAE4;--sage2:#EEF5F1;
+  --orange:#F2A65A;--orange2:#FFE5C5;--text:#26332F;
+  --muted:#68736F;--line:rgba(23,60,53,.16);
+  --shadow:0 24px 70px rgba(23,60,53,.16);--content:1080px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;color:var(--text);line-height:1.7;
+  font-family:"Noto Sans TC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 5% 0%,rgba(242,166,90,.2),transparent 27rem),
+    radial-gradient(circle at 96% 12%,rgba(61,117,104,.14),transparent 30rem),
+    var(--paper)
+}
+button,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.site-header{
+  position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(23,60,53,.1);
+  background:rgba(255,252,247,.92);backdrop-filter:blur(15px)
+}
+.header-inner{
+  max-width:var(--content);min-height:72px;margin:auto;padding:10px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand-logo{width:42px;height:42px;object-fit:contain}
+.brand-name{display:block;color:var(--ink);font-family:"Noto Serif TC",serif;font-weight:700;letter-spacing:.08em}
+.brand-en{display:block;color:var(--ink3);font-size:10px;letter-spacing:.12em}
+.back-link{
+  min-height:44px;padding:9px 16px;display:inline-flex;align-items:center;
+  border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);
+  text-decoration:none;color:var(--ink);font-size:14px;font-weight:600
+}
+.hero{
+  max-width:var(--content);margin:auto;padding:64px 24px 28px;text-align:center
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:17px;padding:7px 12px;
+  border:1px solid rgba(23,60,53,.13);border-radius:999px;
+  background:rgba(221,234,228,.68);color:var(--ink2);font-size:13px;font-weight:700
+}
+.eyebrow:before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 0 5px rgba(242,166,90,.17)
+}
+h1{
+  margin:0;color:var(--ink);font-family:"Noto Serif TC",serif;
+  font-size:clamp(38px,6vw,62px);line-height:1.18
+}
+.hero-lead{
+  max-width:720px;margin:20px auto 0;color:#40504A;
+  font-size:clamp(17px,2vw,20px)
+}
+.hero-note{margin:13px 0 0;color:var(--muted);font-size:14px}
+.controls{
+  max-width:760px;margin:0 auto;padding:20px 24px 0;
+  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap
+}
+.controls label{color:var(--ink);font-weight:700;font-size:14px}
+select{
+  min-height:46px;padding:10px 40px 10px 14px;border:1px solid var(--line);
+  border-radius:12px;background:#fff;color:var(--text);outline:none
+}
+select:focus{border-color:var(--ink3);box-shadow:0 0 0 4px rgba(61,117,104,.1)}
+.keyboard-hint{color:var(--muted);font-size:12px}
+.card-area{
+  max-width:780px;margin:0 auto;padding:34px 24px 24px
+}
+.scene{
+  width:100%;height:420px;perspective:1200px
+}
+.flip-card{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.72,.2,1);
+  cursor:pointer;touch-action:pan-y
+}
+.flip-card.flipped{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;padding:38px;border-radius:30px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid rgba(23,60,53,.13);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center
+}
+.front{
+  background:
+    radial-gradient(circle at 100% 0%,rgba(242,166,90,.28),transparent 18rem),
+    linear-gradient(145deg,#fff,var(--sage2))
+}
+.back{
+  transform:rotateY(180deg);
+  background:
+    radial-gradient(circle at 0% 100%,rgba(242,166,90,.22),transparent 18rem),
+    linear-gradient(145deg,var(--ink),var(--ink2));
+  color:#fff
+}
+.category{
+  display:inline-flex;padding:6px 12px;border-radius:999px;
+  background:var(--orange2);color:var(--ink);font-size:12px;font-weight:700
+}
+.front .icon{font-size:56px;line-height:1;margin:22px 0 18px}
+.front h2{
+  margin:0;max-width:650px;color:var(--ink);
+  font-family:"Noto Serif TC",serif;font-size:clamp(27px,4vw,40px);line-height:1.35
+}
+.tap-hint{margin-top:24px;color:var(--muted);font-size:14px}
+.back .back-label{
+  color:rgba(255,255,255,.7);font-size:12px;font-weight:700;letter-spacing:.12em
+}
+.back h3{
+  margin:14px 0 0;max-width:650px;color:#fff;
+  font-family:"Noto Serif TC",serif;font-size:clamp(24px,3.5vw,34px);line-height:1.4
+}
+.back p{
+  max-width:650px;margin:18px 0 0;color:rgba(255,255,255,.86);
+  font-size:clamp(15px,2vw,18px)
+}
+.tip{
+  max-width:650px;margin-top:18px;padding:13px 16px;border-radius:14px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:14px
+}
+.card-navigation{
+  max-width:780px;margin:0 auto;padding:12px 24px 0;
+  display:grid;grid-template-columns:1fr minmax(150px,1.15fr) 1fr;
+  gap:12px;align-items:stretch
+}
+.nav-arrow,.flip-action{
+  min-height:58px;border-radius:15px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:.18s ease
+}
+.nav-arrow{
+  border:1px solid var(--line);background:#fff;color:var(--ink)
+}
+.nav-arrow:hover{border-color:var(--ink3);transform:translateY(-1px)}
+.nav-arrow.next{background:var(--ink);border-color:var(--ink);color:#fff}
+.nav-arrow.next:hover{background:var(--ink2)}
+.arrow-icon{font-size:23px;line-height:1}
+.arrow-text{font-size:15px}
+.flip-action{
+  border:0;background:var(--orange);color:#3B2B1D;
+  flex-direction:column;gap:0;line-height:1.2
+}
+.flip-action:hover{background:#F6B66F;transform:translateY(-1px)}
+.flip-action span{font-size:11px;opacity:.74;letter-spacing:.08em}
+.flip-action strong{font-size:16px}
+.progress-wrap{
+  max-width:780px;margin:0 auto;padding:15px 24px 58px;text-align:center
+}
+.progress-text{color:var(--muted);font-size:13px}
+.progress-dots{
+  margin-top:9px;display:flex;justify-content:center;gap:6px
+}
+.progress-dots span{
+  width:7px;height:7px;border-radius:999px;background:rgba(23,60,53,.16)
+}
+.progress-dots span.active{width:22px;background:var(--ink3)}
+
+.mini-grid{
+  max-width:var(--content);margin:0 auto;padding:0 24px 72px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.mini-card{
+  padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.86)
+}
+.mini-card strong{display:block;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:18px}
+.mini-card p{margin:7px 0 0;color:var(--muted);font-size:14px}
+footer{
+  padding:28px 24px;border-top:1px solid var(--line);
+  text-align:center;color:var(--muted);font-size:13px
+}
+@media(max-width:720px){
+  .header-inner,.hero,.controls,.card-area,.card-navigation,.progress-wrap,.mini-grid{padding-left:16px;padding-right:16px}
+  .brand-en{display:none}
+  .back-link{padding:8px 12px}
+  .hero{padding-top:40px}
+  .scene{height:470px}
+  .face{padding:26px 20px}
+  .card-navigation{grid-template-columns:1fr 1.2fr 1fr;gap:8px}
+  .nav-arrow,.flip-action{min-height:54px;padding:8px}
+  .arrow-text{font-size:13px}
+  .mini-grid{grid-template-columns:1fr}
+  h1{font-size:39px}
+}
+@media(max-width:430px){
+  .scene{height:510px}
+  .front .icon{font-size:48px}
+}
+@media(prefers-reduced-motion:reduce){
+  .flip-card{transition:none}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/image_1.png" alt="牧茗標誌">
+      <span>
+        <span class="brand-name">牧茗管理顧問</span>
+        <span class="brand-en">MU MING MANAGEMENT CONSULTING</span>
+      </span>
+    </a>
+    <a class="back-link" href="index.html#free-tools">返回免費工具</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <span class="eyebrow">輕鬆認識 AI</span>
+  <h1>AI 冷知識翻牌卡</h1>
+  <p class="hero-lead">每次一張，用最簡單的方式認識 AI 的實用觀念、常見誤解與安全提醒。</p>
+  <p class="hero-note">點卡片翻面看答案；沒有測驗、沒有表單，也不用登入。</p>
+</section>
+
+<section class="controls">
+  <label for="categorySelect">選擇主題</label>
+  <select id="categorySelect">
+    <option value="all">全部隨機</option>
+    <option value="basic">AI 基礎觀念</option>
+    <option value="prompt">提問與指令</option>
+    <option value="risk">風險與安全</option>
+    <option value="work">工作應用</option>
+  </select>
+  <span class="keyboard-hint">電腦操作：按鍵盤 ← 上一張｜按「空白鍵」翻面｜按鍵盤 → 下一張</span>
+</section>
+
+<section class="card-area">
+  <div class="scene">
+    <article class="flip-card" id="flipCard" tabindex="0" role="button" aria-label="點擊翻開卡片">
+      <div class="face front">
+        <span class="category" id="frontCategory"></span>
+        <div class="icon" id="cardIcon">🤖</div>
+        <h2 id="frontTitle"></h2>
+        <div class="tap-hint">電腦按空白鍵翻面｜手機點卡片翻面、左右滑動換卡</div>
+      </div>
+      <div class="face back">
+        <span class="back-label">AI COLD KNOWLEDGE</span>
+        <h3 id="backTitle"></h3>
+        <p id="backText"></p>
+        <div class="tip" id="backTip"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="card-navigation" aria-label="卡片導覽">
+  <button class="nav-arrow" type="button" id="prevBtn" aria-label="上一張冷知識">
+    <span class="arrow-icon">←</span>
+    <span class="arrow-text">上一張</span>
+  </button>
+  <button class="flip-action" type="button" id="flipBtn">
+    <span id="flipIcon">翻面</span>
+    <strong id="flipText">看答案</strong>
+  </button>
+  <button class="nav-arrow next" type="button" id="nextBtn" aria-label="下一張冷知識">
+    <span class="arrow-text">下一張</span>
+    <span class="arrow-icon">→</span>
+  </button>
+</section>
+<div class="progress-wrap">
+  <div class="progress-text" id="counter"></div>
+  <div class="progress-dots" id="progressDots" aria-hidden="true"></div>
+</div>
+
+<section class="mini-grid">
+  <article class="mini-card">
+    <strong>不是考試</strong>
+    <p>看懂一個觀念就好，不用一次記住全部。</p>
+  </article>
+  <article class="mini-card">
+    <strong>適合分享</strong>
+    <p>可在課程、LINE 或同事間一起討論。</p>
+  </article>
+  <article class="mini-card">
+    <strong>需要更新</strong>
+    <p>工具功能會變，但基本判斷原則仍值得保留。</p>
+  </article>
+</section>
+</main>
+
+<footer>© 2026 牧茗管理顧問有限公司 · 冷知識內容為一般入門說明，不取代專業判斷</footer>
+
+<script>
+const cards = [
+  {
+    category:"basic", categoryName:"AI 基礎觀念", icon:"🧠",
+    front:"AI 真的「理解」你說的每一句話嗎？",
+    back:"不一定。AI 很擅長根據大量文字規律，產生看起來合理的回答。",
+    tip:"實用做法：重要任務不要只問「你懂嗎」，要請 AI 重述需求、列出假設與待確認事項。"
+  },
+  {
+    category:"basic", categoryName:"AI 基礎觀念", icon:"🎲",
+    front:"同一個問題問兩次，答案會完全一樣嗎？",
+    back:"不一定。許多生成式 AI 的回答帶有一定變化，因此同一句話可能得到不同結果。",
+    tip:"實用做法：需要固定格式時，提供範例、欄位與不能更動的內容。"
+  },
+  {
+    category:"basic", categoryName:"AI 基礎觀念", icon:"📚",
+    front:"AI 說得很有自信，就代表答案是真的嗎？",
+    back:"不代表。AI 可能用很肯定的語氣，產生不存在、過期或混淆的資訊。",
+    tip:"實用做法：日期、金額、法規、研究與來源都要另外核對。"
+  },
+  {
+    category:"basic", categoryName:"AI 基礎觀念", icon:"🕰️",
+    front:"AI 一定知道今天最新發生的事嗎？",
+    back:"不一定。是否能取得即時資訊，取決於工具功能、網路搜尋狀態與資料來源。",
+    tip:"實用做法：需要最新資訊時，明確要求搜尋、附來源與標示資料日期。"
+  },
+  {
+    category:"basic", categoryName:"AI 基礎觀念", icon:"🧩",
+    front:"AI 工具越多，工作效率就一定越高嗎？",
+    back:"不一定。工具太多也會增加學習、切換與資料管理成本。",
+    tip:"實用做法：先選一個高頻工作，測試一個工具能否穩定完成。"
+  },
+
+  {
+    category:"prompt", categoryName:"提問與指令", icon:"✍️",
+    front:"提示詞一定要寫得很長，AI 才會做得好嗎？",
+    back:"不一定。關鍵不是字數，而是任務、背景、對象、限制與輸出格式是否清楚。",
+    tip:"實用做法：先寫目的，再補充必要條件，不要為了看起來專業而堆滿術語。"
+  },
+  {
+    category:"prompt", categoryName:"提問與指令", icon:"❓",
+    front:"不知道需求細節時，還能請 AI 幫忙嗎？",
+    back:"可以。你可以先請 AI 提出必要問題，再依回答整理需求。",
+    tip:"可直接說：資訊不足時，請先一次列出你真正需要我補充的問題。"
+  },
+  {
+    category:"prompt", categoryName:"提問與指令", icon:"🎯",
+    front:"「幫我寫得更好」為什麼常常得不到理想結果？",
+    back:"因為「更好」沒有明確標準。AI 不知道你要更正式、更短、更親切，還是更有說服力。",
+    tip:"實用做法：說明對象、用途、語氣、長度與你不喜歡的地方。"
+  },
+  {
+    category:"prompt", categoryName:"提問與指令", icon:"🧱",
+    front:"複雜工作應該一次全部交給 AI 嗎？",
+    back:"通常拆成幾個明確階段會更穩定，例如先整理資料、再建立架構、最後產生內容。",
+    tip:"但不要拆得太碎。簡單工作一次完成，複雜工作才需要分階段。"
+  },
+  {
+    category:"prompt", categoryName:"提問與指令", icon:"🪞",
+    front:"提供範例，真的能讓 AI 結果更接近需求嗎？",
+    back:"通常可以。範例能讓 AI 看懂你要的格式、語氣與內容密度。",
+    tip:"記得說明哪些部分要模仿、哪些資料不能照抄。"
+  },
+
+  {
+    category:"risk", categoryName:"風險與安全", icon:"🔐",
+    front:"可以把完整身分證字號貼給公開 AI 整理嗎？",
+    back:"不建議。完整個資、密碼、病歷、薪資與客戶機密不應直接貼入未經公司核准的公開工具。",
+    tip:"實用做法：先去識別化，用代號取代姓名、證件號碼與可辨識資訊。"
+  },
+  {
+    category:"risk", categoryName:"風險與安全", icon:"⚖️",
+    front:"AI 可以直接替公司做錄用或淘汰決定嗎？",
+    back:"不適合。AI 可以整理資料與提出問題，但不應代替人做影響權益的最後決定。",
+    tip:"重要人事決策要保留人工判斷、說明責任與公平檢查。"
+  },
+  {
+    category:"risk", categoryName:"風險與安全", icon:"📜",
+    front:"AI 寫出的法規說明可以直接對外使用嗎？",
+    back:"不建議直接使用。法規可能更新，AI 也可能混淆條文、適用對象或例外。",
+    tip:"實用做法：回到政府或主管機關原始資料，必要時請專業人員確認。"
+  },
+  {
+    category:"risk", categoryName:"風險與安全", icon:"🤝",
+    front:"AI 幫你寫的回覆，可能不小心替公司做了承諾嗎？",
+    back:"可能。像是期限、賠償、保證與處理結果，都可能被 AI 寫得過度肯定。",
+    tip:"送出前檢查：這句話真的代表公司已同意嗎？"
+  },
+  {
+    category:"risk", categoryName:"風險與安全", icon:"🔎",
+    front:"AI 回答附了來源，就一定可信嗎？",
+    back:"不一定。來源可能過期、不相關，或只支持其中一部分說法。",
+    tip:"實用做法：打開原文，確認日期、發布單位與內容是否真的支持結論。"
+  },
+
+  {
+    category:"work", categoryName:"工作應用", icon:"📝",
+    front:"AI 最適合直接完成哪一類工作？",
+    back:"通常是低風險、重複性高、容易核對的工作，例如摘要、分類、初稿與格式轉換。",
+    tip:"先從五分鐘內能人工檢查完的小任務開始。"
+  },
+  {
+    category:"work", categoryName:"工作應用", icon:"📊",
+    front:"AI 做簡報時，內容和畫面哪一個通常比較穩定？",
+    back:"內容通常比視覺版面穩定。AI 能快速規劃架構，但設計仍常需要人工調整。",
+    tip:"實用做法：先要求逐頁內容與視覺規格，再到 PowerPoint 或 Canva 定稿。"
+  },
+  {
+    category:"work", categoryName:"工作應用", icon:"🌐",
+    front:"AI 翻譯後，最容易漏掉哪些問題？",
+    back:"人名、專有名詞、日期、金額、責任程度與文化語氣都容易出錯。",
+    tip:"重要翻譯不要只看順不順，要逐句比對原文是否有漏譯或多譯。"
+  },
+  {
+    category:"work", categoryName:"工作應用", icon:"📎",
+    front:"上傳文件給 AI 前，最重要的第一步是什麼？",
+    back:"先確認文件是否含有不該外傳的個資、機密與未公開資訊。",
+    tip:"也要確認工具與公司規範是否允許上傳該類文件。"
+  },
+  {
+    category:"work", categoryName:"工作應用", icon:"✅",
+    front:"AI 產出完成後，最少要檢查哪五件事？",
+    back:"姓名、日期、金額、事實來源，以及是否出現不該有的承諾或個資。",
+    tip:"把這五項當成送出前的 30 秒快速安檢。"
+  },
+  {
+    category:"work", categoryName:"工作應用", icon:"🚦",
+    front:"什麼情況下，應該先停止使用 AI？",
+    back:"當工作涉及完整機密、重大安全、醫療、法律或他人權益，而你無法確認工具與流程是否合規時。",
+    tip:"先詢問主管、資安或專業人員，比事後補救更省時間。"
+  },
+  {
+    category:"work", categoryName:"工作應用", icon:"🧪",
+    front:"導入新 AI 工具時，應該先讓全公司一起用嗎？",
+    back:"通常不建議。先用小範圍、低風險任務試行，更容易看出實際效益與問題。",
+    tip:"實用做法：選一個部門、一項工作、兩週測試，再決定是否擴大。"
+  },
+  {
+    category:"prompt", categoryName:"提問與指令", icon:"🧭",
+    front:"AI 回答偏離需求時，應該整段重問嗎？",
+    back:"不一定。先指出哪一段不符合、要保留什麼，再要求局部修改，通常更有效率。",
+    tip:"可直接說：保留原本架構，只修改第 2 段的語氣與長度。"
+  },
+  {
+    category:"risk", categoryName:"風險與安全", icon:"🧯",
+    front:"把資料刪掉姓名，就一定算去識別化嗎？",
+    back:"不一定。地址、電話、公司、職稱、日期與特殊事件組合起來，仍可能辨識出當事人。",
+    tip:"去識別化要看整體資訊是否仍能指向特定個人。"
+  }
+];
+
+const flipCard = document.getElementById("flipCard");
+const frontCategory = document.getElementById("frontCategory");
+const cardIcon = document.getElementById("cardIcon");
+const frontTitle = document.getElementById("frontTitle");
+const backTitle = document.getElementById("backTitle");
+const backText = document.getElementById("backText");
+const backTip = document.getElementById("backTip");
+const categorySelect = document.getElementById("categorySelect");
+const flipBtn = document.getElementById("flipBtn");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const counter = document.getElementById("counter");
+const progressDots = document.getElementById("progressDots");
+const flipText = document.getElementById("flipText");
+const flipIcon = document.getElementById("flipIcon");
+
+let filteredCards = [...cards];
+let currentIndex = 0;
+let shuffledIndexes = [];
+let positionInDeck = 0;
+
+function getFilteredCards(){
+  const category = categorySelect.value;
+  return category === "all" ? [...cards] : cards.filter(card => card.category === category);
+}
+
+function shuffleDeck(length){
+  shuffledIndexes = Array.from({length},(_,i)=>i);
+  for(let i=shuffledIndexes.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [shuffledIndexes[i],shuffledIndexes[j]]=[shuffledIndexes[j],shuffledIndexes[i]];
+  }
+  positionInDeck=0;
+}
+
+function renderProgress(){
+  const total=filteredCards.length;
+  counter.textContent=`第 ${positionInDeck+1} 張，共 ${total} 張`;
+  progressDots.innerHTML="";
+  const dotCount=Math.min(total,7);
+  const active=Math.min(dotCount-1,Math.floor((positionInDeck/Math.max(total-1,1))*(dotCount-1)));
+  for(let i=0;i<dotCount;i++){
+    const dot=document.createElement("span");
+    if(i===active) dot.className="active";
+    progressDots.appendChild(dot);
+  }
+}
+
+function showCurrentCard(){
+  if(!filteredCards.length) return;
+  currentIndex=shuffledIndexes[positionInDeck];
+  const card=filteredCards[currentIndex];
+  flipCard.classList.remove("flipped");
+  frontCategory.textContent=card.categoryName;
+  cardIcon.textContent=card.icon;
+  frontTitle.textContent=card.front;
+  backTitle.textContent=card.front;
+  backText.textContent=card.back;
+  backTip.textContent=card.tip;
+  flipText.textContent="看答案";
+  flipIcon.textContent="翻面";
+  renderProgress();
+}
+
+function nextCard(){
+  if(positionInDeck>=shuffledIndexes.length-1){
+    shuffleDeck(filteredCards.length);
+  }else{
+    positionInDeck++;
+  }
+  showCurrentCard();
+}
+
+function prevCard(){
+  if(positionInDeck<=0){
+    positionInDeck=shuffledIndexes.length-1;
+  }else{
+    positionInDeck--;
+  }
+  showCurrentCard();
+}
+
+function toggleFlip(){
+  const isFlipped=flipCard.classList.toggle("flipped");
+  flipText.textContent=isFlipped ? "看問題" : "看答案";
+  flipIcon.textContent=isFlipped ? "翻回" : "翻面";
+}
+
+flipCard.addEventListener("click",toggleFlip);
+flipBtn.addEventListener("click",toggleFlip);
+nextBtn.addEventListener("click",nextCard);
+prevBtn.addEventListener("click",prevCard);
+categorySelect.addEventListener("change",()=>{
+  filteredCards=getFilteredCards();
+  shuffleDeck(filteredCards.length);
+  showCurrentCard();
+});
+
+window.addEventListener("keydown",e=>{
+  const tag=(e.target.tagName||"").toLowerCase();
+
+  // 在下拉選單、輸入欄位或文字區域中，不攔截鍵盤操作。
+  if(["select","input","textarea"].includes(tag)) return;
+
+  if(e.key==="ArrowLeft"){
+    e.preventDefault();
+    prevCard();
+  }else if(e.key==="ArrowRight"){
+    e.preventDefault();
+    nextCard();
+  }else if(e.code==="Space" || e.key===" " || e.key==="Spacebar"){
+    // 使用擷取階段攔截，避免空白鍵只觸發目前聚焦的按鈕或捲動頁面。
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFlip();
+  }
+}, true);
+
+let touchStartX=0;
+let touchStartY=0;
+let touchMoved=false;
+
+flipCard.addEventListener("touchstart",e=>{
+  const touch=e.changedTouches[0];
+  touchStartX=touch.clientX;
+  touchStartY=touch.clientY;
+  touchMoved=false;
+},{passive:true});
+
+flipCard.addEventListener("touchmove",e=>{
+  const touch=e.changedTouches[0];
+  if(Math.abs(touch.clientX-touchStartX)>10 || Math.abs(touch.clientY-touchStartY)>10){
+    touchMoved=true;
+  }
+},{passive:true});
+
+flipCard.addEventListener("touchend",e=>{
+  const touch=e.changedTouches[0];
+  const dx=touch.clientX-touchStartX;
+  const dy=touch.clientY-touchStartY;
+
+  if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.25){
+    e.preventDefault();
+    if(dx<0){
+      nextCard();
+    }else{
+      prevCard();
+    }
+    touchMoved=true;
+  }
+},{passive:false});
+
+flipCard.addEventListener("click",e=>{
+  if(touchMoved){
+    touchMoved=false;
+    e.preventDefault();
+    return;
+  }
+});
+
+filteredCards=getFilteredCards();
+shuffleDeck(filteredCards.length);
+showCurrentCard();
+</script>
+</body>
+</html>
