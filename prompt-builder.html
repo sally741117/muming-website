@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
@@ -932,6 +932,38 @@
         animation-duration: .01ms !important;
       }
     }
+  
+    /* 牧茗：主操作優先，示範按鈕移到主按鈕下方 */
+    .actions {
+      display: grid !important;
+      grid-template-columns: 1fr auto !important;
+      gap: 10px !important;
+    }
+
+    .actions .btn-primary,
+    .actions #demoBtn {
+      grid-column: 1 / -1 !important;
+      width: 100% !important;
+    }
+
+    .actions #resetBtn {
+      grid-column: 2 !important;
+      justify-self: end !important;
+    }
+
+    @media (max-width: 700px) {
+      .actions {
+        grid-template-columns: 1fr !important;
+      }
+
+      .actions .btn-primary,
+      .actions #demoBtn,
+      .actions #resetBtn {
+        grid-column: 1 !important;
+        width: 100% !important;
+        justify-self: stretch !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1121,10 +1153,10 @@
             </div>
 
             <div class="actions">
-              <button class="btn btn-primary" type="submit">✨ 幫我整理成 AI 提示詞</button>
-              <button class="btn btn-secondary" id="demoBtn" type="button">套用完整示範</button>
-              <button class="btn btn-ghost" id="resetBtn" type="button">清空重填</button>
-            </div>
+  <button class="btn btn-primary" type="submit">✨ 幫我整理成 AI 提示詞</button>
+  <button class="btn btn-secondary" id="demoBtn" type="button">套用完整示範（會覆蓋目前輸入）</button>
+  <button class="btn btn-ghost" id="resetBtn" type="button">清空重填</button>
+</div>
           </form>
         </section>
 
@@ -1152,9 +1184,9 @@
             </div>
 
             <div class="privacy-box">
-              <span aria-hidden="true">🔒</span>
-              <div><strong>內容只在你的瀏覽器內整理。</strong><br>不登入、不呼叫 AI API，也不會把輸入內容上傳或儲存。</div>
-            </div>
+  <span aria-hidden="true">🔒</span>
+  <div><strong>內容只在你的瀏覽器內整理。</strong><br>輸入內容不會被上傳或儲存。</div>
+</div>
           </div>
         </aside>
       </div>
@@ -1454,13 +1486,30 @@
       }
 
       function applyDemo() {
-        applyExample("message");
-        naturalLanguage.checked = true;
-        document.querySelector('input[name="mode"][value="smart"]').checked = true;
-        updateStatus();
-        const prompt = buildPrompt();
-        if (prompt) renderPrompt(prompt);
-      }
+  const hasExistingInput = [
+    request.value,
+    audience.value,
+    format.value,
+    tone.value,
+    length.value,
+    mustInclude.value,
+    avoid.value
+  ].some(value => clean(value)) || naturalLanguage.checked;
+
+  if (hasExistingInput) {
+    const confirmed = window.confirm(
+      "套用完整示範會覆蓋你目前輸入的內容。\n\n確定要繼續嗎？"
+    );
+    if (!confirmed) return;
+  }
+
+  applyExample("message");
+  naturalLanguage.checked = true;
+  document.querySelector('input[name="mode"][value="smart"]').checked = true;
+  updateStatus();
+  const prompt = buildPrompt();
+  if (prompt) renderPrompt(prompt);
+}
 
       document.querySelectorAll(".example-btn").forEach(button => {
         button.addEventListener("click", () => applyExample(button.dataset.example));
@@ -1487,3 +1536,5 @@
   </script>
 </body>
 </html>
+
+
