@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="牧茗 AI 工具推薦小幫手：依工作需求、重視條件、設備與使用程度，推薦適合先試的 AI 工具。">
+<meta name="theme-color" content="#173C35">
+<title>AI 工具推薦小幫手｜牧茗管理顧問</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#173C35;--ink2:#28594E;--ink3:#3D7568;--paper:#FFFCF7;
+  --cream:#F6F0E5;--sage:#DDEAE4;--sage2:#EEF5F1;--orange:#F2A65A;
+  --orange2:#FFE5C5;--text:#26332F;--muted:#68736F;
+  --line:rgba(23,60,53,.16);--white:#fff;--shadow:0 20px 58px rgba(23,60,53,.12);
+  --content:1120px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;color:var(--text);line-height:1.7;
+  font-family:"Noto Sans TC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 5% 0%,rgba(242,166,90,.18),transparent 28rem),
+    radial-gradient(circle at 96% 14%,rgba(61,117,104,.13),transparent 31rem),
+    var(--paper)
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.site-header{
+  position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(23,60,53,.1);
+  background:rgba(255,252,247,.92);backdrop-filter:blur(15px)
+}
+.header-inner{
+  max-width:var(--content);min-height:72px;margin:auto;padding:10px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand-logo{width:42px;height:42px;object-fit:contain}
+.brand-name{display:block;color:var(--ink);font-family:"Noto Serif TC",serif;font-weight:700;letter-spacing:.08em}
+.brand-en{display:block;color:var(--ink3);font-size:10px;letter-spacing:.12em}
+.back-link{
+  min-height:44px;padding:9px 16px;display:inline-flex;align-items:center;
+  border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);
+  text-decoration:none;color:var(--ink);font-size:14px;font-weight:600
+}
+.hero{
+  max-width:var(--content);margin:auto;padding:66px 24px 34px;
+  display:grid;grid-template-columns:1.12fr .88fr;gap:42px;align-items:center
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:17px;padding:7px 12px;
+  border:1px solid rgba(23,60,53,.13);border-radius:999px;
+  background:rgba(221,234,228,.68);color:var(--ink2);font-size:13px;font-weight:700
+}
+.eyebrow:before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 0 5px rgba(242,166,90,.17)
+}
+h1{
+  margin:0;color:var(--ink);font-family:"Noto Serif TC",serif;
+  font-size:clamp(38px,6vw,64px);line-height:1.17
+}
+.hero-lead{margin:22px 0 0;max-width:680px;color:#40504A;font-size:clamp(17px,2vw,21px)}
+.hero-note{margin:16px 0 0;color:var(--muted);font-size:14px}
+.hero-card{
+  padding:28px;border:1px solid rgba(23,60,53,.12);border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(246,240,229,.9));
+  box-shadow:var(--shadow)
+}
+.hero-card small{color:var(--ink3);font-weight:700;letter-spacing:.1em}
+.hero-card h2{margin:8px 0 0;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:26px}
+.hero-card p{margin:10px 0 0;color:#4D5B56}
+.notice{max-width:var(--content);margin:auto;padding:0 24px 38px}
+.notice-inner{
+  padding:17px 20px;border-left:5px solid var(--orange);border-radius:0 14px 14px 0;
+  background:rgba(255,255,255,.8);box-shadow:0 8px 30px rgba(23,60,53,.06)
+}
+.tool{max-width:var(--content);margin:auto;padding:0 24px 78px}
+.shell{display:grid;grid-template-columns:minmax(0,.95fr) minmax(380px,1.05fr);gap:24px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:28px;background:rgba(255,255,255,.94);box-shadow:var(--shadow)}
+.form-panel{padding:30px}
+.panel-title{display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}
+.step-badge{
+  width:36px;height:36px;display:grid;place-items:center;flex:none;border-radius:11px;
+  background:var(--ink);color:#fff;font-weight:700
+}
+.panel-title h2,.result-head h2{margin:0;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:27px}
+.panel-title p,.result-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.field{margin-top:22px}
+.legend,label{display:block;margin-bottom:9px;color:var(--ink);font-weight:700;font-size:15px}
+.required{color:#A6463E}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice span{
+  min-height:58px;padding:12px 14px;display:flex;align-items:center;gap:9px;
+  border:1px solid var(--line);border-radius:14px;background:#fff;
+  color:#41504A;font-size:14px;font-weight:600;transition:.18s
+}
+.choice input:checked+span{
+  border-color:var(--ink3);background:var(--sage2);color:var(--ink);
+  box-shadow:0 0 0 3px rgba(61,117,104,.1)
+}
+.choice span:hover{border-color:var(--ink3);transform:translateY(-1px)}
+select{
+  width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:13px;
+  background:#fff;color:var(--text);outline:none
+}
+select:focus{border-color:var(--ink3);box-shadow:0 0 0 4px rgba(61,117,104,.1)}
+.actions{margin-top:27px;display:flex;gap:10px;flex-wrap:wrap}
+.primary,.secondary{min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700}
+.primary{border:0;background:var(--ink);color:#fff}
+.primary:hover{background:var(--ink2);transform:translateY(-1px)}
+.secondary{border:1px solid var(--line);background:#fff;color:var(--ink)}
+.result-panel{overflow:hidden}
+.result-head{
+  padding:27px 27px 20px;border-bottom:1px solid var(--line);
+  background:linear-gradient(145deg,var(--sage2),#fff)
+}
+.result-body{padding:22px}
+.empty{padding:42px 18px;text-align:center;color:var(--muted)}
+.empty-icon{
+  width:66px;height:66px;margin:0 auto 14px;display:grid;place-items:center;
+  border-radius:20px;background:var(--sage2);font-size:30px
+}
+.results{display:none}
+.results.show{display:block}
+.top-card{
+  padding:20px;border:1px solid rgba(23,60,53,.13);border-radius:18px;
+  background:linear-gradient(145deg,#fff,var(--sage2))
+}
+.badge{
+  display:inline-flex;padding:5px 10px;border-radius:999px;background:var(--orange2);
+  color:var(--ink);font-size:12px;font-weight:700
+}
+.tool-name{margin:9px 0 0;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:30px}
+.tag-row{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap}
+.tag{padding:5px 9px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;color:#496159}
+.reason-list{margin:14px 0 0;padding-left:21px}
+.reason-list li{margin:5px 0}
+.start-box{margin-top:16px;padding:14px;border-radius:13px;background:var(--cream);font-size:14px}
+.link-row{margin-top:15px;display:flex;gap:9px;flex-wrap:wrap}
+.link-row a{
+  display:inline-flex;align-items:center;min-height:42px;padding:9px 14px;border-radius:11px;
+  background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:14px
+}
+.compare-title{margin:22px 0 11px;color:var(--ink);font-family:"Noto Serif TC",serif;font-size:20px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.compare-card{padding:16px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.compare-card h3{margin:0;color:var(--ink)}
+.compare-card p{margin:7px 0 0;color:#50605A;font-size:13px}
+.compare-card a{display:inline-block;margin-top:10px;color:var(--ink3);font-size:13px;font-weight:700}
+.caution{margin-top:18px;padding:15px;border-radius:14px;background:var(--orange2);font-size:13px}
+.related{max-width:var(--content);margin:auto;padding:0 24px 75px}
+.related-card{
+  padding:28px;display:flex;align-items:center;justify-content:space-between;gap:22px;
+  border-radius:24px;background:var(--ink);color:#fff
+}
+.related-card h2{margin:0;font-family:"Noto Serif TC",serif}
+.related-card p{margin:7px 0 0;color:rgba(255,255,255,.76)}
+.related-links{display:flex;gap:9px;flex-wrap:wrap}
+.related-links a{
+  padding:11px 16px;border-radius:11px;background:#fff;color:var(--ink);
+  text-decoration:none;font-weight:700;white-space:nowrap
+}
+footer{padding:28px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:900px){
+  .hero,.shell{grid-template-columns:1fr}
+  .hero{padding-top:48px}
+  .hero-card{max-width:650px}
+  .related-card{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:620px){
+  .header-inner,.hero,.notice,.tool,.related{padding-left:16px;padding-right:16px}
+  .brand-en{display:none}
+  .back-link{padding:8px 12px}
+  .hero{padding-top:38px}
+  .form-panel{padding:22px 18px}
+  .choices,.compare-grid{grid-template-columns:1fr}
+  .result-head{padding:22px 20px 17px}
+  .result-body{padding:18px}
+  h1{font-size:39px}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/image_1.png" alt="牧茗標誌">
+      <span>
+        <span class="brand-name">牧茗管理顧問</span>
+        <span class="brand-en">MU MING MANAGEMENT CONSULTING</span>
+      </span>
+    </a>
+    <a class="back-link" href="index.html#free-tools">返回免費工具</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <span class="eyebrow">第三個免費 AI 小工具</span>
+    <h1>AI 工具推薦小幫手</h1>
+    <p class="hero-lead">不用先研究一大堆工具。回答四個問題，先找出最適合你目前工作情境的 AI，再從一個真實任務開始測試。</p>
+    <p class="hero-note">推薦結果是入門方向，不是絕對排名；工具功能與方案仍以官方最新資訊為準。</p>
+  </div>
+  <aside class="hero-card">
+    <small>推薦原則</small>
+    <h2>先看工作，再選工具</h2>
+    <p>不是功能最多就最好，而是目前最能幫你完成工作、操作負擔又不會太高的工具，才值得先試。</p>
+  </aside>
+</section>
+
+<section class="notice">
+  <div class="notice-inner"><strong>隱私說明：</strong>本頁只在瀏覽器中進行條件比對，不會上傳、不會儲存，也沒有串接任何 AI API。</div>
+</section>
+
+<section class="tool">
+<div class="shell">
+  <form class="panel form-panel" id="toolForm">
+    <div class="panel-title">
+      <span class="step-badge">1</span>
+      <div>
+        <h2>回答四個簡單問題</h2>
+        <p>選最接近的答案即可，不需要研究工具名稱。</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="legend">你最想完成什麼工作？ <span class="required">＊</span></span>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="task" value="writing"><span>✍️ 寫文字、企劃或回覆</span></label>
+        <label class="choice"><input type="radio" name="task" value="research"><span>🔎 查資料與研究</span></label>
+        <label class="choice"><input type="radio" name="task" value="documents"><span>📚 閱讀與整理文件</span></label>
+        <label class="choice"><input type="radio" name="task" value="slides"><span>📊 製作簡報</span></label>
+        <label class="choice"><input type="radio" name="task" value="images"><span>🎨 生成或修改圖片</span></label>
+        <label class="choice"><input type="radio" name="task" value="translation"><span>🌐 翻譯與文字改寫</span></label>
+        <label class="choice"><input type="radio" name="task" value="data"><span>📈 表格、數據與分析</span></label>
+        <label class="choice"><input type="radio" name="task" value="web"><span>🧩 網頁、程式或小工具</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="priority">你最重視什麼？</label>
+      <select id="priority">
+        <option value="easy">操作簡單、容易開始</option>
+        <option value="free">先用免費功能體驗</option>
+        <option value="sources">能查看來源或依資料回答</option>
+        <option value="files">能上傳文件或檔案</option>
+        <option value="output">能直接產生成品</option>
+        <option value="chinese">中文使用順手</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="device">主要使用設備</label>
+      <select id="device">
+        <option value="both">手機、電腦都會使用</option>
+        <option value="mobile">主要使用手機</option>
+        <option value="desktop">主要使用電腦</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="level">目前的 AI 使用程度</label>
+      <select id="level">
+        <option value="beginner">完全沒有經驗</option>
+        <option value="basic">偶爾使用，會基本提問</option>
+        <option value="intermediate">已能使用 AI 完成部分工作</option>
+      </select>
+    </div>
+
+    <div class="actions">
+      <button class="primary" type="submit">查看推薦工具</button>
+      <button class="secondary" type="button" id="resetBtn">重新選擇</button>
+    </div>
+  </form>
+
+  <section class="panel result-panel" aria-live="polite">
+    <div class="result-head">
+      <h2>你的推薦結果</h2>
+      <p>先試一個，再比較另外兩個，不用一次註冊全部。</p>
+    </div>
+    <div class="result-body">
+      <div class="empty" id="emptyState">
+        <div class="empty-icon">🧭</div>
+        <strong>完成左側選擇後，推薦結果會顯示在這裡。</strong>
+      </div>
+      <div class="results" id="results">
+        <div class="top-card" id="topCard"></div>
+        <h3 class="compare-title">也可以比較</h3>
+        <div class="compare-grid" id="compareGrid"></div>
+        <div class="caution" id="caution"></div>
+      </div>
+    </div>
+  </section>
+</div>
+</section>
+
+<section class="related">
+  <div class="related-card">
+    <div>
+      <h2>選好工具後，下一步呢？</h2>
+      <p>不會寫指令可用「AI 指令補強器」；要做簡報可直接使用「AI 簡報規劃器」。</p>
+    </div>
+    <div class="related-links">
+      <a href="prompt-builder.html">AI 指令補強器</a>
+      <a href="presentation-planner.html">AI 簡報規劃器</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 牧茗管理顧問有限公司 · 工具功能與方案可能調整，請以官方資訊為準</footer>
+
+<script>
+const tools = [
+  {
+    id:"chatgpt", name:"ChatGPT", url:"https://chatgpt.com/",
+    tasks:["writing","research","documents","slides","images","translation","data","web"],
+    strengths:["用途廣","對話式操作","可處理檔案與圖片","可生成與編輯圖片"],
+    priorities:["easy","files","output","chinese","free"], devices:["mobile","desktop","both"],
+    beginner:3, start:"挑一項真實工作，例如整理一封通知或分析一份文件，直接用自然語言說明需求。",
+    caution:"涉及最新資訊、法規、金額與公司制度時，仍需核對來源與原始資料。"
+  },
+  {
+    id:"gemini", name:"Gemini", url:"https://gemini.google.com/",
+    tasks:["writing","research","documents","slides","images","translation","data","web"],
+    strengths:["Google 生態整合","可上傳多種檔案","Deep Research","Canvas 可建立文件、簡報與程式"],
+    priorities:["files","sources","output","chinese","free"], devices:["mobile","desktop","both"],
+    beginner:3, start:"已有 Google 帳號的人，可先上傳一份非機密文件，請它摘要並整理下一步。",
+    caution:"工作或學校帳號的部分功能可能由管理員控制。"
+  },
+  {
+    id:"claude", name:"Claude", url:"https://claude.ai/",
+    tasks:["writing","documents","translation","web","data","slides"],
+    strengths:["長文整理","文字品質","文件分析","Artifacts 內容工作區"],
+    priorities:["easy","files","output","chinese"], devices:["mobile","desktop","both"],
+    beginner:2, start:"貼上一段較長的文字或文件內容，請它先整理架構，再依指定語氣改寫。",
+    caution:"不同方案的使用量與功能會有差異。"
+  },
+  {
+    id:"perplexity", name:"Perplexity", url:"https://www.perplexity.ai/",
+    tasks:["research","writing"],
+    strengths:["即時搜尋","回答附來源","適合快速研究","容易追查原文"],
+    priorities:["sources","easy","free"], devices:["mobile","desktop","both"],
+    beginner:3, start:"搜尋一個近期主題，先看摘要，再逐一打開引用來源確認重要內容。",
+    caution:"有來源不代表來源一定正確，仍要檢查原文、日期與發布單位。"
+  },
+  {
+    id:"notebooklm", name:"NotebookLM", url:"https://notebooklm.google.com/",
+    tasks:["documents","research","slides"],
+    strengths:["依上傳來源回答","內文引用","文件整理","可產生簡報、摘要與音訊內容"],
+    priorities:["sources","files","easy","free"], devices:["desktop","both","mobile"],
+    beginner:3, start:"建立一個筆記本，上傳一份 PDF 或網頁，再請它整理重點與待確認事項。",
+    caution:"它主要依你提供的來源工作；來源錯誤或不完整，結果也會受影響。"
+  },
+  {
+    id:"canva", name:"Canva", url:"https://www.canva.com/",
+    tasks:["slides","images","writing"],
+    strengths:["版型多","容易編輯","簡報與社群素材","適合非設計背景"],
+    priorities:["output","easy","free","chinese"], devices:["mobile","desktop","both"],
+    beginner:3, start:"先選一個接近目的的版型，再用 AI 產生初稿，最後人工統一字體、顏色與留白。",
+    caution:"AI 套版後仍需檢查字量、對齊、圖片風格與品牌一致性。"
+  },
+  {
+    id:"gamma", name:"Gamma", url:"https://gamma.app/",
+    tasks:["slides","writing","web"],
+    strengths:["快速產生簡報","可貼入既有文字","可匯入檔案","自動排版"],
+    priorities:["output","easy","free"], devices:["desktop","both"],
+    beginner:3, start:"先準備清楚的大綱，再選 Paste 或 Import，通常比只輸入一句主題更穩定。",
+    caution:"自動排版速度快，但成品仍需要人工調整內容密度與視覺一致性。"
+  },
+  {
+    id:"copilot", name:"Microsoft Copilot", url:"https://copilot.microsoft.com/",
+    tasks:["writing","research","slides","data","documents","images"],
+    strengths:["Microsoft 生態","Office 工作情境","一般問答","圖像生成"],
+    priorities:["easy","output","chinese","free"], devices:["mobile","desktop","both"],
+    beginner:3, start:"平常使用 Microsoft 365 的人，可先從一段 Email、Word 內容或工作摘要開始。",
+    caution:"Office 內的進階功能通常與帳號、授權方案及組織設定有關。"
+  },
+  {
+    id:"firefly", name:"Adobe Firefly", url:"https://firefly.adobe.com/",
+    tasks:["images"],
+    strengths:["圖片生成","照片與藝術風格","Adobe 工作流程","可調整生成設定"],
+    priorities:["output","easy","free"], devices:["desktop","both"],
+    beginner:2, start:"先描述主體、場景、構圖與風格，再分別測試 Photo 與 Art 類型。",
+    caution:"生成圖片仍要檢查文字、手部、品牌元素與商用授權需求。"
+  },
+  {
+    id:"deepl", name:"DeepL", url:"https://www.deepl.com/translator",
+    tasks:["translation","writing"],
+    strengths:["專注翻譯","文字改寫","操作直接","適合雙語內容初稿"],
+    priorities:["easy","free","output"], devices:["mobile","desktop","both"],
+    beginner:3, start:"先貼一小段文字測試語氣與術語，再處理整份內容，重要專有名詞要人工統一。",
+    caution:"合約、法規、人名、職稱與產業術語仍需人工校對。"
+  }
+];
+
+const taskWeights = {
+  writing:{chatgpt:5,gemini:4,claude:5,perplexity:2,notebooklm:1,canva:2,gamma:2,copilot:4,firefly:0,deepl:3},
+  research:{chatgpt:3,gemini:5,claude:3,perplexity:6,notebooklm:5,canva:0,gamma:0,copilot:3,firefly:0,deepl:0},
+  documents:{chatgpt:5,gemini:5,claude:5,perplexity:1,notebooklm:6,canva:1,gamma:1,copilot:4,firefly:0,deepl:2},
+  slides:{chatgpt:3,gemini:4,claude:2,perplexity:0,notebooklm:3,canva:6,gamma:6,copilot:5,firefly:1,deepl:0},
+  images:{chatgpt:5,gemini:4,claude:0,perplexity:0,notebooklm:0,canva:5,gamma:1,copilot:3,firefly:6,deepl:0},
+  translation:{chatgpt:4,gemini:4,claude:4,perplexity:0,notebooklm:1,canva:0,gamma:0,copilot:3,firefly:0,deepl:6},
+  data:{chatgpt:6,gemini:5,claude:4,perplexity:1,notebooklm:2,canva:1,gamma:0,copilot:5,firefly:0,deepl:0},
+  web:{chatgpt:5,gemini:5,claude:6,perplexity:0,notebooklm:0,canva:2,gamma:3,copilot:3,firefly:0,deepl:0}
+};
+
+const priorityWeights = {
+  easy:{chatgpt:3,gemini:3,claude:2,perplexity:3,notebooklm:2,canva:4,gamma:4,copilot:3,firefly:2,deepl:4},
+  free:{chatgpt:3,gemini:3,claude:2,perplexity:3,notebooklm:4,canva:3,gamma:2,copilot:3,firefly:2,deepl:3},
+  sources:{chatgpt:2,gemini:4,claude:2,perplexity:6,notebooklm:6,canva:0,gamma:0,copilot:2,firefly:0,deepl:0},
+  files:{chatgpt:5,gemini:5,claude:5,perplexity:1,notebooklm:6,canva:2,gamma:3,copilot:4,firefly:1,deepl:2},
+  output:{chatgpt:4,gemini:4,claude:3,perplexity:1,notebooklm:3,canva:6,gamma:6,copilot:5,firefly:6,deepl:4},
+  chinese:{chatgpt:5,gemini:5,claude:4,perplexity:3,notebooklm:4,canva:4,gamma:3,copilot:4,firefly:2,deepl:3}
+};
+
+function selected(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : "";
+}
+
+function scoreTools(task, priority, device, level){
+  return tools.map(tool => {
+    let score = (taskWeights[task]?.[tool.id] || 0) * 3;
+    score += (priorityWeights[priority]?.[tool.id] || 0) * 2;
+    if(tool.devices.includes(device) || tool.devices.includes("both")) score += 3;
+    if(level === "beginner") score += tool.beginner * 2;
+    if(level === "basic") score += tool.beginner;
+    if(tool.tasks.includes(task)) score += 3;
+    return {...tool, score};
+  }).sort((a,b) => b.score - a.score);
+}
+
+function tags(tool, task, priority){
+  const arr = [];
+  if(tool.tasks.includes(task)) arr.push("符合工作需求");
+  if(tool.priorities.includes(priority)) arr.push("符合重視條件");
+  arr.push(...tool.strengths.slice(0,2));
+  return [...new Set(arr)].slice(0,4);
+}
+
+const form = document.getElementById("toolForm");
+const emptyState = document.getElementById("emptyState");
+const results = document.getElementById("results");
+const topCard = document.getElementById("topCard");
+const compareGrid = document.getElementById("compareGrid");
+const caution = document.getElementById("caution");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const task = selected("task");
+  if(!task){
+    alert("請先選擇最想完成的工作。");
+    return;
+  }
+  const priority = document.getElementById("priority").value;
+  const device = document.getElementById("device").value;
+  const level = document.getElementById("level").value;
+  const ranked = scoreTools(task, priority, device, level);
+  const top = ranked[0];
+  const others = ranked.slice(1,3);
+
+  topCard.innerHTML = `
+    <span class="badge">最適合先試</span>
+    <h3 class="tool-name">${top.name}</h3>
+    <div class="tag-row">${tags(top,task,priority).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    <ul class="reason-list">
+      ${top.strengths.slice(0,3).map(s=>`<li>${s}</li>`).join("")}
+    </ul>
+    <div class="start-box"><strong>建議先這樣開始：</strong><br>${top.start}</div>
+    <div class="link-row"><a href="${top.url}" target="_blank" rel="noopener noreferrer">前往官方網站</a></div>
+  `;
+
+  compareGrid.innerHTML = others.map(tool => `
+    <article class="compare-card">
+      <h3>${tool.name}</h3>
+      <p>${tool.strengths.slice(0,3).join("、")}</p>
+      <a href="${tool.url}" target="_blank" rel="noopener noreferrer">查看官方網站 →</a>
+    </article>
+  `).join("");
+
+  caution.innerHTML = `<strong>使用提醒：</strong>${top.caution}<br>推薦結果依一般入門情境設計；工具功能、免費額度與方案可能調整，實際使用前請查看官方最新說明。`;
+
+  emptyState.style.display = "none";
+  results.classList.add("show");
+  if(window.innerWidth < 901){
+    document.querySelector(".result-panel").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+});
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  form.reset();
+  results.classList.remove("show");
+  emptyState.style.display = "block";
+  topCard.innerHTML = "";
+  compareGrid.innerHTML = "";
+  caution.innerHTML = "";
+});
+</script>
+</body>
+</html>
