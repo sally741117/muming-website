@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="牧茗 AI 辦公人格測驗：12 題趣味測驗，幫你更完整了解 AI 辦公風格與適合的使用方式。">
+  <meta name="theme-color" content="#123F35">
+  <title>AI 辦公人格測驗｜牧茗管理顧問</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#123f35;--green2:#235f50;--sage:#dce9df;--cream:#fffaf0;--paper:#fffefb;--gold:#dfa52b;--text:#26342f;--muted:#66726d;--line:rgba(18,63,53,.13);--shadow:0 22px 65px rgba(18,63,53,.13);--radius:28px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;color:var(--text);font-family:"Noto Sans TC",sans-serif;background:radial-gradient(circle at 8% 6%,rgba(223,165,43,.15),transparent 24rem),radial-gradient(circle at 96% 20%,rgba(35,95,80,.13),transparent 28rem),var(--cream);line-height:1.7;overflow-x:hidden}button,a{font:inherit}button{cursor:pointer}a{color:inherit}.hidden{display:none!important}
+    header{position:sticky;top:0;z-index:20;background:rgba(18,63,53,.96);color:#fff;border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px)}.nav{max-width:1180px;margin:auto;min-height:70px;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand-mark{width:44px;height:44px;border:1px solid rgba(239,214,148,.58);border-radius:50%;display:grid;place-items:center;color:#efd694;font-size:23px}.brand b{display:block;font-family:"Noto Serif TC";font-size:18px;letter-spacing:.18em}.brand small{display:block;color:#e9d7a8;font-size:9px;letter-spacing:.26em}.safe{padding:8px 14px;border:1px solid rgba(239,214,148,.35);border-radius:999px;color:#f5e7bd;font-size:13px;white-space:nowrap}
+    main{position:relative}.blob{position:absolute;border-radius:50%;filter:blur(1px);pointer-events:none}.b1{width:230px;height:230px;left:-100px;top:170px;background:rgba(221,234,228,.72)}.b2{width:260px;height:260px;right:-130px;top:520px;background:rgba(242,210,143,.25)}
+    .hero{max-width:1180px;margin:auto;padding:62px 22px 30px;text-align:center;position:relative}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border-radius:999px;background:#edf4ef;color:var(--green2);font-size:13px;font-weight:800}.hero h1{margin:18px 0 10px;color:var(--green);font-family:"Noto Serif TC";font-size:clamp(42px,7vw,78px);line-height:1.13;letter-spacing:.03em}.hero h1 span{color:var(--gold)}.lead{margin:0 auto;color:#4f5f58;font-size:clamp(17px,2vw,21px);max-width:720px}.cast{margin:35px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:900px}.avatar{min-height:158px;padding:18px 12px 14px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.78);box-shadow:0 12px 34px rgba(18,63,53,.07);transform:translateY(0);transition:.2s}.avatar:nth-child(2),.avatar:nth-child(4){transform:translateY(18px)}.avatar-emoji{height:74px;display:grid;place-items:center;font-size:56px}.avatar b{display:block;color:var(--green);font-size:15px}.avatar small{color:var(--muted)}
+    .start-btn,.next-btn,.restart-btn{border:0;border-radius:999px;color:#fff;background:linear-gradient(135deg,var(--green2),var(--green));font-weight:800;box-shadow:0 12px 28px rgba(18,63,53,.25);transition:.2s}.start-btn{margin-top:34px;padding:16px 34px;font-size:18px}.start-btn:hover,.next-btn:hover,.restart-btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(18,63,53,.3)}
+    .meta{margin:20px auto 0;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:13px}.meta span{padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid var(--line)}
+    .quiz-wrap{max-width:1000px;margin:28px auto 80px;padding:0 22px}.quiz-card{padding:clamp(24px,5vw,46px);border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}.progress-row{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:26px}.progress-row strong{color:var(--green)}.bar{height:10px;flex:1;background:#e7ebe8;border-radius:999px;overflow:hidden}.bar>span{display:block;height:100%;width:16.66%;background:linear-gradient(90deg,var(--green2),#5d927f);border-radius:inherit;transition:width .35s}.question{margin:0 0 26px;color:#182721;font-family:"Noto Serif TC";font-size:clamp(25px,4vw,36px);line-height:1.45;text-align:center}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.choice{position:relative;width:100%;min-height:155px;padding:20px;border:2px solid transparent;border-radius:22px;background:#fbfaf5;text-align:left;display:flex;align-items:center;gap:18px;transition:.2s}.choice:hover{transform:translateY(-2px);border-color:#a9c4b7;background:#fff}.choice.selected{border-color:var(--green2);background:#edf5f1;box-shadow:0 8px 22px rgba(18,63,53,.11)}.choice-icon{width:78px;height:78px;flex:0 0 auto;border-radius:20px;background:#fff;display:grid;place-items:center;font-size:43px;box-shadow:0 8px 18px rgba(18,63,53,.08)}.choice-copy b{display:block;color:var(--green);font-size:17px}.choice-copy small{color:var(--muted);font-size:13px}.letter{position:absolute;top:10px;right:12px;width:29px;height:29px;display:grid;place-items:center;border-radius:50%;color:#fff;background:var(--green);font-size:12px;font-weight:800}.quiz-actions{margin-top:24px;display:flex;justify-content:flex-start}.prev-btn{padding:12px 24px;border:1px solid var(--line);border-radius:999px;color:var(--green);background:#fff;font-weight:800;box-shadow:0 8px 20px rgba(18,63,53,.08);transition:.2s}.prev-btn:hover{transform:translateY(-1px);border-color:var(--green2);background:#f7fbf8}.prev-btn:disabled{visibility:hidden;pointer-events:none}.next-btn{display:none;padding:14px 30px;font-size:16px}.next-btn:disabled{cursor:not-allowed;opacity:.38;transform:none;box-shadow:none}.tip{margin:18px 0 0;text-align:center;color:var(--muted);font-size:13px}
+    .results-preview{max-width:1100px;margin:0 auto 90px;padding:0 22px}.section-title{text-align:center;color:var(--green);font-family:"Noto Serif TC";font-size:30px}.types{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.type{padding:20px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 10px 30px rgba(18,63,53,.08);text-align:center}.type:nth-child(2){background:#eef6f2}.type:nth-child(3){background:#fff8e9}.type:nth-child(4){background:#fff2dd}.type .icon{font-size:54px}.type h3{margin:7px 0 3px;color:var(--green)}.type p{margin:0;color:var(--muted);font-size:13px}
+
+    .character-art{width:100%;height:92px;display:grid;place-items:center}.character-art svg{width:92px;height:92px;display:block}.type .character-art{height:112px}.type .character-art svg{width:108px;height:108px}.result-hero{overflow:hidden;padding:10px}.result-hero svg{width:112px;height:112px;display:block}
+    .result-card{padding:clamp(28px,6vw,58px);border:1px solid var(--line);border-radius:34px;background:linear-gradient(145deg,#fff,#f8f3e9);box-shadow:var(--shadow);text-align:center}.result-hero{display:grid;place-items:center;margin:auto;width:130px;height:130px;border-radius:35px;background:#edf5f1;font-size:78px}.result-label{margin-top:18px;color:var(--gold);font-weight:800;letter-spacing:.08em}.result-card h2{margin:5px 0 8px;color:var(--green);font-family:"Noto Serif TC";font-size:clamp(34px,6vw,54px)}.result-tagline{display:inline-block;margin:4px auto 14px;padding:7px 13px;border-radius:999px;color:var(--green);background:#edf5f1;font-weight:800;font-size:14px}.result-desc{max-width:760px;margin:0 auto;color:#4f5f58;font-size:17px;line-height:1.95}.result-quote{max-width:760px;margin:22px auto 0;padding:18px 22px;border-left:5px solid var(--gold);border-radius:0 18px 18px 0;background:#fff8e9;color:var(--green);font-family:"Noto Serif TC";font-size:18px;font-weight:700;text-align:left}.result-mix{max-width:760px;margin:18px auto 0;color:var(--muted);font-size:14px}.result-grid{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:left}.result-box{padding:22px;border-radius:20px;background:#fff;border:1px solid var(--line)}.result-box h3{margin:0 0 9px;color:var(--green);font-size:16px}.result-box p{margin:0;color:var(--muted);font-size:14px;line-height:1.8}.result-box.wide{grid-column:1/-1;background:linear-gradient(135deg,#edf5f1,#fff)}.share-note{margin:22px 0 0;color:var(--muted);font-size:13px}.restart-btn{margin-top:22px;padding:14px 28px}.privacy{max-width:1100px;margin:0 auto 60px;padding:0 22px}.privacy-inner{padding:22px;border-radius:22px;color:#f6ecd0;background:var(--green);display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;font-size:13px}.privacy b{display:block;color:#fff;font-size:15px;margin-bottom:2px}
+    footer{padding:28px 22px;text-align:center;color:#728079;font-size:13px;border-top:1px solid var(--line)}
+    @media(max-width:800px){.safe{display:none}.cast{grid-template-columns:repeat(2,1fr)}.avatar:nth-child(2),.avatar:nth-child(4){transform:none}.choices,.result-grid{grid-template-columns:1fr}.types{grid-template-columns:repeat(2,1fr)}.privacy-inner{grid-template-columns:repeat(2,1fr)}.choice{min-height:130px}.hero{padding-top:42px}}
+    @media(max-width:480px){.nav{padding-inline:15px}.brand b{font-size:16px}.hero,.quiz-wrap,.results-preview,.privacy{padding-left:15px;padding-right:15px}.cast{gap:10px}.avatar{min-height:135px;padding:12px 8px}.avatar-emoji{height:64px;font-size:48px}.quiz-card{padding:22px 15px;border-radius:26px}.choice{padding:15px 12px;gap:12px}.choice-icon{width:64px;height:64px;font-size:36px}.types{grid-template-columns:1fr}.privacy-inner{grid-template-columns:1fr}.progress-row{gap:10px}.question{font-size:25px}}
+  </style>
+</head>
+<body>
+<header><div class="nav"><a class="brand" href="index.html"><span class="brand-mark">🌿</span><span><b>牧茗</b><small>MU MING</small></span></a><span class="safe">🔒 趣味測驗｜不需登入｜不會儲存資料</span></div></header>
+<main><span class="blob b1"></span><span class="blob b2"></span>
+<section class="hero" id="intro"><span class="eyebrow">✨ 找到你的 AI 辦公風格</span><h1>AI 辦公<span>人格</span>測驗</h1><p class="lead">12 題更完整了解你面對工作的習慣，看看哪一種 AI 使用方式最適合你。</p><div class="cast"><div class="avatar"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#e8f2ed"/><circle cx="60" cy="41" r="19" fill="#f2c7a5"/><path d="M42 41c2-18 35-22 39 0-6-5-11-8-20-8-8 0-13 3-19 8z" fill="#263b35"/><rect x="35" y="61" width="50" height="38" rx="14" fill="#194d40"/><rect x="46" y="70" width="28" height="18" rx="4" fill="#fffaf0"/><path d="M52 77h16M52 82h10" stroke="#d3a24c" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="42" r="7" fill="none" stroke="#263b35" stroke-width="3"/><circle cx="68" cy="42" r="7" fill="none" stroke="#263b35" stroke-width="3"/><path d="M49 42h12" stroke="#263b35" stroke-width="3"/></svg></div><b>效率型</b><small>目標明確，馬上開工</small></div><div class="avatar"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#edf6f1"/><circle cx="56" cy="42" r="18" fill="#f1c39f"/><path d="M39 42c2-20 35-23 38 1-8-7-13-9-21-9-7 0-12 2-17 8z" fill="#6d4b3c"/><rect x="33" y="62" width="48" height="37" rx="14" fill="#8fb7a5"/><circle cx="81" cy="54" r="14" fill="none" stroke="#194d40" stroke-width="5"/><path d="M91 64l13 13" stroke="#194d40" stroke-width="6" stroke-linecap="round"/><path d="M47 47c5 4 11 4 16 0" stroke="#8f5f4b" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div><b>探索型</b><small>好奇心旺盛，四處嘗試</small></div><div class="avatar"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#fff4dd"/><circle cx="60" cy="40" r="18" fill="#f2c6a0"/><path d="M41 39c3-17 33-22 38 1-7-6-13-8-20-8-8 0-12 2-18 7z" fill="#2e302f"/><rect x="35" y="59" width="50" height="40" rx="14" fill="#d8aa57"/><rect x="46" y="67" width="28" height="24" rx="4" fill="#fffdf6"/><path d="M51 74l3 3 5-6M51 82l3 3 5-6" stroke="#194d40" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 74h7M62 82h7" stroke="#9b7a42" stroke-width="2.5" stroke-linecap="round"/></svg></div><b>謹慎型</b><small>確認細節，穩穩前進</small></div><div class="avatar"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#fff0d9"/><circle cx="60" cy="43" r="18" fill="#f2c39e"/><path d="M40 43c4-22 34-22 40 0-7-7-13-10-20-10-8 0-14 3-20 10z" fill="#273b35"/><rect x="35" y="62" width="50" height="37" rx="14" fill="#c9863d"/><path d="M86 23c0-9 14-9 14 0 0 5-3 7-5 9v5h-5v-5c-2-2-4-4-4-9z" fill="#f1bf3f"/><path d="M90 42h6" stroke="#c98b1d" stroke-width="3" stroke-linecap="round"/><path d="M50 48c6 5 13 5 20 0" stroke="#8f5e49" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div><b>靈感型</b><small>點子很多，創意滿滿</small></div></div><button class="start-btn" id="startBtn">✨ 開始測驗　›</button><div class="meta"><span>😊 12 題趣味測驗</span><span>⏱ 約 4～5 分鐘</span><span>🛡 資料只留在你的瀏覽器畫面</span></div></section>
+<section class="quiz-wrap hidden" id="quiz"><div class="quiz-card"><div class="progress-row"><strong id="counter">第 1 / 12 題</strong><div class="bar"><span id="progress"></span></div></div><h2 class="question" id="question"></h2><div class="choices" id="choices"></div><div class="quiz-actions"><button class="prev-btn" id="prevBtn" type="button">‹　上一題</button><button class="next-btn" id="nextBtn" disabled>下一題　›</button></div><p class="tip">💡 沒有標準答案，選完會自動跳到下一題，依第一直覺作答就可以。</p></div></section>
+<section class="quiz-wrap hidden" id="result"><div class="result-card"><div class="result-hero" id="resultIcon"></div><div class="result-label">你的 AI 辦公人格是</div><h2 id="resultTitle"></h2><div class="result-tagline" id="resultTagline"></div><p class="result-desc" id="resultDesc"></p><div class="result-quote" id="resultQuote"></div><p class="result-mix" id="resultMix"></p><div class="result-grid"><div class="result-box"><h3>👀 別人眼中的你</h3><p id="resultOthers"></p></div><div class="result-box"><h3>🧯 遇到問題時</h3><p id="resultProblem"></p></div><div class="result-box"><h3>🤝 你的人際互動模式</h3><p id="resultPeople"></p></div><div class="result-box"><h3>😅 最容易被誤會的地方</h3><p id="resultMisunderstood"></p></div><div class="result-box"><h3>✨ 你的隱藏優勢</h3><p id="resultStrength"></p></div><div class="result-box"><h3>🌱 你的小小盲點</h3><p id="resultTip"></p></div><div class="result-box wide"><h3>🤖 最適合你的 AI 搭配方式</h3><p id="resultUse"></p></div></div><p class="share-note">這是趣味測驗，不是正式心理測驗；但如果你看到一半忍不住點頭，代表它多少有抓到你的辦公靈魂。</p><button class="restart-btn" id="restartBtn">↻ 再測一次</button></div></section>
+<section class="results-preview" id="preview"><h2 class="section-title">你可能是哪一種辦公人格？</h2><div class="types"><article class="type"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#e8f2ed"/><circle cx="60" cy="41" r="19" fill="#f2c7a5"/><path d="M42 41c2-18 35-22 39 0-6-5-11-8-20-8-8 0-13 3-19 8z" fill="#263b35"/><rect x="35" y="61" width="50" height="38" rx="14" fill="#194d40"/><rect x="46" y="70" width="28" height="18" rx="4" fill="#fffaf0"/><path d="M52 77h16M52 82h10" stroke="#d3a24c" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="42" r="7" fill="none" stroke="#263b35" stroke-width="3"/><circle cx="68" cy="42" r="7" fill="none" stroke="#263b35" stroke-width="3"/><path d="M49 42h12" stroke="#263b35" stroke-width="3"/></svg></div><h3>效率型</h3><p>目標明確，擅長使用工具快速完成任務。</p></article><article class="type"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#edf6f1"/><circle cx="56" cy="42" r="18" fill="#f1c39f"/><path d="M39 42c2-20 35-23 38 1-8-7-13-9-21-9-7 0-12 2-17 8z" fill="#6d4b3c"/><rect x="33" y="62" width="48" height="37" rx="14" fill="#8fb7a5"/><circle cx="81" cy="54" r="14" fill="none" stroke="#194d40" stroke-width="5"/><path d="M91 64l13 13" stroke="#194d40" stroke-width="6" stroke-linecap="round"/><path d="M47 47c5 4 11 4 16 0" stroke="#8f5f4b" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div><h3>探索型</h3><p>喜歡嘗試不同方法，從新工具找到可能性。</p></article><article class="type"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#fff4dd"/><circle cx="60" cy="40" r="18" fill="#f2c6a0"/><path d="M41 39c3-17 33-22 38 1-7-6-13-8-20-8-8 0-12 2-18 7z" fill="#2e302f"/><rect x="35" y="59" width="50" height="40" rx="14" fill="#d8aa57"/><rect x="46" y="67" width="28" height="24" rx="4" fill="#fffdf6"/><path d="M51 74l3 3 5-6M51 82l3 3 5-6" stroke="#194d40" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 74h7M62 82h7" stroke="#9b7a42" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>謹慎型</h3><p>重視品質與細節，確認清楚才會放心使用。</p></article><article class="type"><div class="character-art"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#fff0d9"/><circle cx="60" cy="43" r="18" fill="#f2c39e"/><path d="M40 43c4-22 34-22 40 0-7-7-13-10-20-10-8 0-14 3-20 10z" fill="#273b35"/><rect x="35" y="62" width="50" height="37" rx="14" fill="#c9863d"/><path d="M86 23c0-9 14-9 14 0 0 5-3 7-5 9v5h-5v-5c-2-2-4-4-4-9z" fill="#f1bf3f"/><path d="M90 42h6" stroke="#c98b1d" stroke-width="3" stroke-linecap="round"/><path d="M50 48c6 5 13 5 20 0" stroke="#8f5e49" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div><h3>靈感型</h3><p>善於發想與聯想，讓 AI 幫忙打開創意。</p></article></div></section>
+<section class="privacy"><div class="privacy-inner"><div><b>😊 12 題快速測驗</b>約 4～5 分鐘完成</div><div><b>🧑‍💼 辦公情境設計</b>題目簡單好理解</div><div><b>🛡️ 不需登入</b>不會儲存任何資料</div><div><b>🌿 牧茗陪你起步</b>讓 AI 成為工作好夥伴</div></div></section>
+</main><footer>© 牧茗管理顧問有限公司｜本測驗僅供趣味與學習參考</footer>
+<script>
+const questions=[
+{q:'主管突然說：「這份資料下午要。」你腦中第一個反應是？',a:[['⚡','先抓重點，做出一版能用的','efficient'],['🔍','先看看有沒有更快的新工具或方法','explore'],['📋','先確認格式、用途和不能出錯的地方','careful'],['💡','先想怎麼呈現才不會又乾又無聊','creative']]},
+{q:'同事跑來問你一個你也不確定的問題，你通常會？',a:[['🧭','先給他一個能往下走的方向','efficient'],['🧪','跟他一起查，順便看看還有什麼可能','explore'],['🔎','先說明哪裡不確定，再確認正確答案','careful'],['💬','先聽懂他真正卡住的是哪一段','creative']]},
+{q:'團隊討論很久都沒有結論時，你最可能做什麼？',a:[['📌','直接整理選項，請大家做決定','efficient'],['🌐','提出一個大家還沒想過的新做法','explore'],['🧾','把條件和風險一項一項列清楚','careful'],['🪄','換個說法或比喻，讓大家突然聽懂','creative']]},
+{q:'有人指出你的工作有問題時，你通常第一時間會？',a:[['🔧','先改掉，事情處理完比較重要','efficient'],['🧠','想知道為什麼會發生，順便找更好的做法','explore'],['📝','先確認是哪裡錯、影響多大','careful'],['🤝','先理解對方在意的點，再想怎麼調整','creative']]},
+{q:'遇到一個以前沒處理過的麻煩，你比較像哪一種人？',a:[['🏃','邊做邊修，先讓事情動起來','efficient'],['🗺️','多找幾種解法，看看哪條路最好走','explore'],['🛡️','先找規則、案例和可能踩雷的地方','careful'],['🧩','先拆解問題，找出真正卡住的核心','creative']]},
+{q:'同事做事方式跟你完全不同，你通常會？',a:[['🎯','只要結果可以，就別浪費時間爭方法','efficient'],['🔄','覺得有趣，想看看他的方式好不好用','explore'],['📏','先確認這樣做會不會影響品質或流程','careful'],['🌈','試著找一個大家都舒服的合作方式','creative']]},
+{q:'當工作同時湧進來，你會怎麼處理？',a:[['✅','先排優先順序，一件一件清掉','efficient'],['🧰','找工具或方法把流程重新整理','explore'],['📚','先確認期限、責任和每件事的風險','careful'],['🧘','先理清整體脈絡，避免越忙越亂','creative']]},
+{q:'客戶或主管說：「這不是我要的。」你最可能怎麼回應？',a:[['🚑','直接問要改哪裡，趕快修正','efficient'],['❓','多問幾個問題，找出真正期待','explore'],['📑','回頭核對原始需求和雙方認知差異','careful'],['👂','先接住情緒，再把需求重新說清楚','creative']]},
+{q:'朋友或同事心情不好來找你時，你通常是？',a:[['🛠️','很快幫他想出可以怎麼處理','efficient'],['🔭','陪他換角度，看事情有沒有別種可能','explore'],['🧱','幫他分析問題，避免做出更糟決定','careful'],['☕','先讓他把話說完，感受被理解','creative']]},
+{q:'要學一個新的 AI 工具，你最自然的方式是？',a:[['🚀','先直接操作，能用再說','efficient'],['🎮','每個功能都想按按看','explore'],['📖','先看清楚資料安全和使用限制','careful'],['🎨','先拿自己有興趣的題目來玩','creative']]},
+{q:'當大家都很慌的時候，你比較常扮演什麼角色？',a:[['📣','喊停混亂，告訴大家先做哪件事','efficient'],['🔦','快速找出還有什麼方法可以試','explore'],['🧯','提醒風險，守住不能出錯的底線','careful'],['🌿','穩住氣氛，讓大家重新找到節奏','creative']]},
+{q:'完成一件工作後，你最在意哪一種感覺？',a:[['🏁','終於完成，而且沒有拖到','efficient'],['🧠','這次又學到一個新方法','explore'],['✔️','確認過了，結果是可靠的','careful'],['✨','做出來的東西有自己的味道','creative']]}
+];
+const profileArt={
+  efficient:`<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#e8f2ed"/><circle cx="60" cy="41" r="19" fill="#f2c7a5"/><path d="M42 41c2-18 35-22 39 0-6-5-11-8-20-8-8 0-13 3-19 8z" fill="#263b35"/><rect x="35" y="61" width="50" height="38" rx="14" fill="#194d40"/><rect x="46" y="70" width="28" height="18" rx="4" fill="#fffaf0"/><path d="M52 77h16M52 82h10" stroke="#d3a24c" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="42" r="7" fill="none" stroke="#263b35" stroke-width="3"/><circle cx="68" cy="42" r="7" fill="none" stroke="#263b35" stroke-width="3"/><path d="M49 42h12" stroke="#263b35" stroke-width="3"/></svg>`,
+  explore:`<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#edf6f1"/><circle cx="56" cy="42" r="18" fill="#f1c39f"/><path d="M39 42c2-20 35-23 38 1-8-7-13-9-21-9-7 0-12 2-17 8z" fill="#6d4b3c"/><rect x="33" y="62" width="48" height="37" rx="14" fill="#8fb7a5"/><circle cx="81" cy="54" r="14" fill="none" stroke="#194d40" stroke-width="5"/><path d="M91 64l13 13" stroke="#194d40" stroke-width="6" stroke-linecap="round"/><path d="M47 47c5 4 11 4 16 0" stroke="#8f5f4b" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`,
+  careful:`<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#fff4dd"/><circle cx="60" cy="40" r="18" fill="#f2c6a0"/><path d="M41 39c3-17 33-22 38 1-7-6-13-8-20-8-8 0-12 2-18 7z" fill="#2e302f"/><rect x="35" y="59" width="50" height="40" rx="14" fill="#d8aa57"/><rect x="46" y="67" width="28" height="24" rx="4" fill="#fffdf6"/><path d="M51 74l3 3 5-6M51 82l3 3 5-6" stroke="#194d40" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 74h7M62 82h7" stroke="#9b7a42" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  creative:`<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#fff0d9"/><circle cx="60" cy="43" r="18" fill="#f2c39e"/><path d="M40 43c4-22 34-22 40 0-7-7-13-10-20-10-8 0-14 3-20 10z" fill="#273b35"/><rect x="35" y="62" width="50" height="37" rx="14" fill="#c9863d"/><path d="M86 23c0-9 14-9 14 0 0 5-3 7-5 9v5h-5v-5c-2-2-4-4-4-9z" fill="#f1bf3f"/><path d="M90 42h6" stroke="#c98b1d" stroke-width="3" stroke-linecap="round"/><path d="M50 48c6 5 13 5 20 0" stroke="#8f5e49" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`
+};
+const profiles={
+efficient:{title:'效率行動派',tagline:'先做再說，事情不會自己完成',quote:'「先不要開會研究三天，給我一個能往下走的版本。」',desc:'你是辦公室裡很容易讓人安心的那種人。事情一來，你不太會站在原地焦慮太久，而是迅速抓出重點、排出順序，先讓進度往前。你討厭曖昧不清和沒完沒了的討論，因為在你心裡，能落地的八十分，通常比還沒出生的一百分更有用。',others:'大家通常覺得你反應快、很可靠，找你處理事情常常能得到明確答案。當團隊陷入混亂，你很自然就會開始分工、抓期限、決定下一步。',problem:'你碰到問題時會立刻切成「現在能做什麼」。比起反覆追究誰造成的，你更關心怎麼止血、怎麼恢復進度。',people:'你表達直接、重點清楚，喜歡有效率的溝通。你不是沒有人情味，只是你常常用「幫對方把事情解決」來表示關心。',misunderstood:'別人有時會覺得你太急、太強勢，甚至好像沒在聽；其實你只是腦中已經跑到下一步，想趕快把大家從麻煩裡救出去。',strength:'你最大的能力不是單純做得快，而是能在資訊不完整時仍然推動事情。你很會把混亂變成待辦事項，這是團隊裡非常稀有的能力。',use:'讓 AI 幫你整理重點、拆解任務、製作初稿、摘要會議、建立 SOP。最適合你的用法是：先用 AI 快速產出第一版，再由你做最後決策和修正。',tip:'你需要練習的不是更快，而是偶爾慢十秒確認：「對方現在需要答案，還是需要先被理解？」重要資料也別因趕時間跳過查證。'},
+explore:{title:'好奇探索家',tagline:'這個也能試？那我先按一下看看',quote:'「等一下，我剛剛發現另一個方法，好像更有意思。」',desc:'你的大腦像同時開了很多分頁。遇到新問題，你很少只接受眼前唯一的答案，總會忍不住想：還有沒有更好的工具？別人怎麼做？換個方式會不會更順？你不怕陌生，反而容易被未知勾起興趣。辦公室裡的新工具、新流程和冷門功能，通常都是你先發現的。',others:'大家常覺得你消息靈通、很會找方法，遇到不熟的事問你，通常能得到不只一個答案。你也很容易替團隊帶進新觀念。',problem:'碰到問題時，你會先擴大選項，而不是急著選第一個答案。你喜歡比較、測試、觀察差異，再決定哪種解法最值得留下。',people:'你喜歡交換想法，也不太排斥不同意見。跟你聊天常會從一個問題延伸出三個新方向，對喜歡腦力激盪的人來說非常過癮。',misunderstood:'別人偶爾會覺得你一直換工具、想法太多、好像沒有定案；其實你不是不專心，而是太容易看到其他可能性。',strength:'你真正厲害的是快速學習與跨方法連結。你能把別人的做法、新工具和自己的需求拼在一起，找出原本沒人想到的路。',use:'讓 AI 幫你比較方案、模擬不同角色、產出多版本、研究工具差異、提供反方觀點。最適合你的方式是先設定探索範圍，再讓 AI 陪你快速試錯。',tip:'每次開始前先寫一句「我今天要解決的是什麼」。你不缺新點子，真正能讓你升級的是在眾多可能中選一個做完。'},
+careful:{title:'謹慎守門員',tagline:'等等，這個數字有確認過嗎？',quote:'「我不是不讓你做，我只是想先確認做了不會出事。」',desc:'你是團隊裡那個會默默注意到小地方的人。別人看到一份完成品，你看到的是數字有沒有對、條件有沒有漏、這樣做之後會不會留下麻煩。你不喜歡靠運氣過關，也不容易被漂亮但空泛的說法說服。只有當資訊合理、風險可控，你才會真正放心往前走。',others:'大家通常覺得你細心、穩定、值得信任。重要文件、數字或高風險工作交給你，別人會比較安心。',problem:'你遇到問題會先確認事實、影響範圍和責任邊界。你不是慢，而是希望第一次處理就不要留下第二個問題。',people:'你不一定是最熱鬧的人，但會認真聽、記得細節，也願意提醒別人可能忽略的風險。你的關心常藏在提醒和確認裡。',misunderstood:'有時別人會覺得你想太多、太保守，甚至像在潑冷水；其實你是在替大家預先踩煞車，避免整台車一起衝下山。',strength:'你擅長把模糊變成清楚，把「應該沒問題」變成真正可驗證。你的價值常在事情沒有出錯時被低估，但那正是因為你先守住了。',use:'讓 AI 幫你建立查核表、找遺漏、比較版本、整理風險、匿名化敏感資料。最適合你的方式是把 AI 當第二雙眼睛，而不是最後裁判。',tip:'不要等到百分之百確定才開始。可以先從低風險的小範圍測試，設定停止條件，你會發現前進和謹慎其實可以同時存在。'},
+creative:{title:'靈感共感派',tagline:'事情要做好，也要讓人願意接受',quote:'「問題可能不只在事情本身，而是大家現在根本沒站在同一個頻道。」',desc:'你處理工作時，不只看任務，也會看人。你很容易感覺到現場氣氛、對方真正介意的點，以及一句話換個方式說，結果可能完全不同。你擅長把零散想法整理成有感覺、有脈絡的內容，也常在大家卡住時，用一個新的角度或比喻讓事情突然通了。',others:'大家常覺得你有想法、會說話，也比較懂得顧及感受。當事情需要創意、協調或重新包裝時，很容易想到你。',problem:'你會先找問題背後的真正原因：是資訊不清楚、情緒沒被接住，還是大家理解不同？你常透過換角度和重新表達來解開僵局。',people:'你重視互動感，會觀察對方的反應調整說法。比起只把話講完，你更在意對方有沒有真的聽懂、願不願意一起往下走。',misunderstood:'別人偶爾會覺得你想很多、容易繞遠，或太在意氣氛；其實你知道很多問題不是命令下去就會消失，人願意配合才是真的解決。',strength:'你最大的能力是把人、內容和情境連在一起。你能讓冰冷資訊變得好懂，也能讓不同立場的人重新找到共同語言。',use:'讓 AI 幫你改寫語氣、模擬對話、發想標題、整理故事脈絡、提出不同受眾版本。最適合你的方式是先提供對象與情境，再讓 AI 產出多種表達。',tip:'你的感受力很強，但別把所有人的情緒都扛在自己身上。碰到需要決定的時候，記得替討論設一個期限，讓理解最後也能變成行動。'}
+};
+let current=0,selected=null,locked=false,history=[],answers=[];
+let scores={efficient:0,explore:0,careful:0,creative:0};
+const intro=document.getElementById('intro'),quiz=document.getElementById('quiz'),result=document.getElementById('result'),preview=document.getElementById('preview');
+function render(){
+  const item=questions[current];
+  document.getElementById('counter').textContent=`第 ${current+1} / ${questions.length} 題`;
+  document.getElementById('progress').style.width=`${((current+1)/questions.length)*100}%`;
+  document.getElementById('question').textContent=item.q;
+  const box=document.getElementById('choices');
+  box.innerHTML='';
+  selected=null;
+  locked=false;
+  const prevBtn=document.getElementById('prevBtn');
+  if(prevBtn) prevBtn.disabled=current===0;
+  item.a.forEach((x,i)=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='choice';
+    b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span class="choice-icon">${x[0]}</span><span class="choice-copy"><b>${x[1]}</b><small>選擇最符合你直覺的答案</small></span>`;
+    b.onclick=()=>{
+      if(locked) return;
+      locked=true;
+      document.querySelectorAll('.choice').forEach(el=>el.classList.remove('selected'));
+      b.classList.add('selected');
+      selected=x[2];
+      window.setTimeout(()=>advance(),260);
+    };
+    box.appendChild(b);
+  });
+}
+function start(){
+  intro.classList.add('hidden');
+  preview.classList.add('hidden');
+  result.classList.add('hidden');
+  quiz.classList.remove('hidden');
+  current=0;
+  history=[];
+  answers=Array(questions.length).fill(null);
+  scores={efficient:0,explore:0,careful:0,creative:0};
+  render();
+  quiz.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function advance(){
+  if(!selected) return;
+  answers[current]=selected;
+  scores[selected]++;
+  history.push(selected);
+  if(current<questions.length-1){
+    current++;
+    render();
+    quiz.scrollIntoView({behavior:'smooth',block:'start'});
+  }else{
+    showResult();
+  }
+}
+
+function goBack(){
+  if(current===0 || locked) return;
+  current--;
+  const previousAnswer=answers[current];
+  if(previousAnswer){
+    scores[previousAnswer]=Math.max(0,scores[previousAnswer]-1);
+    answers[current]=null;
+    const lastIndex=history.lastIndexOf(previousAnswer);
+    if(lastIndex>-1) history.splice(lastIndex,1);
+  }
+  render();
+  quiz.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.getElementById('startBtn').onclick=start;
+document.getElementById('restartBtn').onclick=start;
+const nextBtn=document.getElementById('nextBtn');
+if(nextBtn){nextBtn.onclick=advance;}
+const prevBtn=document.getElementById('prevBtn');
+if(prevBtn){prevBtn.onclick=goBack;}
+function showResult(){
+  quiz.classList.add('hidden');
+  const order=['efficient','explore','careful','creative'];
+  const max=Math.max(...order.map(k=>scores[k]));
+  const tied=order.filter(k=>scores[k]===max);
+  const winner=tied.length===1 ? tied[0] : ([...history].reverse().find(k=>tied.includes(k)) || tied[0]);
+  const p=profiles[winner];
+  const ranked=order.slice().sort((a,b)=>scores[b]-scores[a]);
+  const second=ranked.find(k=>k!==winner);
+  const total=questions.length;
+  document.getElementById('resultIcon').innerHTML=profileArt[winner];
+  document.getElementById('resultTitle').textContent=p.title;
+  document.getElementById('resultTagline').textContent=p.tagline;
+  document.getElementById('resultDesc').textContent=p.desc;
+  document.getElementById('resultQuote').textContent=p.quote;
+  document.getElementById('resultMix').textContent=`你的主要傾向是「${p.title}」，同時也帶有一點「${profiles[second].title}」特質。12 題中，你有 ${scores[winner]} 題最接近主要類型、${scores[second]} 題接近次要類型。`;
+  document.getElementById('resultOthers').textContent=p.others;
+  document.getElementById('resultProblem').textContent=p.problem;
+  document.getElementById('resultPeople').textContent=p.people;
+  document.getElementById('resultMisunderstood').textContent=p.misunderstood;
+  document.getElementById('resultStrength').textContent=p.strength;
+  document.getElementById('resultUse').textContent=p.use;
+  document.getElementById('resultTip').textContent=p.tip;
+  result.classList.remove('hidden');
+  result.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body></html>
