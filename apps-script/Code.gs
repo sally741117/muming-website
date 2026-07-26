@@ -351,17 +351,11 @@ function handleCourseBooking_(payload) {
     'companyName',
     'contactName',
     'phone',
-    'contactTimes',
     'date',
     'period'
   ];
   var validationMessage = validateRequired_(payload, requiredFields);
 
-  if (validationMessage) {
-    return jsonResponse_(false, null, validationMessage);
-  }
-
-  validationMessage = validateContactChoice_(payload);
   if (validationMessage) {
     return jsonResponse_(false, null, validationMessage);
   }
@@ -398,32 +392,50 @@ function handleCourseBooking_(payload) {
 
   var bookingId = generateId_('BK');
   var createdAt = nowText_();
-  var row = [
-    createdAt,
-    bookingId,
-    normalizedDate,
-    period.label,
-    cleanText_(payload.companyName),
-    cleanText_(payload.industry),
-    cleanText_(payload.contactName),
-    cleanText_(payload.phone),
-    cleanText_(payload.email),
-    cleanText_(payload.lineId),
-    cleanText_(payload.address),
-    cleanText_(payload.expectedAttendees),
-    cleanText_(payload.aiLevel),
-    joinParts_([
-      cleanText_(payload.courseTopics) ? '想了解的課程主題：' + cleanText_(payload.courseTopics) : '',
-      cleanText_(payload.courseNeeds)
-    ], '\n'),
-    cleanText_(payload.contactTimes),
-    cleanText_(payload.preferredContact),
-    cleanText_(payload.notes),
-    '網站送出'
-  ];
-
   var bookingSheet = getRequiredSheet_(ss, CONFIG.sheets.courseBookings);
-  bookingSheet.appendRow(row);
+  var courseType = cleanText_(payload.courseType) || '免費 AI 課程';
+  var courseNeedSummary = joinParts_([
+    cleanText_(payload.courseFormat) ? '希望課程形式：' + cleanText_(payload.courseFormat) : '',
+    cleanText_(payload.audience) ? '上課對象：' + cleanText_(payload.audience) : '',
+    cleanText_(payload.courseTopics) ? '想了解的主題：' + cleanText_(payload.courseTopics) : '',
+    cleanText_(payload.courseNeeds)
+  ], '\n');
+  appendRecordByHeaders_(bookingSheet, {
+    '建立時間': createdAt,
+    '預約編號': bookingId,
+    '申請編號': bookingId,
+    '課程類型': courseType,
+    '預約日期': normalizedDate,
+    '預約時段': period.label,
+    '公司名稱': cleanText_(payload.companyName),
+    '企業名稱': cleanText_(payload.companyName),
+    '公司產業': cleanText_(payload.industry),
+    '行業類別': cleanText_(payload.industry),
+    '聯絡人': cleanText_(payload.contactName),
+    '手機號碼': cleanText_(payload.phone),
+    '聯絡電話': cleanText_(payload.phone),
+    'Email': cleanText_(payload.email),
+    'LINE ID': cleanText_(payload.lineId),
+    '上課地址': cleanText_(payload.address),
+    '上課地點': cleanText_(payload.address),
+    '預計人數': cleanText_(payload.expectedAttendees),
+    '上課對象': cleanText_(payload.audience),
+    '團隊 AI 程度': cleanText_(payload.aiLevel),
+    '團隊 AI 使用程度': cleanText_(payload.aiLevel),
+    '希望課程形式': cleanText_(payload.courseFormat),
+    '想了解的課程主題': cleanText_(payload.courseTopics),
+    '想了解的主題': cleanText_(payload.courseTopics),
+    '特殊需求或補充內容': cleanText_(payload.courseNeeds),
+    '其他需求或補充內容': cleanText_(payload.courseNeeds),
+    '課程需求': courseNeedSummary,
+    '方便聯絡時段': cleanText_(payload.contactTimes),
+    '希望聯絡方式': cleanText_(payload.preferredContact),
+    '補充說明': cleanText_(payload.notes),
+    '來源': '網站送出',
+    '處理狀態': '新申請',
+    '狀態': '新申請',
+    '內部備註': ''
+  });
   statusCell.setValue(CONFIG.status.booked);
 
   sendCourseBookingEmail_(bookingId, normalizedDate, period.label, payload);
@@ -506,16 +518,10 @@ function handleConsultation_(payload) {
   var requiredFields = [
     'companyName',
     'contactName',
-    'phone',
-    'contactTimes'
+    'phone'
   ];
   var validationMessage = validateRequired_(payload, requiredFields);
 
-  if (validationMessage) {
-    return jsonResponse_(false, null, validationMessage);
-  }
-
-  validationMessage = validateContactChoice_(payload);
   if (validationMessage) {
     return jsonResponse_(false, null, validationMessage);
   }
@@ -538,13 +544,18 @@ function handleConsultation_(payload) {
     '諮詢編號': consultationId,
     '申請編號': consultationId,
     '公司名稱': cleanText_(payload.companyName),
+    '企業名稱': cleanText_(payload.companyName),
     '公司產業': cleanText_(payload.industry),
+    '行業類別': cleanText_(payload.industry),
     '聯絡人': cleanText_(payload.contactName),
     '手機號碼': cleanText_(payload.phone),
+    '聯絡電話': cleanText_(payload.phone),
     'Email': cleanText_(payload.email),
     'LINE ID': cleanText_(payload.lineId),
     '想了解的服務': cleanText_(payload.serviceInterest),
+    '想討論的方向': cleanText_(payload.serviceInterest),
     '需求說明': cleanText_(payload.needsDescription),
+    '簡單說明目前情況': cleanText_(payload.needsDescription),
     '方便聯絡時段': cleanText_(payload.contactTimes),
     '希望聯絡方式': cleanText_(payload.preferredContact),
     '補充說明': notes,
@@ -1205,6 +1216,46 @@ function sendAppointmentEmail_(appointmentId, payload, date, periodLabel) {
   ].join('\n');
 
   MailApp.sendEmail(CONFIG.adminEmail, subject, body);
+}
+
+function ensureCourseBookingHeaders() {
+  var requiredHeaders = [
+    '課程類型',
+    '上課對象',
+    '希望課程形式',
+    '上課地點',
+    '想了解的主題'
+  ];
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = getRequiredSheet_(ss, CONFIG.sheets.courseBookings);
+  var lastColumn = sheet.getLastColumn();
+  var existingHeaders = lastColumn > 0
+    ? sheet.getRange(1, 1, 1, lastColumn).getValues()[0].map(cleanText_)
+    : [];
+  var existingSet = {};
+  var alreadyExists = [];
+  var missingHeaders = [];
+
+  existingHeaders.forEach(function(header) {
+    if (header) {
+      existingSet[header] = true;
+    }
+  });
+
+  requiredHeaders.forEach(function(header) {
+    if (existingSet[header]) {
+      alreadyExists.push(header);
+    } else {
+      missingHeaders.push(header);
+    }
+  });
+
+  if (missingHeaders.length) {
+    sheet.getRange(1, lastColumn + 1, 1, missingHeaders.length).setValues([missingHeaders]);
+  }
+
+  Logger.log('新增欄位：' + (missingHeaders.length ? missingHeaders.join('、') : '無'));
+  Logger.log('原本已存在欄位：' + (alreadyExists.length ? alreadyExists.join('、') : '無'));
 }
 
 function testGetAvailableSlots() {

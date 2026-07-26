@@ -15,8 +15,9 @@
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;border:0;background:transparent}.hamburger span{display:block;width:22px;height:1.5px;background:var(--brown-deep)}.mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:var(--cream-light);border-bottom:1px solid var(--border);padding:20px 40px 28px;z-index:99;flex-direction:column;gap:20px}.mobile-menu.open{display:flex}.mobile-menu a{font-size:15px;color:var(--brown-mid);text-decoration:none;padding:4px 0;border-bottom:1px solid var(--border);letter-spacing:.04em}
   .hero{padding:72px 40px 34px;background:linear-gradient(135deg,rgba(250,247,242,.98),rgba(237,229,212,.62));border-bottom:1px solid var(--border)}.hero-inner{width:min(1120px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:42px;align-items:end}.eyebrow{color:var(--orange);font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}h1{font-family:'Noto Serif TC',serif;font-size:clamp(34px,5vw,56px);line-height:1.2;font-weight:500}.hero p{max-width:660px;color:var(--text-muted);margin-top:18px;font-size:16px}.hero-note{border-left:2px solid var(--orange);padding-left:18px;color:var(--brown-mid);font-size:14px}
   .wrap{width:min(1120px,calc(100% - 40px));margin:0 auto;padding:42px 0 72px}.type-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:28px}.type-card{display:flex;gap:10px;align-items:flex-start;padding:18px 20px;border:1px solid var(--border);border-radius:6px;background:#fffdf9;color:var(--brown-mid);cursor:pointer}.type-card strong{display:block;color:var(--brown-deep);font-size:18px;font-weight:500}.type-card:has(input:checked){border-color:rgba(212,88,26,.48);box-shadow:inset 0 0 0 1px rgba(212,88,26,.2);background:#fff}
-  form,.calendar-box{background:#fffdf9;border:1px solid var(--border);border-radius:8px;padding:24px}.form-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field{display:flex;flex-direction:column;gap:7px}.field.full,fieldset.full{grid-column:1/-1}.is-hidden{display:none!important}label,legend{color:var(--brown-mid);font-size:14px;font-weight:400}input,select,textarea{width:100%;border:1px solid rgba(107,68,35,.22);border-radius:4px;background:var(--cream-light);color:var(--brown-deep);padding:12px 13px;font:inherit;font-size:15px}textarea{min-height:118px;resize:vertical}.compact-textarea{min-height:78px}input[type=radio],input[type=checkbox]{width:auto;accent-color:var(--orange);flex:0 0 auto}fieldset{border:0}.checks,.radios{display:flex;flex-wrap:wrap;gap:10px}.check,.radio{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--border);border-radius:4px;background:#fff;padding:9px 11px;color:var(--brown-mid);font-size:14px;cursor:pointer}.section-title{grid-column:1/-1;margin:8px 0 0;font-family:'Noto Serif TC',serif;font-size:20px;font-weight:500}.hint{margin-top:8px;color:var(--text-muted);font-size:14px}.box-title{margin-bottom:14px;font-family:'Noto Serif TC',serif;font-size:22px;font-weight:500}
-  .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.calendar-month{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:500}.icon-btn{width:36px;height:36px;display:inline-grid;place-items:center;border:1px solid var(--border);border-radius:4px;background:var(--cream-light);color:var(--brown-mid);font-size:20px;cursor:pointer}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.weekday{min-height:28px;display:grid;place-items:center;color:var(--text-muted);font-size:12px}.day{aspect-ratio:1;border:1px solid transparent;border-radius:5px;background:transparent;color:var(--brown-deep);font:inherit}.day.empty{visibility:hidden}.day.available{border-color:rgba(212,88,26,.28);background:rgba(212,88,26,.08);cursor:pointer;font-weight:500}.day.available:hover,.day.selected{background:var(--orange);border-color:var(--orange);color:#fff}.periods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.period-btn{min-height:48px;border:1px solid var(--border);border-radius:5px;background:#fff;color:var(--brown-mid);font:inherit;cursor:pointer}.period-btn.selected{border-color:var(--orange);background:rgba(212,88,26,.1);color:var(--brown-deep);font-weight:500}.selected-slot{margin-top:12px;color:var(--text-muted);font-size:14px}
+  form,.calendar-box{background:#fffdf9;border:1px solid var(--border);border-radius:8px;padding:24px}.form-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field{display:flex;flex-direction:column;gap:7px}.field.full,fieldset.full,.form-note{grid-column:1/-1}.is-hidden{display:none!important}label,legend{color:var(--brown-mid);font-size:14px;font-weight:400}input,select,textarea{width:100%;border:1px solid rgba(107,68,35,.22);border-radius:4px;background:var(--cream-light);color:var(--brown-deep);padding:12px 13px;font:inherit;font-size:15px}textarea{min-height:118px;resize:vertical}.compact-textarea{min-height:78px}input[type=radio],input[type=checkbox]{width:auto;accent-color:var(--orange);flex:0 0 auto}fieldset{border:0}.checks,.radios{display:flex;flex-wrap:wrap;gap:10px}.check,.radio{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--border);border-radius:4px;background:#fff;padding:9px 11px;color:var(--brown-mid);font-size:14px;cursor:pointer}.section-title{grid-column:1/-1;margin:8px 0 0;font-family:'Noto Serif TC',serif;font-size:20px;font-weight:500}.hint,.form-note,.calendar-note{margin-top:8px;color:var(--text-muted);font-size:14px}.limit-tag{display:inline-flex;width:max-content;border:1px solid rgba(212,88,26,.34);border-radius:999px;padding:4px 10px;background:rgba(212,88,26,.08);color:var(--orange);font-size:13px;font-weight:400}.box-title{margin-bottom:14px;font-family:'Noto Serif TC',serif;font-size:22px;font-weight:500}
+  .attendee-number{display:grid;grid-template-columns:minmax(0,120px) auto;gap:10px;align-items:center}.attendee-number input[type=number]{min-width:0}.unit-label{color:var(--brown-mid);font-size:14px}
+  .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.calendar-month{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:500}.icon-btn{width:36px;height:36px;display:inline-grid;place-items:center;border:1px solid var(--border);border-radius:4px;background:var(--cream-light);color:var(--brown-mid);font-size:20px;cursor:pointer}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.weekday{min-height:28px;display:grid;place-items:center;color:var(--text-muted);font-size:12px}.day{aspect-ratio:1;border:1px solid rgba(107,68,35,.08);border-radius:5px;background:rgba(245,240,232,.55);color:rgba(122,106,88,.48);font:inherit}.day:disabled{cursor:not-allowed}.day.available{border-color:rgba(212,88,26,.36);background:rgba(212,88,26,.08);color:var(--brown-deep);cursor:pointer;font-weight:500}.day.available:hover,.day.selected{background:var(--orange);border-color:var(--orange);color:#fff}.periods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.period-btn{min-height:48px;border:1px solid var(--border);border-radius:5px;background:#fff;color:var(--brown-mid);font:inherit;cursor:pointer}.period-btn.selected{border-color:var(--orange);background:rgba(212,88,26,.1);color:var(--brown-deep);font-weight:500}.selected-slot{margin-top:12px;color:var(--text-muted);font-size:14px}.success-panel{grid-column:1/-1;border:1px solid rgba(79,123,74,.28);background:rgba(79,123,74,.08);border-radius:6px;padding:16px;color:var(--brown-mid)}.success-panel strong{display:block;color:var(--success);font-size:18px;margin-bottom:6px}
   .actions{display:flex;align-items:center;gap:14px;margin-top:24px;flex-wrap:wrap}.btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:0;border-radius:3px;background:var(--orange);color:#fff;padding:12px 24px;font:inherit;font-weight:400;letter-spacing:.06em;cursor:pointer;text-decoration:none}.btn-primary:hover{background:var(--orange-hover)}.btn-primary:disabled{opacity:.58;cursor:not-allowed}.status{min-height:28px;font-size:14px;color:var(--text-muted)}.status.success{color:var(--success);font-weight:400}.status.error{color:var(--danger);font-weight:400}
   @media(max-width:980px){.hero-inner,.form-layout,.type-switch{grid-template-columns:1fr}}@media(max-width:768px){nav{padding:0 24px}.logo-img{width:30px;margin-top:-5px}.logo-zh{font-size:14px}.logo-en{font-size:9px;letter-spacing:.16em}.nav-links{display:none}.hamburger{display:flex}.hero{padding:48px 22px 30px}.wrap{width:min(100% - 28px,1120px);padding-top:28px}.form-grid{grid-template-columns:1fr}form,.calendar-box{padding:18px}}@media(max-width:520px){.calendar{gap:5px}.periods{grid-template-columns:1fr}.check,.radio{width:100%}}
 </style>
@@ -29,54 +30,56 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu"><a href="index.html#services">服務項目</a><a href="index.html#free-tools">免費工具</a><a href="booking.html?type=consultation">預約諮詢</a><a href="index.html#faq">常見問題</a><a href="index.html#about">關於牧茗</a><a href="index.html#contact">聯絡我們</a></div>
 <main>
-  <section class="hero"><div class="hero-inner"><div><p class="eyebrow">Booking</p><h1 id="pageTitle">課程預約與需求諮詢</h1><p id="pageLead">請選擇需求類型，在同一頁完成資料填寫與預約時段選擇。</p></div><div class="hero-note">需要現場討論或課程預約時，系統會在送出前再次確認月曆時段仍可預約。</div></div></section>
+  <section class="hero"><div class="hero-inner"><div><p class="eyebrow">Booking</p><h1 id="pageTitle">免費 AI 課程</h1><p id="pageLead">每家企業限申請 1 次免費 AI 基礎課程，送出後將由牧茗與您聯絡確認。</p></div><div class="hero-note">需要現場討論或課程預約時，系統會在送出前再次確認月曆時段仍可預約。</div></div></section>
   <div class="wrap">
     <div class="type-switch" role="radiogroup" aria-label="需求類型">
-      <label class="type-card"><input type="radio" name="mainType" value="course"><span><strong>企業 AI 課程</strong>申請課程並直接預約可上課時段。</span></label>
-      <label class="type-card"><input type="radio" name="mainType" value="workflow"><span><strong>工作改善需求</strong>描述想改善的流程，可選擇是否預約現場討論。</span></label>
-      <label class="type-card"><input type="radio" name="mainType" value="consultation"><span><strong>初步討論</strong>留下需求，選擇電話聯絡或現場討論。</span></label>
+      <label class="type-card"><input type="radio" name="mainType" value="course"><span><strong>免費 AI 課程</strong>每家企業限申請 1 次免費 AI 基礎課程。</span></label>
+      <label class="type-card"><input type="radio" name="mainType" value="workflow"><span><strong>企業課程預約</strong>提供企業內訓、講座、工作坊或客製課程需求。</span></label>
+      <label class="type-card"><input type="radio" name="mainType" value="consultation"><span><strong>預約初步討論</strong>討論流程改善、AI 工具導入或尚未確定的需求。</span></label>
     </div>
     <div class="form-layout">
       <form id="bookingForm">
         <div class="form-grid">
-          <h2 class="section-title" id="formTitle">企業 AI 課程申請</h2>
-          <div class="field common"><label for="companyName">公司名稱 *</label><input id="companyName" name="companyName" required></div>
-          <div class="field common"><label for="industry">公司產業</label><input id="industry" name="industry"></div>
+          <h2 class="section-title" id="formTitle">免費 AI 課程</h2>
+          <p class="form-note" id="formDescription"></p>
+          <span class="limit-tag course-only">一企業一課</span>
+          <p class="form-note course-only">每家企業限申請 1 次免費 AI 基礎課程，送出後將由牧茗與您聯絡確認。</p>
+          <div class="field common"><label for="companyName">企業名稱 *</label><input id="companyName" name="companyName" required></div>
+          <div class="field common" id="industryField"><label for="industry">行業類別 *</label><input id="industry" name="industry"></div>
           <div class="field common"><label for="contactName">聯絡人 *</label><input id="contactName" name="contactName" required></div>
-          <div class="field common"><label for="phone">手機號碼 *</label><input id="phone" name="phone" inputmode="tel" required></div>
-          <div class="field common"><label for="email">Email（Email 或 LINE ID 至少填一項）</label><input id="email" name="email" type="email"></div>
-          <div class="field common"><label for="lineId">LINE ID</label><input id="lineId" name="lineId"></div>
+          <div class="field common"><label for="phone">聯絡電話 *</label><input id="phone" name="phone" inputmode="tel" required></div>
+          <div class="field common contact-extra"><label for="email">Email</label><input id="email" name="email" type="email"></div>
+          <div class="field common contact-extra"><label for="lineId">LINE ID</label><input id="lineId" name="lineId"></div>
 
-          <div class="field full course-only"><label for="courseAddress">上課地址</label><input id="courseAddress" name="courseAddress"></div>
-          <div class="field course-only"><label for="expectedAttendees">預計人數</label><input id="expectedAttendees" name="expectedAttendees" inputmode="numeric"></div>
-          <div class="field course-only"><label for="aiLevel">團隊 AI 程度</label><select id="aiLevel" name="aiLevel"><option value="">請選擇</option><option>完全沒有使用過</option><option>偶爾使用 ChatGPT</option><option>已用於部分工作</option><option>已有固定使用的 AI 工具</option></select></div>
-          <fieldset class="full course-only"><legend>想了解的課程主題（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="courseTopics" value="ChatGPT 基礎操作">ChatGPT 基礎操作</label><label class="check"><input type="checkbox" name="courseTopics" value="行政與文書應用">行政與文書應用</label><label class="check"><input type="checkbox" name="courseTopics" value="人資與招募應用">人資與招募應用</label><label class="check"><input type="checkbox" name="courseTopics" value="行銷內容應用">行銷內容應用</label><label class="check"><input type="checkbox" name="courseTopics" value="工作流程應用">工作流程應用</label><label class="check"><input type="checkbox" name="courseTopics" value="不確定，希望牧茗建議">不確定，希望牧茗建議</label></div></fieldset>
-          <div class="field full course-only"><label for="courseNeeds">特殊需求或想補充的內容（選填）</label><textarea id="courseNeeds" name="courseNeeds" class="compact-textarea" rows="3" placeholder="例如：希望以人資案例為主、同仁年齡較高、需要現場操作。沒有也可以留白。"></textarea></div>
+          <div class="field workflow-only"><label for="expectedAttendees">預計人數 *</label><div class="attendee-number"><input id="expectedAttendees" name="expectedAttendees" type="number" inputmode="numeric" min="1" max="200" step="1" value="20"><span class="unit-label">人</span></div></div>
+          <div class="field workflow-only"><label for="audience">上課對象 *</label><select id="audience" name="audience"><option value="">請選擇</option><option>全體同仁</option><option>行政人員</option><option>人資人員</option><option>業務人員</option><option>主管</option><option>其他</option></select></div>
+          <div class="field workflow-only"><label for="courseFormat">希望課程形式 *</label><select id="courseFormat" name="courseFormat"><option value="">請選擇</option><option>企業內訓</option><option>主題講座</option><option>客製課程</option><option>尚未確定</option></select></div>
+          <div class="field workflow-only"><label for="aiLevel">團隊 AI 使用程度</label><select id="aiLevel" name="aiLevel"><option value="">請選擇</option><option>完全沒有使用過</option><option>偶爾使用</option><option>已有部分同仁使用</option><option>已固定使用</option><option>不確定</option></select></div>
+          <fieldset class="full workflow-only"><legend>想了解的主題（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="courseTopics" value="ChatGPT 基礎操作">ChatGPT 基礎操作</label><label class="check"><input type="checkbox" name="courseTopics" value="行政與文書應用">行政與文書應用</label><label class="check"><input type="checkbox" name="courseTopics" value="人資與招募應用">人資與招募應用</label><label class="check"><input type="checkbox" name="courseTopics" value="業務與行銷應用">業務與行銷應用</label><label class="check"><input type="checkbox" name="courseTopics" value="工作流程改善">工作流程改善</label><label class="check"><input type="checkbox" name="courseTopics" value="AI 工具選擇">AI 工具選擇</label><label class="check"><input type="checkbox" name="courseTopics" value="其他">其他</label></div></fieldset>
+          <div class="field full workflow-only"><label for="courseAddress">上課地點</label><input id="courseAddress" name="courseAddress"></div>
+          <div class="field full course-needs-field"><label for="courseNeeds" id="courseNeedsLabel">特殊需求或補充內容</label><textarea id="courseNeeds" name="courseNeeds" class="compact-textarea" rows="3" placeholder="例如：希望以人資案例為主、同仁年齡較高，沒有也可以留白。"></textarea></div>
 
-          <fieldset class="full workflow-only"><legend>目前最想改善哪類工作？（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="workflowCategories" value="行政文書">行政文書</label><label class="check"><input type="checkbox" name="workflowCategories" value="人資／招募">人資／招募</label><label class="check"><input type="checkbox" name="workflowCategories" value="客戶服務">客戶服務</label><label class="check"><input type="checkbox" name="workflowCategories" value="業務與報價">業務與報價</label><label class="check"><input type="checkbox" name="workflowCategories" value="行銷內容">行銷內容</label><label class="check"><input type="checkbox" name="workflowCategories" value="會議紀錄">會議紀錄</label><label class="check"><input type="checkbox" name="workflowCategories" value="資料整理">資料整理</label><label class="check"><input type="checkbox" name="workflowCategories" value="表格與報表">表格與報表</label><label class="check"><input type="checkbox" name="workflowCategories" value="重複性作業">重複性作業</label><label class="check"><input type="checkbox" name="workflowCategories" value="其他">其他</label></div></fieldset>
-          <fieldset class="full workflow-only"><legend>目前最大的困擾是什麼？（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="workflowPainPoints" value="花太多時間">花太多時間</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="重複輸入資料">重複輸入資料</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="容易出錯或遺漏">容易出錯或遺漏</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="資料分散不好找">資料分散不好找</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="不知道適合用哪個工具">不知道適合用哪個工具</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="同仁不熟悉 AI">同仁不熟悉 AI</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="流程沒有統一">流程沒有統一</label><label class="check"><input type="checkbox" name="workflowPainPoints" value="其他">其他</label></div></fieldset>
-          <div class="field full workflow-only"><label for="workflowBrief">簡單說明目前的情況（選填）</label><textarea id="workflowBrief" name="workflowBrief" class="compact-textarea" rows="3" placeholder="例如：每週都要人工整理客戶資料，希望減少重複作業。簡單寫一兩句即可，也可以留白由牧茗再電話了解。"></textarea></div>
-          <fieldset class="full workflow-only"><legend>後續方式 *</legend><div class="radios"><label class="radio"><input type="radio" name="workflowMode" value="contactOnly" checked>只送出需求，等待牧茗聯絡</label><label class="radio"><input type="radio" name="workflowMode" value="onsite">預約現場討論</label></div></fieldset>
-
-          <div class="field full consultation-only"><label for="serviceInterest">想了解的服務</label><select id="serviceInterest" name="serviceInterest"><option value="">請選擇</option><option>企業 AI 基礎課程安排</option><option>AI 工具選擇與評估</option><option>工作流程改善</option><option>企業 AI 陪跑或教育訓練</option><option>人資、勞動管理與組織運作問題</option><option>不確定，希望牧茗建議</option></select></div>
-          <div class="field full consultation-only"><label for="needsDescription">想討論的內容（選填）</label><textarea id="needsDescription" name="needsDescription" class="compact-textarea" rows="3" placeholder="簡單說明想了解的問題或服務即可；尚未確定也可以留白，我們會再與您聯絡確認。"></textarea></div>
-          <fieldset class="full consultation-only"><legend>討論方式 *</legend><div class="radios"><label class="radio"><input type="radio" name="consultationMode" value="phone" checked>電話聯絡</label><label class="radio"><input type="radio" name="consultationMode" value="onsite">現場討論</label></div><p class="hint" id="phoneHint">電話聯絡不鎖定月曆時段，牧茗會依方便聯絡時段主動聯絡。</p></fieldset>
+          <fieldset class="full consultation-only"><legend>聯絡方式 *</legend><div class="radios"><label class="radio"><input type="radio" name="consultationMode" value="phone" checked>電話聯絡</label><label class="radio"><input type="radio" name="consultationMode" value="onsite">現場討論</label></div><p class="hint" id="phoneHint">電話聯絡不顯示月曆；牧茗會依您提供的資料主動聯絡。</p></fieldset>
+          <fieldset class="full consultation-only"><legend>想討論的方向（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="discussionTopics" value="課程規劃">課程規劃</label><label class="check"><input type="checkbox" name="discussionTopics" value="工作流程改善">工作流程改善</label><label class="check"><input type="checkbox" name="discussionTopics" value="AI 工具導入">AI 工具導入</label><label class="check"><input type="checkbox" name="discussionTopics" value="行政或人資作業改善">行政或人資作業改善</label><label class="check"><input type="checkbox" name="discussionTopics" value="系統或表單需求">系統或表單需求</label><label class="check"><input type="checkbox" name="discussionTopics" value="尚未確定，想先了解">尚未確定，想先了解</label><label class="check"><input type="checkbox" name="discussionTopics" value="其他">其他</label></div></fieldset>
+          <div class="field full consultation-only"><label for="needsDescription">簡單說明目前情況</label><textarea id="needsDescription" name="needsDescription" class="compact-textarea" rows="3" placeholder="例如：目前每週都要人工整理報表，想了解是否能減少重複作業。簡單寫一兩句即可，也可以留白。"></textarea></div>
 
           <div class="field full onsite-extra is-hidden"><label class="check"><input type="checkbox" id="siteUndecided" name="siteUndecided" value="地點尚未確定">地點尚未確定</label></div>
           <div class="field full onsite-extra is-hidden" id="siteAddressField"><label for="discussionLocation">現場地址 *</label><input id="discussionLocation" name="discussionLocation"></div>
 
-          <fieldset class="full"><legend>方便聯絡時段 *（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="contactTimes" value="平日上午">平日上午</label><label class="check"><input type="checkbox" name="contactTimes" value="平日下午">平日下午</label><label class="check"><input type="checkbox" name="contactTimes" value="平日晚上">平日晚上</label><label class="check"><input type="checkbox" name="contactTimes" value="週末">週末</label></div></fieldset>
-          <div class="field"><label for="preferredContact">希望聯絡方式</label><select id="preferredContact" name="preferredContact"><option value="">請選擇</option><option>電話</option><option>Email</option><option>LINE</option></select></div>
-          <div class="field full"><label for="notes">補充說明</label><textarea id="notes" name="notes"></textarea></div>
+          <fieldset class="full contact-preferences"><legend>方便聯絡時段（可複選）</legend><div class="checks"><label class="check"><input type="checkbox" name="contactTimes" value="平日上午">平日上午</label><label class="check"><input type="checkbox" name="contactTimes" value="平日下午">平日下午</label><label class="check"><input type="checkbox" name="contactTimes" value="平日晚上">平日晚上</label><label class="check"><input type="checkbox" name="contactTimes" value="週末">週末</label></div></fieldset>
+          <div class="field contact-preferences"><label for="preferredContact">希望聯絡方式</label><select id="preferredContact" name="preferredContact"><option value="">請選擇</option><option>電話</option><option>Email</option><option>LINE</option></select></div>
+          <div class="field full general-notes"><label for="notes">其他需求或補充內容</label><textarea id="notes" name="notes"></textarea></div>
+          <p class="form-note submit-reminder">送出前請再次確認資料；完成後如需修改或取消，請提供預約編號與牧茗聯絡。</p>
         </div>
         <div class="actions"><button class="btn-primary" type="submit" id="submitButton">送出</button><div class="status" id="status" aria-live="polite"></div></div>
       </form>
       <aside class="calendar-box" id="calendarBox">
-        <h2 class="box-title">選擇日期與時段</h2>
+        <h2 class="box-title" id="calendarTitle">選擇日期與時段</h2>
         <div class="calendar-head"><button class="icon-btn" type="button" id="prevMonth" aria-label="上一個月">‹</button><div class="calendar-month" id="calendarMonth"></div><button class="icon-btn" type="button" id="nextMonth" aria-label="下一個月">›</button></div>
         <div class="calendar" id="calendar" aria-label="可預約月曆"></div>
         <div class="periods" id="periods" aria-label="可預約時段"></div>
         <p class="selected-slot" id="selectedSlot">請先選擇可預約日期。</p>
+        <p class="calendar-note">預約送出後，如需修改日期、時段或取消，請透過牧茗官方 LINE 聯絡，並提供預約編號、企業名稱及聯絡人。</p>
       </aside>
     </div>
   </div>
@@ -91,6 +94,7 @@
     hamburger: document.getElementById("hamburger"),
     form: document.getElementById("bookingForm"),
     formTitle: document.getElementById("formTitle"),
+    formDescription: document.getElementById("formDescription"),
     pageTitle: document.getElementById("pageTitle"),
     pageLead: document.getElementById("pageLead"),
     submitButton: document.getElementById("submitButton"),
@@ -99,9 +103,12 @@
     calendar: document.getElementById("calendar"),
     calendarMonth: document.getElementById("calendarMonth"),
     periods: document.getElementById("periods"),
+    calendarTitle: document.getElementById("calendarTitle"),
     selectedSlot: document.getElementById("selectedSlot"),
     siteUndecided: document.getElementById("siteUndecided"),
-    siteAddressField: document.getElementById("siteAddressField")
+    siteAddressField: document.getElementById("siteAddressField"),
+    industryField: document.getElementById("industryField"),
+    courseNeedsLabel: document.getElementById("courseNeedsLabel")
   };
   document.querySelectorAll("input[name='mainType']").forEach(input => input.addEventListener("change", () => setType(input.value, true)));
   document.querySelectorAll("input[name='workflowMode']").forEach(input => input.addEventListener("change", renderMode));
@@ -126,17 +133,27 @@
     els.form.reset();
     document.querySelector(`input[name='mainType'][value='${type}']`).checked = true;
     const meta = {
-      course: ["企業 AI 課程申請", "填寫課程需求，並直接選擇可預約的上課日期與上午／下午。", "送出課程預約"],
-      workflow: ["工作改善需求", "描述想改善的流程；若需要現場討論，再選擇可預約日期。", "送出工作改善需求"],
-      consultation: ["初步討論", "留下想了解的服務與需求，選擇電話聯絡或現場討論。", "送出初步討論需求"]
+      course: ["免費 AI 課程", "每家企業限申請 1 次免費 AI 基礎課程，送出後將由牧茗與您聯絡確認。", "送出免費課程申請"],
+      workflow: ["企業課程預約", "適用於企業內訓、主題講座、實作工作坊及客製課程。先簡單提供需求，牧茗會再與您聯絡確認內容與安排。", "送出企業課程預約"],
+      consultation: ["預約初步討論", "適合工作流程改善、AI 工具導入、系統或表單需求，以及尚未確定合作方向的需求。", "送出初步討論需求"]
     }[type];
     els.pageTitle.textContent = meta[0];
     els.formTitle.textContent = meta[0];
     els.pageLead.textContent = meta[1];
+    els.formDescription.textContent = type === "course" ? "" : meta[1];
     els.submitButton.textContent = meta[2];
+    els.calendarTitle.textContent = type === "workflow" ? "選擇希望日期與預約時段" : "選擇預約日期與時段";
     document.querySelectorAll(".course-only").forEach(el => el.classList.toggle("is-hidden", type !== "course"));
     document.querySelectorAll(".workflow-only").forEach(el => el.classList.toggle("is-hidden", type !== "workflow"));
     document.querySelectorAll(".consultation-only").forEach(el => el.classList.toggle("is-hidden", type !== "consultation"));
+    document.querySelectorAll(".course-needs-field").forEach(el => el.classList.toggle("is-hidden", type === "consultation"));
+    document.querySelectorAll(".contact-extra").forEach(el => el.classList.toggle("is-hidden", type !== "consultation"));
+    document.querySelectorAll(".contact-preferences,.general-notes").forEach(el => el.classList.add("is-hidden"));
+    els.industryField.classList.toggle("is-hidden", type === "consultation");
+    els.courseNeedsLabel.textContent = type === "workflow" ? "其他需求或補充內容" : "特殊需求或補充內容";
+    document.getElementById("courseNeeds").placeholder = type === "workflow"
+      ? "例如：想先安排主管講座、需要實作練習、尚未確定也可以留白。"
+      : "例如：希望以人資案例為主、同仁年齡較高，沒有也可以留白。";
     setRequired();
     renderMode();
     renderCalendar();
@@ -149,9 +166,9 @@
 
   function renderMode() {
     const needsCalendar = state.type === "course" ||
-      (state.type === "workflow" && radioValue("workflowMode") === "onsite") ||
+      state.type === "workflow" ||
       (state.type === "consultation" && radioValue("consultationMode") === "onsite");
-    const showOnsite = state.type !== "course" && needsCalendar;
+    const showOnsite = state.type === "consultation" && needsCalendar;
     els.calendarBox.classList.toggle("is-hidden", !needsCalendar);
     document.querySelectorAll(".onsite-extra").forEach(el => el.classList.toggle("is-hidden", !showOnsite));
     els.siteAddressField.classList.toggle("is-hidden", !(showOnsite && !els.siteUndecided.checked));
@@ -171,6 +188,10 @@
     document.getElementById("companyName").required = true;
     document.getElementById("contactName").required = true;
     document.getElementById("phone").required = true;
+    document.getElementById("industry").required = state.type !== "consultation";
+    document.getElementById("expectedAttendees").required = state.type === "workflow";
+    document.getElementById("audience").required = state.type === "workflow";
+    document.getElementById("courseFormat").required = state.type === "workflow";
     document.getElementById("discussionLocation").required = !els.siteAddressField.classList.contains("is-hidden");
   }
 
@@ -210,16 +231,15 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "day";
+      button.textContent = String(d);
       button.disabled = true;
       if (slot && date >= today) {
-        button.textContent = String(d);
         button.disabled = false;
         button.classList.add("available");
         if (text === state.selectedDate) button.classList.add("selected");
         button.addEventListener("click", () => selectDate(text));
       } else {
-        button.classList.add("empty");
-        button.setAttribute("aria-hidden", "true");
+        button.setAttribute("aria-label", `${text} 不可預約`);
       }
       els.calendar.appendChild(button);
     }
@@ -251,8 +271,6 @@
     setRequired();
     const needsCalendar = !els.calendarBox.classList.contains("is-hidden");
     if (needsCalendar && (!state.selectedDate || !state.selectedPeriod)) return setStatus("請先選擇可預約日期與上午／下午。", "error");
-    if (!checkedValues("contactTimes").length) return setStatus("請至少選擇一個方便聯絡時段。", "error");
-    if (!valueOf("email") && !valueOf("lineId")) return setStatus("請至少填寫 Email 或 LINE ID 其中一項。", "error");
     if (!els.form.reportValidity()) return;
     const payload = buildPayload();
     els.submitButton.disabled = true;
@@ -261,7 +279,7 @@
       const result = await postJson(payload);
       if (!result.success) throw new Error(result.error || "送出失敗。");
       const id = result.data?.bookingId || result.data?.workflowId || result.data?.consultationId || "";
-      setStatus(id ? `送出成功，編號：${id}` : "送出成功。", "success");
+      setStatus(id ? successMessage(id) : "預約成功。", "success");
       els.form.reset();
       state.selectedDate = "";
       state.selectedPeriod = "";
@@ -287,17 +305,13 @@
       notes: valueOf("notes")
     };
     if (state.type === "course") {
-      return { ...base, type: "courseBooking", address: valueOf("courseAddress"), expectedAttendees: valueOf("expectedAttendees"), aiLevel: valueOf("aiLevel"), courseTopics: checkedValues("courseTopics").join("、"), courseNeeds: valueOf("courseNeeds"), date: state.selectedDate, period: state.selectedPeriod };
+      return { ...base, type: "courseBooking", courseType: "免費 AI 課程", address: "", expectedAttendees: "", audience: "", aiLevel: "", courseFormat: "", courseTopics: "", courseNeeds: valueOf("courseNeeds"), date: state.selectedDate, period: state.selectedPeriod };
     }
     if (state.type === "workflow") {
-      const onsite = radioValue("workflowMode") === "onsite";
-      const workflowCategories = checkedValues("workflowCategories").join("、");
-      const workflowPainPoints = checkedValues("workflowPainPoints").join("、");
-      const workflowBrief = valueOf("workflowBrief");
-      return { ...base, type: "workflow", workflowNeed: workflowCategories, needsDescription: workflowBrief, desiredOutcome: "", workflowDetails: "", currentProcess: workflowBrief, painPoints: workflowPainPoints, departments: "", currentTools: "", consultationMode: onsite ? "onsite" : "phone", discussionLocation: valueOf("discussionLocation"), siteUndecided: els.siteUndecided.checked ? "是" : "", date: onsite ? state.selectedDate : "", period: onsite ? state.selectedPeriod : "" };
+      return { ...base, type: "courseBooking", courseType: "企業課程預約", address: valueOf("courseAddress"), expectedAttendees: valueOf("expectedAttendees"), audience: valueOf("audience"), aiLevel: valueOf("aiLevel"), courseFormat: valueOf("courseFormat"), courseTopics: checkedValues("courseTopics").join("、"), courseNeeds: valueOf("courseNeeds"), date: state.selectedDate, period: state.selectedPeriod };
     }
     const onsite = radioValue("consultationMode") === "onsite";
-    return { ...base, type: "consultation", serviceInterest: valueOf("serviceInterest"), needsDescription: valueOf("needsDescription"), consultationMode: onsite ? "onsite" : "phone", discussionLocation: valueOf("discussionLocation"), siteUndecided: els.siteUndecided.checked ? "是" : "", date: onsite ? state.selectedDate : "", period: onsite ? state.selectedPeriod : "" };
+    return { ...base, type: "consultation", serviceInterest: checkedValues("discussionTopics").join("、"), needsDescription: valueOf("needsDescription"), consultationMode: onsite ? "onsite" : "phone", discussionLocation: valueOf("discussionLocation"), siteUndecided: els.siteUndecided.checked ? "是" : "", date: onsite ? state.selectedDate : "", period: onsite ? state.selectedPeriod : "" };
   }
 
   function selectDate(date) { state.selectedDate = date; state.selectedPeriod = ""; renderCalendar(); }
@@ -308,7 +322,11 @@
   function checkedValues(name) { return [...document.querySelectorAll(`input[name='${name}']:checked`)].map(input => input.value); }
   async function fetchJson(url) { const response = await fetch(url); return JSON.parse(await response.text()); }
   async function postJson(payload) { const body = new URLSearchParams(); body.set("payload", JSON.stringify(payload)); const response = await fetch(APPS_SCRIPT_URL, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" }, body }); return JSON.parse(await response.text()); }
-  function setStatus(message, type) { els.status.textContent = message; els.status.className = `status ${type || ""}`.trim(); }
+  function successMessage(id) {
+    return `<div class="success-panel"><strong>預約成功</strong><p>預約編號：${escapeHtml(id)}</p><p>請保留預約編號。</p><p>如需修改或取消，請將預約編號、企業名稱及聯絡人傳送至牧茗官方 LINE，我們會協助處理。</p></div>`;
+  }
+  function setStatus(message, type) { els.status.className = `status ${type || ""}`.trim(); if (type === "success") { els.status.innerHTML = message; } else { els.status.textContent = message; } }
+  function escapeHtml(text) { return String(text).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char])); }
   function parseDate(text) { const [y, m, d] = text.split("-").map(Number); return new Date(y, m - 1, d); }
   function formatDate(date) { return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-"); }
   function startOfDay(date) { return new Date(date.getFullYear(), date.getMonth(), date.getDate()); }
