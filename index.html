@@ -3078,6 +3078,15 @@
   }
 
   function showPage(key, options = {}) {
+    const bookingRedirects = {
+      'course-application': 'booking.html?type=course',
+      'workflow-request': 'booking.html?type=workflow',
+      consultation: 'booking.html?type=consultation'
+    };
+    if (bookingRedirects[key]) {
+      window.location.href = bookingRedirects[key];
+      return;
+    }
     const resolvedKey = pageMap[key] ? key : 'home';
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById(pageMap[resolvedKey]);
@@ -3105,6 +3114,15 @@
   }
 
   function goTo(key, options = {}) {
+    const bookingRedirects = {
+      'course-application': 'booking.html?type=course',
+      'workflow-request': 'booking.html?type=workflow',
+      consultation: 'booking.html?type=consultation'
+    };
+    if (bookingRedirects[key]) {
+      window.location.href = bookingRedirects[key];
+      return;
+    }
     showPage(key, options);
     syncHashForPage(key, Boolean(options.replace));
   }
