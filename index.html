@@ -1498,12 +1498,12 @@
     </div>
   </div>
   <ul class="nav-links">
+    <li><a data-nav-key="home" onclick="goTo('home')">首頁</a></li>
+    <li><a data-nav-key="free-tools" href="workkit/">免費工具</a></li>
+    <li><a data-nav-key="course-application" onclick="goTo('course-application')">免費課程</a></li>
     <li><a data-nav-key="services" onclick="goTo('services')">服務項目</a></li>
-    <li><a data-nav-key="free-tools" onclick="goTo('free-tools')">免費工具</a></li>
-    <li><a data-nav-key="consultation" onclick="goTo('consultation')">預約諮詢</a></li>
-    <li><a data-nav-key="faq" onclick="goTo('faq')">常見問題</a></li>
     <li><a data-nav-key="about" onclick="goTo('about')">關於牧茗</a></li>
-    <li><a data-nav-key="contact" onclick="goTo('contact')" class="nav-cta">聯絡我們</a></li>
+    <li><a data-nav-key="consultation" onclick="goTo('consultation')" class="nav-cta">預約諮詢</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()" id="hamburger">
     <span></span><span></span><span></span>
@@ -1511,12 +1511,12 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <a data-nav-key="home" onclick="goTo('home'); closeMenu()">首頁</a>
+  <a data-nav-key="free-tools" href="workkit/" onclick="closeMenu()">免費工具</a>
+  <a data-nav-key="course-application" onclick="goTo('course-application'); closeMenu()">免費課程</a>
   <a data-nav-key="services" onclick="goTo('services'); closeMenu()">服務項目</a>
-  <a data-nav-key="free-tools" onclick="goTo('free-tools'); closeMenu()">免費工具</a>
-  <a data-nav-key="consultation" onclick="goTo('consultation'); closeMenu()">預約諮詢</a>
-  <a data-nav-key="faq" onclick="goTo('faq'); closeMenu()">常見問題</a>
   <a data-nav-key="about" onclick="goTo('about'); closeMenu()">關於牧茗</a>
-  <a data-nav-key="contact" onclick="goTo('contact'); closeMenu()">聯絡我們</a>
+  <a data-nav-key="consultation" onclick="goTo('consultation'); closeMenu()">預約諮詢</a>
 </div>
 
 
