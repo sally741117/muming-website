@@ -261,7 +261,7 @@ body{
 }
 
 .section{
-  margin:24px 0;
+  margin:24px auto;
 }
 
 .section-head h2{
