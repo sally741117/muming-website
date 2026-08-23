@@ -1411,6 +1411,8 @@
   .support-service-grid, .info-grid, .process-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1120px; margin: 0 auto; }
   .support-service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .support-service-card, .info-card, .process-card { padding: 24px; background: #fffdf9; border: 1px solid var(--border); }
+  .info-card--workkit { border-color: rgba(212,88,26,0.28); background: linear-gradient(145deg, #fffdf9, #fff8ee); }
+  .info-card-tag { display: inline-flex; width: fit-content; margin-bottom: 14px; padding: 5px 10px; border-radius: 999px; background: rgba(212,88,26,0.09); color: var(--orange); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; }
   .support-service-card h4 { font-family: 'Noto Serif TC', serif; font-size: 16px; font-weight: 500; margin-bottom: 8px; color: var(--brown-deep); }
   .support-service-card p, .simple-list li { color: var(--text-muted); font-size: 13.5px; line-height: 1.75; }
   .card-text-link { display: inline-flex; margin-top: 14px; padding: 0; border: 0; background: transparent; color: var(--orange); font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 400; text-decoration: none; cursor: pointer; }
@@ -1499,7 +1501,7 @@
   </div>
   <ul class="nav-links">
     <li><a data-nav-key="home" onclick="goTo('home')">首頁</a></li>
-    <li><a data-nav-key="free-tools" href="workkit/">免費工具</a></li>
+    <li><a data-nav-key="free-tools" onclick="goTo('free-tools')">免費工具</a></li>
     <li><a data-nav-key="course-application" onclick="goTo('course-application')">免費課程</a></li>
     <li><a data-nav-key="services" onclick="goTo('services')">服務項目</a></li>
     <li><a data-nav-key="about" onclick="goTo('about')">關於牧茗</a></li>
@@ -1512,7 +1514,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a data-nav-key="home" onclick="goTo('home'); closeMenu()">首頁</a>
-  <a data-nav-key="free-tools" href="workkit/" onclick="closeMenu()">免費工具</a>
+  <a data-nav-key="free-tools" onclick="goTo('free-tools'); closeMenu()">免費工具</a>
   <a data-nav-key="course-application" onclick="goTo('course-application'); closeMenu()">免費課程</a>
   <a data-nav-key="services" onclick="goTo('services'); closeMenu()">服務項目</a>
   <a data-nav-key="about" onclick="goTo('about'); closeMenu()">關於牧茗</a>
@@ -1837,6 +1839,33 @@
 
   <div style="margin-top:18px;">
     <a class="btn-primary" href="office-personality.html">開始測驗</a>
+  </div>
+</article>
+      <article class="info-card">
+  <span class="info-card-tag">MUMING WorkKit · 設計工具</span>
+  <h3>找顏色・配色工具</h3>
+  <p>快速查詢 HEX、RGB、CMYK、HSL，搜尋常用色名，並自動產生互補色、類似色與多種配色方案。</p>
+  <ul class="simple-list">
+    <li>HEX、RGB、CMYK、HSL 即時換算</li>
+    <li>搜尋常用色名</li>
+    <li>產生互補色、類似色與多種配色方案</li>
+    <li>免登入、打開即可使用</li>
+  </ul>
+  <div style="margin-top:18px;">
+    <a class="btn-primary" href="workkit/color-finder/index.html">免費使用</a>
+  </div>
+</article>
+      <article class="info-card info-card--workkit">
+  <span class="info-card-tag">MUMING WorkKit</span>
+  <h3>牧茗產業工具包</h3>
+  <p>把實際工作中常用的小工具整理在一起，從行政訊息、設計色碼到更多產業實用工具，打開就能直接使用。</p>
+  <ul class="simple-list">
+    <li>不需安裝</li>
+    <li>打開即可使用</li>
+    <li>持續增加免費工具</li>
+  </ul>
+  <div style="margin-top:18px;">
+    <a class="btn-primary" href="workkit/index.html">查看全部工具</a>
   </div>
 </article>
     </div>
