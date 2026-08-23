@@ -10,7 +10,13 @@ body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-s
 a{color:inherit}
 button,input,select{font:inherit}
 button{cursor:pointer}
-.wrap{max-width:1240px;margin:auto;padding:0 18px}
+.wrap{
+  max-width:1240px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:18px;
+  padding-right:18px;
+}
 .topbar{position:sticky;top:0;z-index:30;background:rgba(245,246,242,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(231,232,228,.85)}
 .topbar .inner{max-width:1240px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;text-decoration:none}
@@ -261,7 +267,7 @@ body{
 }
 
 .section{
-  margin:24px auto;
+  margin:24px 0;
 }
 
 .section-head h2{
