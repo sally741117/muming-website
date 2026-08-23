@@ -51,7 +51,7 @@
     .section-note { color: var(--muted); margin: 0; }
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
     .tool-card {
-      grid-column: span 7; min-height: 260px; padding: clamp(24px, 4vw, 34px); border: 1px solid var(--line); border-radius: 30px;
+      grid-column: span 6; min-height: 260px; padding: clamp(24px, 4vw, 34px); border: 1px solid var(--line); border-radius: 30px;
       background: linear-gradient(145deg, rgba(255,250,242,.96), rgba(255,246,232,.84)); box-shadow: var(--shadow);
       display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
     }
@@ -66,7 +66,7 @@
     }
     .btn:hover { transform: translateY(-2px); background: #c97331; }
     .coming {
-      grid-column: span 5; padding: clamp(24px, 4vw, 32px); border: 1px dashed rgba(198,161,91,.55); border-radius: 30px;
+      grid-column: 1 / -1; padding: clamp(24px, 4vw, 32px); border: 1px dashed rgba(198,161,91,.55); border-radius: 30px;
       background: rgba(255,250,242,.62); display: flex; align-items: center; justify-content: center; text-align: center; color: var(--muted); font-weight: 800;
     }
     footer { border-top: 1px solid var(--line); padding: 30px 0 42px; color: var(--muted); }
@@ -97,13 +97,13 @@
       <p class="intro">為中小企業與產業工作者打造簡單、實用、可立即使用的工作工具。</p>
     </section>
 
-    <section class="wrap section" aria-labelledby="admin-tools-title">
+    <section class="wrap section" aria-labelledby="free-tools-title">
       <div class="section-head">
         <div>
           <div class="eyebrow">Tool Category</div>
-          <h2 id="admin-tools-title">行政工具包</h2>
+          <h2 id="free-tools-title">免費工具</h2>
         </div>
-        <p class="section-note">先把最常用、最容易卡住的行政訊息整理成可立即產出的工具。</p>
+        <p class="section-note">把工作中常用的行政與設計需求，整理成可立即使用的實用工具。</p>
       </div>
       <div class="grid">
         <article class="tool-card">
@@ -113,6 +113,14 @@
             <p>快速產生催交資料、報到通知與會議通知訊息。</p>
           </div>
           <a class="btn" href="./admin-message/">開始使用</a>
+        </article>
+        <article class="tool-card">
+          <div>
+            <span class="tool-tag">設計工具</span>
+            <h3>找顏色・配色工具</h3>
+            <p>快速查詢 HEX、RGB、CMYK、HSL，搜尋常用色名並自動產生配色方案。</p>
+          </div>
+          <a class="btn" href="./color-finder/">開始使用</a>
         </article>
         <aside class="coming">更多工具持續開發中</aside>
       </div>

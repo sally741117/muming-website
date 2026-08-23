@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>找顏色｜HEX、RGB、CMYK 色碼查詢與配色工具｜牧茗</title>
+<meta name="description" content="免費線上找顏色工具，可查 HEX、RGB、CMYK、HSL，搜尋中文與英文色名，並自動產生互補色、類似色、三角色與配色方案。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="找顏色｜色碼查詢與配色工具">
+<meta property="og:description" content="HEX、RGB、CMYK、HSL、中文色名、配色推薦一次查。">
+<meta name="theme-color" content="#5DBCA8">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="inner">
+    <a class="brand" href="./"><span class="logo"></span><span>牧茗 <small style='font-weight:600;color:#98A2B3'>MuMing</small></span></a>
+    <div class="topbar-actions">
+      <nav class="nav"><a href="#pickerSection">選顏色</a><a href="#library">色卡庫</a><a href="#guide">使用說明</a></nav>
+      <a class="workkit-back" href="../">返回 MUMING WorkKit</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="pickerSection" class="wrap compact-first">
+  <div class="panel compact-picker-panel">
+    <div class="compact-picker-head">
+      <div>
+        <span class="kicker">牧茗色彩工具 · 16,777,216 種 RGB 顏色</span>
+        <h1 class="compact-title">選一個顏色，立刻拿到色碼。</h1>
+        <p class="sub">HEX、RGB、CMYK、HSL 都會同步換算；R、G、B 可分開複製。</p>
+      </div>
+      <div class="compact-current">
+        <input id="colorPicker" type="color" value="#5DBCA8" aria-label="選擇顏色">
+        <div>
+          <strong id="miniHex">#5DBCA8</strong>
+          <span id="miniName">湖水綠</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="compact-controls">
+      <div class="field compact-hex">
+        <label>HEX</label>
+        <div class="input-copy">
+          <input id="hexInput" value="#5DBCA8">
+          <button class="icon-copy" id="copyHexInline" title="複製 HEX">複製</button>
+        </div>
+      </div>
+
+      <div class="rgb-control">
+        <div class="channel-label">R</div>
+        <input id="rRange" type="range" min="0" max="255">
+        <div class="number-copy">
+          <input id="rNum" type="number" min="0" max="255">
+          <button class="mini-copy" data-copy-channel="r" title="只複製 R">複製</button>
+        </div>
+      </div>
+      <div class="rgb-control">
+        <div class="channel-label">G</div>
+        <input id="gRange" type="range" min="0" max="255">
+        <div class="number-copy">
+          <input id="gNum" type="number" min="0" max="255">
+          <button class="mini-copy" data-copy-channel="g" title="只複製 G">複製</button>
+        </div>
+      </div>
+      <div class="rgb-control">
+        <div class="channel-label">B</div>
+        <input id="bRange" type="range" min="0" max="255">
+        <div class="number-copy">
+          <input id="bNum" type="number" min="0" max="255">
+          <button class="mini-copy" data-copy-channel="b" title="只複製 B">複製</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="compact-results">
+      <button class="result-chip" id="copyHexResult">
+        <span>HEX</span><strong id="hexResult">#5DBCA8</strong><small>點擊複製</small>
+      </button>
+      <button class="result-chip" id="copyRgbResult">
+        <span>RGB</span><strong id="rgbResult">93, 188, 168</strong><small>整組複製</small>
+      </button>
+      <div class="result-chip static">
+        <span>CMYK</span><strong id="cmykResult">51, 0, 11, 26</strong>
+      </div>
+      <div class="result-chip static">
+        <span>HSL</span><strong id="hslResult">167°, 42%, 55%</strong>
+      </div>
+    </div>
+    <div class="nearest compact-nearest" id="nearest"></div>
+  </div>
+</section>
+
+<section class="hero lower-hero">
+  <div class="wrap">
+    <div class="hero-card search-only-card">
+      <div class="search-only-copy">
+        <span class="kicker">中文色名 · 英文色名 · 色碼查詢</span>
+        <h2 class="search-title">找你腦中那個顏色。</h2>
+        <p>可以搜尋「奶茶色、莫蘭迪綠、SkyBlue」，也能直接輸入 HEX 或 RGB。</p>
+      </div>
+      <div class="searchbar searchbar-wide">
+        <input id="heroSearch" placeholder="例如：奶茶色、#5DBCA8、93,188,168">
+        <button class="primary" id="heroSearchBtn">找顏色</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="adbox"><span>廣告預留區 · 上線後可放置 AdSense / 展示型廣告</span></div>
+</div>
+
+<section class="wrap">
+  <div class="panel">
+    <h2>自動配色推薦</h2>
+    <p class="sub">底下色票可以直接套用；每一格也會顯示 HEX 與 RGB。</p>
+    <div class="harmonies" id="harmonies"></div>
+  </div>
+</section>
+
+<section id="library" class="wrap section">
+  <div class="section-head">
+    <div><h2>命名色卡庫</h2><p>收錄設計常用中文色＋CSS 標準命名色；點色卡即可套用。</p></div>
+    <span id="matchCount" style="font-size:13px;color:#667085"></span>
+  </div>
+  <div class="searchbar">
+    <input id="searchColors" placeholder="搜尋：薄荷、莫蘭迪、藍、Tomato、#87CEEB、135,206,235">
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="cards" id="colorCards"></div>
+  <div class="more-wrap"><button class="secondary" id="loadMore">顯示更多色卡</button></div>
+</section>
+
+<div class="wrap"><div class="adbox"><span>第二廣告預留區 · 建議放在工具內容之後，不擋操作</span></div></div>
+
+<section id="guide" class="wrap section">
+  <div class="section-head"><div><h2>這個工具可以做什麼？</h2><p>把「查色碼」與「找配色」放在同一個地方。</p></div></div>
+  <div class="info-grid">
+    <div class="info-card"><h3>HEX ↔ RGB</h3><p>輸入色碼或拉 RGB 數值，即時換算網頁常用色碼。</p></div>
+    <div class="info-card"><h3>CMYK / HSL</h3><p>同步顯示印刷參考 CMYK 與 HSL。CMYK 為螢幕色近似換算。</p></div>
+    <div class="info-card"><h3>配色靈感</h3><p>自動產生互補、類似、三角、分裂互補與單色漸層。</p></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>© 牧茗 MuMing · Color Finder</div>
+    <div><a href="about.html">關於</a> · <a href="privacy.html">隱私權</a></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/colors.js"></script>
+<script src="assets/app.js?v=1.4.1"></script>
+</body>
+</html>
