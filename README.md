@@ -2,7 +2,9 @@
 
 牧茗管理顧問有限公司官方網站原始碼。
 
-正式網址：<https://sally741117.github.io/muming-website/>
+正式網址：<https://mumingconsulting.tw/>
+
+舊 GitHub Pages 網址會以 301 轉址至正式網域。
 
 ## 專案結構
 
@@ -46,3 +48,5 @@ http://127.0.0.1:8088/
 ## GitHub Pages
 
 此專案目前設計為 GitHub Pages 相容的靜態網站。部署前請先確認 Git remote、branch 與本機差異，再將變更推送到正式 repository。
+
+正式來源為 `main` 分支根目錄，`CNAME` 必須維持 `mumingconsulting.tw`，Pages 已啟用 HTTPS。SEO 檢查與 Search Console 操作請見 [SEO-SEARCH-CONSOLE.md](SEO-SEARCH-CONSOLE.md)。
