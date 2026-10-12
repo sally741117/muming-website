@@ -1499,6 +1499,9 @@
   @media (max-width: 768px) { .line-entry-section, .content-section, .contact-section { padding: 56px 22px 64px; } .entry-grid, .core-service-grid, .support-service-grid, .info-grid, .process-grid, .option-grid, .contact-flow-grid, .contact-center-card { grid-template-columns: 1fr; } .page-hero .page-heading, .section-intro h2, .short-title { word-break: keep-all; overflow-wrap: anywhere; white-space: normal; } .entry-card { min-height: auto; padding: 22px; } .core-service-card, .info-card, .process-card, .support-service-card, .form-card, .contact-flow-card, .contact-center-card, .contact-prep-card, .contact-privacy-note { padding: 22px; } .contact-detail-row { grid-template-columns: 1fr; gap: 6px; } .line-note { padding: 24px; } .line-contact-panel { grid-template-columns: 1fr; padding: 22px; gap: 22px; } .line-qr-wrap img { max-width: 210px; } .faq-list details { padding: 0 18px; } .form-top { flex-direction: column; gap: 6px; } .form-progress-text { white-space: normal; padding-top: 0; } .summary-item { grid-template-columns: 1fr; } .form-actions .btn-primary, .form-actions .btn-secondary, .completion-box .btn-primary, .completion-box .btn-secondary { width: 100%; justify-content: center; } }
   @media (max-width: 420px) { .content-section { padding-left: 18px; padding-right: 18px; } .number-stepper { grid-template-columns: 54px minmax(0, 1fr) 54px; width: 100%; } .number-input-wrap { padding: 8px; } .number-stepper input { width: min(82px, 100%); } .option-card { padding: 15px; } .form-card { border-radius: 18px; } }
 
+  /* MU navigation only: preserve existing site sections and forms. */
+  @media (min-width:769px) and (max-width:1100px) { #mainNav .nav-links { display:none; } #mainNav .hamburger { display:flex; } }
+  @media (max-width:380px) { #mainNav .logo { min-width:0; } #mainNav .logo-text { min-width:0; } #mainNav .logo-en { font-size:7px; letter-spacing:1px; white-space:normal; } #mainNav .hamburger { flex-shrink:0; } }
 </style>
 <script type="application/ld+json">
 {
@@ -1544,6 +1547,7 @@
   </div>
   <ul class="nav-links">
     <li><a data-nav-key="home" onclick="goTo('home')">首頁</a></li>
+    <li><a href="products.html">產品</a></li>
     <li><a data-nav-key="free-tools" onclick="goTo('free-tools')">免費工具</a></li>
     <li><a data-nav-key="course-application" onclick="goTo('course-application')">免費課程</a></li>
     <li><a data-nav-key="services" onclick="goTo('services')">服務項目</a></li>
@@ -1557,6 +1561,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a data-nav-key="home" onclick="goTo('home'); closeMenu()">首頁</a>
+  <a href="products.html">產品</a>
   <a data-nav-key="free-tools" onclick="goTo('free-tools'); closeMenu()">免費工具</a>
   <a data-nav-key="course-application" onclick="goTo('course-application'); closeMenu()">免費課程</a>
   <a data-nav-key="services" onclick="goTo('services'); closeMenu()">服務項目</a>
@@ -1693,6 +1698,7 @@
     <div class="line-note"><div><strong>AI 實做不求人</strong><p>學 AI 可以從身邊的小任務開始。先用免費工具與診斷找方向，逐步上手；需要一起整理問題，再申請基礎課程。</p></div><div class="hero-btns" style="margin-top:0;"><button class="btn-secondary" onclick="goTo('free-tools')">查看免費工具</button><button class="btn-primary" onclick="goTo('course-application')">免費申請企業 AI 基礎課程</button></div></div>
   </section>
 
+  <section class="content-section" id="mu-product-entry"><div class="line-note"><div><strong>Mu 翻譯秘書</strong><p>LINE 群組 AI 翻譯服務。查看指定群組的方案、價格與使用方式；付費方案尚未開放購買，現在可先了解服務與方案價格。</p></div><div class="hero-btns"><a class="btn-secondary" href="products.html">查看牧茗產品</a><a class="btn-primary" href="mu/">認識 Mu 翻譯秘書</a></div></div></section>
   <section class="content-section">
     <div class="section-intro">
       <span class="section-kicker">Common Frictions</span>

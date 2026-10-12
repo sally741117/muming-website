@@ -1,0 +1,52 @@
+/* Shared vertical rhythm. A boundary receives padding from both neighbours:
+   ordinary 40 + 40 = 80px; significant transitions keep more room.
+   Hero and footer retain their existing page-specific spacing. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --rhythm-section: var(--space-10);
+  --rhythm-transition: var(--space-14);
+  --rhythm-group: var(--space-7);
+  --rhythm-copy: var(--space-4);
+  --rhythm-card: var(--space-6);
+  --rhythm-form-gap: var(--space-5);
+  --rhythm-functional-end: var(--space-12);
+}
+@media (max-width: 768px) {
+  :root {
+    --rhythm-section: var(--space-7);
+    --rhythm-transition: var(--space-10);
+    --rhythm-group: var(--space-6);
+    --rhythm-card: var(--space-5);
+    --rhythm-form-gap: var(--space-4);
+    --rhythm-functional-end: var(--space-8);
+  }
+}
+
+/* Homepage and the two core service pages share these content roles.
+   Only block spacing changes; horizontal layout and typography stay intact. */
+body .line-entry-section,
+body .content-section,
+body .about-section,
+body .strengths-section,
+body .contact-section { padding-block: var(--rhythm-section); }
+body .quiz-entry { padding-block: var(--rhythm-transition); }
+body .section-intro { margin-bottom: var(--rhythm-group); }
+body .section-kicker { margin-bottom: var(--space-3); }
+body .section-intro h2 { margin-bottom: var(--rhythm-copy); }
+body .line-note { margin-top: var(--rhythm-group); padding-block: var(--rhythm-card); }
+body .about-features { margin-top: var(--space-8); }
+body .contact-flow-grid,
+body .contact-cta { margin-bottom: var(--space-8); }
+/* Functional content must not add a second viewport-height spacer inside .page. */
+body .quiz-section,
+body .result-section { min-height: 0; padding-block: var(--rhythm-section); }

@@ -1,0 +1,47 @@
+/* Product overview only. Product details and light-app functionality stay on their existing pages. */
+.products-page .products-wrap { width: min(1120px, calc(100% - 80px)); margin-inline: auto; }
+.products-page .products-hero { padding-block: 44px 28px; }
+.products-page .products-kicker { margin: 0 0 8px; font-size: 11px; font-weight: 500; letter-spacing: .16em; color: var(--brown-warm); }
+.products-page h1 { margin: 0 0 16px; font-family: 'Noto Serif TC', serif; font-size: clamp(30px, 3vw, 40px); font-weight: 400; line-height: 1.4; }
+.products-page .products-lead { max-width: 750px; color: var(--text-muted); font-size: 16px; }
+.products-page .category-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; }
+.products-page .category-links a, .products-page .apps-related a { display: inline-flex; align-items: center; min-height: 44px; color: var(--brown-mid); text-underline-offset: 5px; }
+.products-page .products-section { padding-block: 28px 36px; border-top: 1px solid var(--border); scroll-margin-top: 96px; }
+.products-page h2 { font-family: 'Noto Serif TC', serif; font-size: 26px; font-weight: 400; margin: 0 0 18px; line-height: 1.4; }
+.products-page .official-products-list { display: grid; gap: 24px; }
+.products-page .official-product { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; padding: 28px 30px; border: 1px solid var(--border); border-left: 3px solid #315748; background: #f7f5ef; }
+.products-page .official-product h3 { color: #315748; font-family: 'Noto Serif TC', serif; font-size: 28px; font-weight: 500; margin: 0 0 12px; line-height: 1.4; }
+.products-page .official-product p:not(.products-kicker) { font-size: 15px; color: var(--text-muted); }
+.products-page .product-audience { margin-top: 8px; }
+.products-page .product-actions { display: flex; flex-direction: column; align-items: stretch; gap: 4px; }
+.products-page .product-actions a { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; min-height: 46px; color: #315748; font-size: 14px; font-weight: 500; text-underline-offset: 5px; }
+.products-page .product-actions .product-primary { background: #315748; color: white; border-radius: 4px; text-decoration: none; }
+.products-page .product-primary:hover { background: #264637; }
+.products-page .category-intro { margin-bottom: 20px; color: var(--text-muted); }
+.products-page .light-apps-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.products-page .light-app { display: block; padding: 18px 0; border-bottom: 1px solid var(--border); color: var(--brown-deep); text-decoration: none; }
+.products-page .light-app h3 { display: flex; justify-content: space-between; gap: 12px; font-size: 17px; font-weight: 500; margin: 0 0 6px; line-height: 1.5; }
+.products-page .light-app h3 span { flex-shrink: 0; color: var(--brown-warm); }
+.products-page .light-app p { color: var(--text-muted); font-size: 14px; }
+.products-page .light-app:hover h3 { color: #315748; }
+.products-page .apps-related { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 20px; font-size: 14px; }
+.products-page a:focus-visible { outline: 2px solid #315748; outline-offset: 4px; }
+.products-page #mainNav a[aria-current='page'] { color: var(--orange); }
+@media (max-width: 1100px) {
+  .products-page #mainNav .nav-links { display: none; }
+  .products-page #mainNav .hamburger { display: flex; }
+}
+@media (max-width: 768px) {
+  .products-page .products-wrap { width: calc(100% - 44px); }
+  .products-page .products-hero { padding-block: 32px 24px; }
+  .products-page .products-section { padding-block: 24px 28px; }
+  .products-page .official-product { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 22px 20px; }
+  .products-page .official-product h3 { font-size: 24px; }
+  .products-page .light-apps-list { grid-template-columns: minmax(0, 1fr); }
+  .products-page .apps-related { flex-direction: column; align-items: flex-start; }
+  .products-page .mobile-menu a { min-height: 44px; display: flex; align-items: center; }
+}
+@media (max-width: 380px) {
+  .products-page #mainNav .logo-en { max-width: 160px; overflow: hidden; text-overflow: ellipsis; }
+  .products-page #mainNav .hamburger { flex-shrink: 0; }
+}
