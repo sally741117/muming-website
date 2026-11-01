@@ -1,1 +1,1 @@
-window.MU_BANK_PUBLIC_ENABLED=false;
+window.MU_BANK_PUBLIC_ENABLED=true;
